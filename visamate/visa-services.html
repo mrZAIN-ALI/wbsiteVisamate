@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Services – VisaMate</title>
+
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <!-- 1) Fixed Inner Navbar -->
+  <div id="include-inner-header"></div>
+
+  <!-- 2) Floating Contact (WhatsApp & Phone) -->
+  <div class="floating-contact">
+    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
+    <a id="phone-link" class="phone-dock" aria-label="Call us">
+      <ion-icon name="call-outline"></ion-icon>
+      <span id="phone-number"></span>
+    </a>
+  </div>
+
+  <!-- 3) Hero Banner + Slogan -->
+  <div class="banner-container">
+    <img src="./assets/images/visa-banner.jpg" alt="Visa Banner" class="banner-img" />
+    <div class="banner-slogan">
+      <h1>Apply Your Visa Now</h1>
+    </div>
+  </div>
+
+  <!-- 4) Country Grid -->
+  <main class="section">
+    <h2 class="section-title">Select Your Visa Destination</h2>
+    <div class="country-grid" id="country-container"></div>
+  </main>
+
+  <!-- 5) Footer -->
+  <div id="include-footer"></div>
+
+  <!-- ───── Partials Loader & Injection ───────────────────────── -->
+  <script src="./assets/js/include-partials.js"></script>
+  <script>
+    Promise.all([
+      includePartial('include-inner-header', './assets/partials/inner-header.html'),
+      includePartial('include-footer',        './assets/partials/footer.html')
+    ]).then(() => {
+      // now that header & footer exist, load site-config
+      const cfg = document.createElement('script');
+      cfg.src = './assets/js/site-config.js';
+      document.body.appendChild(cfg);
+    });
+  </script>
+
+  <!-- ───── Global Scripts ───────────────────────────────────── -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- ───── Country-Grid Logic ────────────────────────────────── -->
+  <script>
+    function goToInquiry(name, code) {
+      window.location.href = `inquire-us.html?country=${encodeURIComponent(name)}&code=${code}`;
+    }
+
+    // Top 30 international destinations with ISO 2-letter codes
+    const countries = [
+      {name:'France',              code:'fr'},
+      {name:'Spain',               code:'es'},
+      {name:'United States',       code:'us'},
+      {name:'China',               code:'cn'},
+      {name:'Italy',               code:'it'},
+      {name:'Turkey',              code:'tr'},
+      {name:'Mexico',              code:'mx'},
+      {name:'Germany',             code:'de'},
+      {name:'Thailand',            code:'th'},
+      {name:'United Kingdom',      code:'gb'},
+      {name:'Japan',               code:'jp'},
+      {name:'Austria',             code:'at'},
+      {name:'Greece',              code:'gr'},
+      {name:'Russia',              code:'ru'},
+      {name:'Canada',              code:'ca'},
+      {name:'Hong Kong',           code:'hk'},
+      {name:'Malaysia',            code:'my'},
+      {name:'Saudi Arabia',        code:'sa'},
+      {name:'Netherlands',         code:'nl'},
+      {name:'South Korea',         code:'kr'},
+      {name:'Vietnam',             code:'vn'},
+      {name:'United Arab Emirates',code:'ae'},
+      {name:'Portugal',            code:'pt'},
+      {name:'Switzerland',         code:'ch'},
+      {name:'Croatia',             code:'hr'},
+      {name:'Poland',              code:'pl'},
+      {name:'Czech Republic',      code:'cz'},
+      {name:'Hungary',             code:'hu'},
+      {name:'Sweden',              code:'se'},
+      {name:'Belgium',             code:'be'}
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("country-container");
+      countries.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "country-card";
+        card.innerHTML = `
+          <div class="flag-wrapper">
+            <img src="./assets/images/flags/${c.code}.svg"
+                 alt="${c.name} Flag"
+                 class="flag-img" />
+          </div>
+          <h3 class="country-name">${c.name}</h3>
+          <button class="btn btn-primary"
+                  onclick="goToInquiry('${c.name}','${c.code}')">
+            Apply
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
