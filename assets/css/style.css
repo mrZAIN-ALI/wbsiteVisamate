@@ -502,10 +502,10 @@ body { background: var(--white); }
 
 
 
-/*-----------------------------------*\
+/* /*-----------------------------------*\
  * #PACKAGE
 \*-----------------------------------*/
-
+/* 
 .package { padding-block: var(--section-padding); }
 
 .package-list { margin-bottom: 40px; }
@@ -616,7 +616,129 @@ body { background: var(--white); }
 
 .package .btn { margin-inline: auto; }
 
+ */ */
 
+/* ==============================
+   #package Two-Card Bootstrap-like
+================================= */
+#package {
+  padding: var(--section-padding) 0;
+}
+
+/* Cards container */
+#package .package-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Individual card */
+#package .package-card {
+  flex: 1 1 18rem;       /* grow, shrink, base width */
+  max-width: 18rem;      /* same as Bootstrap’s 18rem */
+  background: var(--white);
+  border-radius: var(--radius-15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#package .package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* Card image */
+#package .package-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card body */
+#package .package-card__body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+#package .package-card__title {
+  font-family: var(--ff-montserrat);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+  color: var(--oxford-blue);
+  margin-bottom: 0.75rem;
+}
+
+/* Text */
+#package .package-card__text {
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-6);
+  color: var(--black-coral);
+  flex: 1;    /* push button to bottom */
+  margin-bottom: 1.25rem;
+}
+
+/* Button (reuses primary style) */
+#package .package-card__btn {
+  display: inline-block;
+  text-align: center;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--bright-navy-blue);
+  color: var(--white);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  border: none;
+  border-radius: var(--radius-15);
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+#package .package-card__btn:hover {
+  background-color: var(--yale-blue);
+  transform: translateY(-2px);
+}
+
+/* Mobile stacking */
+@media (max-width: 576px) {
+  #package .package-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* 1) Give the whole section some extra bottom spacing */
+#package {
+  margin-bottom: 4rem;
+}
+
+/* 2) Enlarge the cards and make them span more of the container */
+#package .package-cards {
+  display: grid;
+  /* each card is at least 400px wide, but expand equally otherwise */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  justify-items: center;    /* center cards if there's extra space */
+  margin: 2rem auto 0;
+  max-width: 1100px;        /* same max-width as your form above */
+  padding: 0 1rem;          /* small side padding on narrow screens */
+}
+
+/* 3) Ensure each card fills its grid cell */
+#package .package-card {
+  width: 100%;
+  max-width: none;          /* remove previous caps */
+}
+
+/* 4) On smaller screens, drop to one column */
+@media (max-width: 768px) {
+  #package .package-cards {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
@@ -656,7 +778,7 @@ body { background: var(--white); }
 \*-----------------------------------*/
 
 .cta {
-  background: var(--bright-navy-blue);
+  background: var(--black-coral);
   padding-block: var(--section-padding);
 }
 
@@ -2197,4 +2319,527 @@ address {
   .about-banner .banner-img {
     height: 200px;
   }
+}
+/* ─── Responsive tweaks for inner header ───────────────────────────── */
+
+/* Base flex layout */
+.inner-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Ensure social, nav, and CTA sit nicely */
+.inner-header .social-list,
+.inner-header .navbar,
+.inner-header .btn-primary {
+  margin: 0;
+}
+
+/* Mobile: under 768px */
+@media (max-width: 768px) {
+  /* Stack everything vertically */
+  .inner-header .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Center the social icons */
+  .inner-header .social-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    order: 1;
+  }
+
+  /* Hide the horizontal nav, show as vertical list */
+  .inner-header .navbar {
+    order: 3;
+    display: block;
+    width: 100%;
+  }
+  .inner-header .navbar .navbar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+  .inner-header .navbar .navbar-list .navbar-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+
+  /* Center the CTA button */
+  .inner-header .btn-primary {
+    order: 2;
+    align-self: center;
+    width: auto;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+/* Optional: extra small screens, shrink logo */
+@media (max-width: 480px) {
+  .inner-header .logo img {
+    max-width: 120px;
+  }
+}
+/* //popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.popup-content {
+  background-color: var(--white);
+  color: var(--gunmetal);
+  font-family: var(--ff-poppins);
+  border-radius: var(--radius-15);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: popupFadeIn 0.3s ease-in-out;
+}
+
+@keyframes popupFadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-content h2 {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-700);
+  margin-bottom: 0.2rem;
+}
+
+.popup-content .highlight {
+  color: var(--bright-navy-blue);
+}
+
+.deal-subtitle {
+  color: var(--yale-blue);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  margin-bottom: 0.5rem;
+}
+
+.deal-note {
+  font-size: var(--fs-5);
+  margin-bottom: 1rem;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-options p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--cultured);
+  border: 1px solid var(--gainsboro);
+  border-radius: var(--radius-15);
+  padding: 0.6rem;
+  font-weight: var(--fw-600);
+  font-size: var(--fs-5);
+}
+
+.contact-options ion-icon {
+  color: var(--bright-navy-blue);
+  font-size: 18px;
+}
+
+.contact-options a {
+  color: var(--gunmetal);
+  text-decoration: none;
+}
+
+.popup-btn {
+  background-color: var(--bright-navy-blue);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-15);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-5);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%; /* 👈 same width as the contact boxes */
+}
+
+
+.popup-btn:hover {
+  background-color: var(--yale-blue);
+}
+
+.close-popup {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--onyx);
+}
+
+/* //Inquire us fom on index  page*/
+/* ------- Inquiry Section (scoped) ------- */
+.inquire-section {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.inquire-section .inquire-card.inquire-forms {
+  background: var(--white);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: var(--radius-25);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+
+/* Tabs */
+.inquire-section .inquire-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.inquire-section .inquire-tab-btn {
+  padding: 0.7rem 1.5rem;
+  margin: 0 0.5rem;
+  background: var(--cultured);
+  border: none;
+  border-radius: var(--radius-25);
+  font-weight: var(--fw-600);
+  font-size: var(--fs-5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.inquire-section .inquire-tab-btn.active {
+  background: var(--bright-navy-blue);
+  color: var(--white);
+}
+
+/* Form Tabs */
+.inquire-section .inquire-form-tab {
+  display: none;
+}
+.inquire-section .inquire-form-tab.active {
+  display: block;
+}
+
+/* Grid Layout */
+.inquire-section .inquire-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+/* For flights, ensure up to 4 columns on wide screens */
+.inquire-section .flights-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Field Groups */
+.inquire-section .inquire-field-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: var(--fw-600);
+  color: var(--gunmetal);
+}
+.inquire-section .inquire-field-group input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--gainsboro);
+  border-radius: var(--radius-15);
+  font-size: var(--fs-5);
+  font-family: var(--ff-poppins);
+  transition: border-color 0.2s;
+}
+.inquire-section .inquire-field-group input:focus {
+  outline: none;
+  border-color: var(--bright-navy-blue);
+  box-shadow: 0 0 5px rgba(59,122,201,0.25);
+}
+.inquire-section .inquire-field-group input.error {
+  border-color: #e60000;
+}
+.inquire-section .inquire-field-group .error-message {
+  color: #e60000;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+/* Primary Buttons */
+.inquire-section .inqu-btn-primary {
+  display: block;
+  padding: 0.75rem 2rem;
+  background: var(--bright-navy-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-15);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  cursor: pointer;
+  margin: 0 auto;
+  transition: background 0.3s;
+}
+.inquire-section .inqu-btn-primary:hover {
+  background: var(--yale-blue);
+}
+
+/* Submission Dialog */
+.inquire-section .submission-dialog {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.inquire-section .submission-dialog .dialog-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 90%;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.inquire-section .submission-dialog ion-icon {
+  font-size: 3rem;
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+.inquire-section .submission-dialog h2 {
+  margin: 0.5rem 0;
+  font-family: var(--ff-montserrat);
+  color: var(--bright-navy-blue);
+}
+.inquire-section .submission-dialog p {
+  font-family: var(--ff-poppins);
+  color: #555;
+}
+.inquire-section .submission-dialog #dialog-ok {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: var(--bright-navy-blue);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+/* ── Tabs Container (Neutral White with Border) ── */
+.inquire-section .inquire-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: var(--white);
+  border: 1px solid var(--gainsboro);
+  padding: 0.25rem;
+  border-radius: var(--radius-25);
+}
+
+/* ── Individual Pills ── */
+.inquire-section .inquire-tab-btn {
+  position: relative;
+  padding: 0.6rem 1.5rem;
+  margin: 0 0.25rem;
+  background: var(--white);
+  border: 1px solid transparent;
+  border-radius: var(--radius-15);
+  color: var(--oxford-blue);
+  font-weight: var(--fw-700);
+  cursor: pointer;
+  transition: 
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+/* ── Active Pill ── */
+.inquire-section .inquire-tab-btn.active {
+  background: var(--bright-navy-blue);
+  color: var(--white);
+  border-color: var(--bright-navy-blue);
+}
+
+/* ── Hover States ── */
+.inquire-section .inquire-tab-btn:hover:not(.active) {
+  background: var(--cultured);
+  border-color: var(--gainsboro);
+}
+
+
+/* top values for you section */
+/* -------------------------------
+   #values — Redesigned 3D Cards
+   ------------------------------- */
+#values.values-section {
+  background: var(--cultured);
+  padding: calc(var(--section-padding) * 1.5) 0 4rem;
+}
+
+#values .values-title {
+  text-align: center;
+  font-family: var(--ff-montserrat);
+  font-size: 2.5rem;           /* bigger! */
+  font-weight: var(--fw-700);
+  color: var(--white); /* primary color */
+  margin-bottom: 0.5rem;
+}
+
+#values .values-subtitle {
+  text-align: center;
+  font-family: var(--ff-poppins);
+  font-size: 1.125rem;         /* larger subtitle */
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+
+/* Grid layout */
+#values .values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  perspective: 800px;
+}
+
+/* Card base */
+#values .value-card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-25);
+  overflow: hidden;
+  min-height: 400px;           /* taller cards */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+#values .value-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* Fake shadow layer for depth */
+#values .value-card__shadow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--onyx);
+  filter: blur(30px);
+  opacity: 0.05;
+  transform: translateY(8px) scale(0.98);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* Icon wrapper & colored circle */
+#values .value-card__icon-wrapper {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+#values .value-card__circle {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background: var(--bright-navy-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#values .value-card__icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  z-index: 1;
+}
+
+/* Content */
+#values .value-card__content {
+  padding: 0 1.5rem 2rem;
+  text-align: center;
+  flex: 1;
+}
+
+/* Heading & text */
+#values .value-card__heading {
+  font-family: var(--ff-montserrat);
+  font-size: 1.375rem;         /* larger heading */
+  font-weight: var(--fw-700);
+  color: var(--oxford-blue);
+  margin-bottom: 0.75rem;
+}
+#values .value-card__text {
+  font-family: var(--ff-poppins);
+  font-size: 1rem;             /* larger body text */
+  color: var(--black-coral);
+  line-height: 1.6;
+}
+
+/* Responsive stack */
+@media (max-width: 576px) {
+  #values .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Center the icon */
+#values .value-card__icon-wrapper,
+#values .value-card__icon {
+  /* if you have an icon-wrapper, center it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure the circle + icon are truly on top */
+#values .value-card__circle {
+  margin: 0 auto;
+}
+
+/* Give your text some breathing room */
+#values .value-card__content {
+  padding: 1.5rem 2rem;  /* increase horizontal padding */
+}
+
+/* If you didn’t use the wrapper, just center the img directly: */
+#values .value-card img {
+  display: block;
+  margin: 1rem auto;    /* centers and adds top spacing */
+}
+/* Top Values bg override */
+#values.values-section {
+  background: hsl(214, 57%, 51%) !important;
 }
