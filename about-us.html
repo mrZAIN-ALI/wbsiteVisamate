@@ -2,48 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us – VisaMate</title>
+  <!-- Favicon for browser tab -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <!-- Reset default margins -->
+  <style>
+    html, body { margin: 0 !important; padding: 0 !important; }
+  </style>
 
   <!-- Fonts & Styles -->
-  <link rel="stylesheet" href="./assets/css/style.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&
-          family=Poppins:wght@400;500;600;700&display=swap"
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <!-- Ionicons -->
-  <script 
+  <script
     type="module"
     src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
   ></script>
-  <script 
+  <script
     nomodule
     src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
   ></script>
 </head>
+<!-- WhatsApp & Phone Dock -->
+<div class="floating-contact">
+<!-- Replace -->
+<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+  <ion-icon name="logo-whatsapp"></ion-icon>
+</a>
+<a id="phone-link" class="phone-dock" aria-label="Call us">
+  <ion-icon name="call-outline"></ion-icon>
+  <span id="phone-number"></span>
+</a>
+
+</div>
 <body>
-  <!-- Inner navbar -->
-  <div id="include-inner-header"></div>
+  <!-- 1) Universal Header with its own go-top link -->
+  <div id="include-header"></div>
 
-  <!-- Go to top -->
-  <button data-go-top class="btn-go-top" aria-label="Go to top">
-    <ion-icon name="chevron-up-outline"></ion-icon>
-  </button>
+  <!-- 2) Popup Container -->
+  <div id="popup-container"></div>
 
-  <!-- About Banner (taller) -->
-  <div class="banner-container about-banner">
-    <img
-      src="./assets/images/about-banner.jpg"
-      alt="About VisaMate"
-      class="banner-img"
-    />
-  </div>
+  <!-- 3) About Banner -->
+ <div class="heroinner"></div>
 
-  <!-- About Us Section -->
+  <!-- 4) About Us Section -->
   <main class="section about-section">
     <h2 class="section-title">About Us</h2>
     <div class="container about-content">
@@ -85,23 +94,40 @@
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- 5) Footer -->
   <div id="include-footer"></div>
 
-  <!-- Partials + Config -->
+  <!-- 6) Load header, footer, then initialize -->
   <script src="./assets/js/include-partials.js"></script>
   <script>
-    Promise.all([
-      includePartial('include-inner-header','./assets/partials/inner-header.html'),
-      includePartial('include-footer','./assets/partials/footer.html')
-    ]).then(()=>{
-      const cfg=document.createElement('script');
-      cfg.src='./assets/js/site-config.js';
+    document.getElementById('include-header').addEventListener('partialLoaded', () => {
+      // Mobile nav
+      if (typeof setupMobileNavbar === 'function') setupMobileNavbar();
+      // Sticky header & go-top (header contains its own go-top link)
+      if (typeof setupGoTopButton === 'function') setupGoTopButton();
+      // More dropdown
+      (function() {
+        const btn = document.getElementById('moreDropdownBtn');
+        const menu = document.getElementById('moreDropdown');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          menu.classList.toggle('open');
+        });
+        document.addEventListener('click', () => menu.classList.remove('open'));
+      })();
+      // Load site-config.js
+      const cfg = document.createElement('script');
+      cfg.src = './assets/js/site-config.js';
       document.body.appendChild(cfg);
+      // Load main script and trigger popup
+      const main = document.createElement('script');
+      main.src = './assets/js/script.js';
+      main.onload = () => {
+        if (typeof loadPopupPartial === 'function') loadPopupPartial();
+      };
+      document.body.appendChild(main);
     });
   </script>
-
-  <!-- Global scripts -->
-  <script src="./assets/js/script.js"></script>
 </body>
 </html>

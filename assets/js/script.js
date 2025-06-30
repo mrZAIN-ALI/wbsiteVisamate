@@ -331,3 +331,90 @@ function showSubmissionDialog() {
     d.remove();
   });
 }
+
+
+
+
+
+function setupMoreDropdown() {
+  const moreBtn = document.getElementById('moreDropdownBtn');
+  const moreDropdown = document.getElementById('moreDropdown');
+
+  if (!moreBtn || !moreDropdown) return;
+
+  // Toggle on click
+  moreBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    moreDropdown.classList.toggle('open');
+    moreBtn.setAttribute('aria-expanded', moreDropdown.classList.contains('open'));
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function() {
+    if (moreDropdown.classList.contains('open')) {
+      moreDropdown.classList.remove('open');
+      moreBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close on link click (optional, for mobile)
+  document.querySelectorAll('#moreDropdownMenu a').forEach(link => {
+    link.addEventListener('click', function() {
+      moreDropdown.classList.remove('open');
+      moreBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// If your header is loaded via partial/async:
+if (document.getElementById('moreDropdownBtn')) {
+  setupMoreDropdown();
+} else {
+  // If using includePartial or similar loader:
+  const hdr = document.getElementById('include-header');
+  if (hdr) {
+    hdr.addEventListener('partialLoaded', setupMoreDropdown, { once: true });
+  }
+}
+
+
+// maing navbar responsive
+function setupMobileNavbar() {
+  const overlay = document.querySelector('.overlay') || document.querySelector('[data-overlay]');
+  const navOpenBtn = document.querySelector('[data-nav-open-btn]');
+  const navCloseBtn = document.querySelector('[data-nav-close-btn]');
+  const navbar = document.querySelector('[data-navbar]');
+
+  if (!(navOpenBtn && navCloseBtn && navbar && overlay)) return;
+
+  function openNav() {
+    navbar.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    navbar.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  navOpenBtn.addEventListener('click', openNav);
+  navCloseBtn.addEventListener('click', closeNav);
+  overlay.addEventListener('click', closeNav);
+
+  // Optional: close nav when clicking any nav-link (for extra polish)
+  document.querySelectorAll('.navbar-link').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+}
+
+// If header is loaded dynamically, run after partialLoaded event:
+if (document.querySelector('[data-navbar]')) {
+  setupMobileNavbar();
+} else {
+  const hdr = document.getElementById('include-header');
+  if (hdr) {
+    hdr.addEventListener('partialLoaded', setupMobileNavbar, { once: true });
+  }
+}
+
+

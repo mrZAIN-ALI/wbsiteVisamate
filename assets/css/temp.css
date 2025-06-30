@@ -188,7 +188,6 @@ body { background: var(--white); }
 
 
 
-
 /*-----------------------------------*\
  * #HEADER
 \*-----------------------------------*/
@@ -354,67 +353,6 @@ body { background: var(--white); }
 
 
 
-
-/* updating header?? */
-
-.dropdown {
-  position: relative;
-}
-.dropdown-toggle {
-  background: none;
-  border: none;
-  font: inherit;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px 18px;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  outline: none;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  left: 0; /* attaches to left of button */
-  top: calc(100% + 8px);
-  min-width: 220px;
-  background: var(--white, #fff);
-  border: 1px solid var(--spanish-gray, #e6e6e6);
-  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.13);
-  border-radius: 10px;
-  z-index: 100;
-  padding: 10px 0;
-  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
-  animation: fadeInDropdown 0.2s;
-}
-
-@keyframes fadeInDropdown {
-  from { opacity: 0; transform: translateY(-8px);}
-  to   { opacity: 1; transform: translateY(0);}
-}
-
-.dropdown.open .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu li a {
-  display: block;
-  padding: 12px 24px;
-  color: var(--black-coral, #353b48);
-  font-size: 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.14s, color 0.14s;
-}
-.dropdown-menu li a:hover {
-  background: var(--bright-navy-blue, #297ef6);
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
 
 /*-----------------------------------*\
  * #HERO
@@ -1807,6 +1745,92 @@ address {
   font-size: 18px;
   margin-bottom: 12px;
 }
+/* //inner header */
+/* make inner-header stick to the very top */
+/* 1) make it stick */
+.inner-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+/* 2) match the main header-bottom layout with CSS Grid */
+.inner-header .container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem; /* optional spacing */
+  max-width: 1200px; /* match your container width */
+  margin: 0 auto;
+  padding: 0 1rem;  /* same side padding as main page */
+}
+
+/* 3) position each region */
+.inner-header .social-list {
+  justify-self: start;
+}
+
+.inner-header .navbar {
+  justify-self: center;
+}
+
+.inner-header .btn-primary {
+  justify-self: end;
+}
+/* ─── inverted inner navbar theme ─────────────────────────────────────────── */
+.inner-header {
+  background: #3b7ac9;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+/* all nav links white, darker blue on hover */
+.inner-header .navbar-list .navbar-link {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+.inner-header .navbar-list .navbar-link:hover,
+.inner-header .navbar-list .navbar-link:focus {
+  color: #2e6ab0; /* a shade darker than #3b7ac9 */
+}
+
+/* social icons white, lighten on hover */
+.inner-header .social-link ion-icon {
+  font-size: 1.2rem;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+.inner-header .social-link:hover ion-icon {
+  color: #cce2f5;
+}
+
+/* restyle only the navbar’s primary button */
+.inner-header .btn-primary {
+  background: #fff;
+  color: #3b7ac9;
+  border: 2px solid #fff;
+  padding: 0.5em 1.2em;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.inner-header .btn-primary:hover,
+.inner-header .btn-primary:focus {
+  background: #e6f0fc;
+  color: #1f4f8c;
+  border-color: #e6f0fc;
+}
+
+/* ensure the rest of your grid positioning still applies */
+.inner-header .container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+/* //visa servises page */
+
 
 
 /* ─── Hero Banner + Slogan ────────────────────────────────────── */
@@ -2298,6 +2322,67 @@ address {
 }
 /* ─── Responsive tweaks for inner header ───────────────────────────── */
 
+/* Base flex layout */
+.inner-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Ensure social, nav, and CTA sit nicely */
+.inner-header .social-list,
+.inner-header .navbar,
+.inner-header .btn-primary {
+  margin: 0;
+}
+
+/* Mobile: under 768px */
+@media (max-width: 768px) {
+  /* Stack everything vertically */
+  .inner-header .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Center the social icons */
+  .inner-header .social-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    order: 1;
+  }
+
+  /* Hide the horizontal nav, show as vertical list */
+  .inner-header .navbar {
+    order: 3;
+    display: block;
+    width: 100%;
+  }
+  .inner-header .navbar .navbar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+  .inner-header .navbar .navbar-list .navbar-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+
+  /* Center the CTA button */
+  .inner-header .btn-primary {
+    order: 2;
+    align-self: center;
+    width: auto;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
 /* Optional: extra small screens, shrink logo */
 @media (max-width: 480px) {
   .inner-header .logo img {
@@ -2754,232 +2839,4 @@ address {
 /* Top Values bg override */
 #values.values-section {
   background: var(--bright-navy-blue);
-}
-
-
-
-/* making header responsive */
-/* Responsive Navbar */
-.header .navbar {
-  position: fixed;
-  top: 0;
-  right: -320px;
-  width: 300px;
-  max-width: 80vw;
-  height: 100vh;
-  background: var(--white, #fff);
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
-  transition: right 0.25s cubic-bezier(.4,0,.2,1);
-  z-index: 100;
-  visibility: hidden;
-  pointer-events: none;
-  padding-top: 40px;
-  display: block;
-}
-.header .navbar.active {
-  right: 0;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-/* Show/hide overlay for mobile menu */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.33);
-  z-index: 99;
-  transition: opacity 0.18s;
-}
-.overlay.active {
-  display: block;
-}
-
-/* Hamburger and close icons - only on mobile */
-.nav-open-btn, .nav-close-btn {
-  display: block;
-}
-
-/* Navbar list for mobile */
-.navbar-list {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-}
-
-/* Desktop mode */
-@media (min-width: 900px) {
-  .header .navbar {
-    position: static;
-    right: auto;
-    width: auto;
-    max-width: none;
-    height: auto;
-    background: none;
-    box-shadow: none;
-    visibility: visible;
-    pointer-events: auto;
-    padding-top: 0;
-    z-index: auto;
-  }
-  .nav-open-btn, .nav-close-btn, .overlay {
-    display: none !important;
-  }
-  .navbar-list {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  .navbar-link {
-    padding: 15px 20px;
-  }
-  .dropdown-menu {
-    position: absolute;
-    left: 0;
-    min-width: 220px;
-    background: var(--white, #fff);
-    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12);
-    border: 1px solid var(--spanish-gray, #e6e6e6);
-    border-radius: 10px;
-    z-index: 200;
-    padding: 10px 0;
-  }
-}
-
-/* Mobile dropdown: show inline, no shadow */
-@media (max-width: 899px) {
-  .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    border: none;
-    background: none;
-    min-width: 100%;
-    border-radius: 0;
-    padding: 0;
-  }
-  .dropdown-menu li a {
-    padding: 12px 32px;
-    background: #f4f6fa;
-    color: var(--black-coral, #353b48);
-    font-size: 1em;
-  }
-  .dropdown-menu li a:hover {
-    background: var(--bright-navy-blue, #297ef6);
-    color: #fff;
-  }
-}
-
-
-
-
-/* //inner heade> */
-.heroinner {
-background-image: url("../images/visa-banner.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
-background-color: hsla(0, 0%, 0%, 0.7);
-background-blend-mode: overlay;
-display: grid;
-place-items: center;
-min-height: 250px;
-text-align: center;
-padding-top: 125px;
-}
-
-/* ─── Refund Policy Section Styling ─────────────────────────────────── */
-.refund-section {
-  padding: 4rem 1rem;
-  background-color: #fff;
-}
-
-.refund-section .section-title {
-  /* match “About Us” heading */
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.25rem;        /* ~36px */
-  font-weight: 700;
-  color: var(--bright-navy-blue);
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.refund-section .container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.refund-section p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;           /* ~16px */
-  line-height: 1.75;         /* comfortable line spacing */
-  color: var(--black-coral);
-  margin-bottom: 1rem;
-}
-
-.refund-section h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;         /* ~24px */
-  font-weight: 600;
-  color: var(--bright-navy-blue);
-  margin: 2rem 0 1rem;
-}
-
-.refund-section ul {
-  list-style-type: disc;
-  margin-left: 1.5rem;
-  color: var(--black-coral);
-}
-
-.refund-section ul li {
-  margin-bottom: 0.75rem;
-}
-
-.refund-section strong {
-  font-weight: 600;  /* slightly heavier than normal text */
-}
-
-.refund-section a {
-  color: var(--bright-navy-blue);
-  text-decoration: none;
-}
-
-.refund-section a:hover {
-  text-decoration: underline;
-}
-
-/* ─── 1) Restore real bullets ───────────────────────────────────── */
-.refund-section ul {
-  /* undo any “no bullets” reset */
-  list-style: disc !important;
-  list-style-position: outside !important;
-  margin: 0 0 1rem 1.5rem !important;
-  padding: 0 !important;
-}
-
-/* ─── 2a) If your browser supports ::marker, color the real bullet ─ */
-.refund-section ul li::marker {
-  color: var(--bright-navy-blue) !important;
-  /* font-size: inherit; */   /* usually not needed, but you can adjust */
-}
-
-/* ─── 2b) Fallback using a pseudo-element (for older browsers) ───── */
-.refund-section ul {
-  /* if ::marker still fails, comment out the above and use this instead */
-  /* list-style: none !important; */
-}
-
-.refund-section ul li {
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.refund-section ul li::before {
-  content: "\2022";               /* Unicode bullet */
-  position: absolute;
-  left: 0;
-  top: 0.2em;                     /* tweak to vertically center */
-  color: var(--bright-navy-blue);
-  font-size: 1rem;
-  line-height: 1;
 }

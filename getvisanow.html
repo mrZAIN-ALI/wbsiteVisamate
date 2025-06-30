@@ -2,32 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Get Visa Now – VisaMate</title>
 
-  <!-- Fonts & Styles -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"/>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Inline UX & validation styles -->
+  <!-- Page-specific layout & form UX -->
   <style>
-    /* Reuse validation/dialog styles from inquire-us.html */
+    /* 1) Two-column layout for desktop, stacks on mobile */
+    .inquire-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .inquire-section .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 2) reuse validation & dialog styles */
     .inquire-form input:focus,
     .inquire-form select:focus,
     .inquire-form textarea:focus {
       border-color: #3b7ac9;
-      outline: none;
       box-shadow: 0 0 5px rgba(59,122,201,0.5);
+      outline: none;
     }
     .inquire-form .error { border-color: #e60000 !important; }
     .error-message {
-      color: #e60000;
       font-size: 0.85rem;
+      color: #e60000;
       margin-top: 0.25rem;
       display: none;
     }
@@ -48,26 +65,34 @@
       z-index: 2000;
     }
     .submission-dialog .dialog-content {
-      display: flex; flex-direction: column; align-items: center;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
       text-align: center;
-      background: #fff; padding: 2rem; border-radius: 8px;
-      max-width: 90%; box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
     .submission-dialog ion-icon {
-      font-size: 3rem; color: #28a745; margin-bottom: 1rem;
+      font-size: 3rem;
+      color: #28a745;
+      margin-bottom: 1rem;
     }
     .submission-dialog h2 {
-      margin: 0.5rem 0;
       font-family: 'Montserrat', sans-serif;
       color: #3b7ac9;
+      margin: 0.5rem 0;
     }
     .submission-dialog p {
-      font-family: 'Poppins', sans-serif; color: #555;
+      font-family: 'Poppins', sans-serif;
+      color: #555;
     }
     .submission-dialog #dialog-ok {
-      margin-top: 1.5rem; padding: 0.5rem 1.5rem;
-      background: #3b7ac9; color: #fff; border: none;
-      border-radius: 4px; cursor: pointer; font-size: 1rem;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      background: #3b7ac9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
   </style>
 
@@ -82,185 +107,199 @@
   ></script>
 </head>
 <body>
-  <!-- Fixed inner navbar -->
-  <div id="include-inner-header"></div>
+  <!-- 1) Universal Header -->
+  <div id="include-header"></div>
 
-  <!-- Floating Contact -->
-  <div class="floating-contact">
-    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
-      <ion-icon name="logo-whatsapp"></ion-icon>
-    </a>
-    <a id="phone-link" class="phone-dock" aria-label="Call us">
-      <ion-icon name="call-outline"></ion-icon>
-      <span id="phone-number"></span>
-    </a>
-  </div>
+  <!-- 2) Popup Container -->
+  <div id="popup-container"></div>
 
-  <!-- Hero Banner -->
-  <div class="banner-container">
-    <img src="./assets/images/visa-banner.jpg" alt="Visa Banner" class="banner-img" />
-  </div>
+  <!-- 3) Banner Overlay -->
+  <div
+    class="heroinner"
+    style="
+      background-image: url('./assets/images/visa-banner.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-color: hsla(0, 0%, 0%, 0.7);
+      background-blend-mode: overlay;
+      display: grid;
+      place-items: center;
+      min-height: 250px;
+      text-align: center;
+      padding-top: 125px;
+    "
+  ></div>
 
-  <!-- Main Section: two-column layout with ad-banner on left, form on right -->
-  <main class="inquire-section container">
-    <!-- Left Card: static banner image -->
-    <div class="inquire-card inquire-info">
-      <img
-        src="./assets/images/ad-banner.png"
-        alt="Advertisement Banner"
-        style="width:100%; border-radius:8px;"
-      />
-    </div>
+  <!-- 4) Main Inquire Section -->
+  <main class="section inquire-section">
+    <div class="container">
+      <!-- Left: Ad Banner -->
+      <div class="inquire-card inquire-info">
+        <img
+          src="./assets/images/ad-banner.png"
+          alt="Advertisement"
+          style="width: 100%; border-radius: 8px;"
+        />
+      </div>
 
-    <!-- Right Card: Get Visa Now form -->
-    <div class="inquire-card inquire-form">
-      <h2 class="inquire-title">Get Visa Now</h2>
+      <!-- Right: Get Visa Now Form -->
+      <div class="inquire-card inquire-form">
+        <h2 class="inquire-title">Get Visa Now</h2>
+        <form
+          id="getvisa-form"
+          action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
+          method="POST"
+          novalidate
+        >
+          <!-- hidden FormSubmit fields -->
+          <input type="hidden" name="_subject"  value="Get Visa Now Request"/>
+          <input type="hidden" name="_template" value="table"/>
+          <input type="hidden" name="_captcha"  value="false"/>
+          <input type="text"   name="_honey"    style="display:none"/>
 
-      <form id="getvisa-form"
-            action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
-            method="POST"
-            novalidate>
-        <!-- FormSubmit hidden fields -->
-        <input type="hidden" name="_subject"  value="Get Visa Now Request"/>
-        <input type="hidden" name="_template" value="table"/>
-        <input type="hidden" name="_captcha"  value="false"/>
-        <input type="text"   name="_honey"    style="display:none"/>
-
-        <div class="form-grid">
-          <!-- Full Name -->
-          <div class="field-group">
-            <input type="text" name="Full Name" placeholder="Full Name" required/>
-            <div class="error-message">Please enter your full name</div>
+          <div class="form-grid">
+            <!-- Full Name -->
+            <div class="field-group">
+              <input type="text" name="Full Name" placeholder="Full Name" required/>
+              <div class="error-message">Please enter your full name</div>
+            </div>
+            <!-- Email -->
+            <div class="field-group">
+              <input type="email" name="Email" placeholder="Email" required/>
+              <div class="error-message">Please enter a valid email</div>
+            </div>
+            <!-- Phone Number -->
+            <div class="field-group">
+              <input
+                type="tel"
+                name="Phone Number"
+                placeholder="Phone Number"
+                pattern="^\+?\d{7,15}$"
+                title="Include country code, digits only"
+                required
+              />
+              <div class="error-message">Please enter a valid phone number</div>
+            </div>
+            <!-- Your Budget -->
+            <div class="field-group">
+              <input type="text" name="Your Budget" placeholder="Your Budget (£)" required/>
+              <div class="error-message">Please enter your budget</div>
+            </div>
+            <!-- Departure Date -->
+            <div class="field-group">
+              <input type="date" name="Departure Date" required/>
+              <div class="error-message">Please select a departure date</div>
+            </div>
+            <!-- Return Date -->
+            <div class="field-group">
+              <input type="date" name="Return Date" required/>
+              <div class="error-message">Please select a return date</div>
+            </div>
+            <!-- Departure -->
+            <div class="field-group">
+              <input type="text" name="Departure" placeholder="Departure" required/>
+              <div class="error-message">Please enter departure city</div>
+            </div>
+            <!-- Destination -->
+            <div class="field-group">
+              <input type="text" name="Destination" placeholder="Destination" required/>
+              <div class="error-message">Please enter destination</div>
+            </div>
+            <!-- Message (span both columns) -->
+            <div class="field-group" style="grid-column: span 2;">
+              <textarea name="Message" placeholder="Message" rows="4" required></textarea>
+              <div class="error-message">Please enter your message</div>
+            </div>
           </div>
 
-          <!-- Email -->
-          <div class="field-group">
-            <input type="email" name="Email" placeholder="Email" required/>
-            <div class="error-message">Please enter a valid email</div>
-          </div>
-
-          <!-- Phone Number -->
-          <div class="field-group">
-            <input
-              type="tel"
-              name="Phone Number"
-              placeholder="Phone Number"
-              pattern="^\+?\d{7,15}$"
-              title="Include country code, digits only"
-              required
-            />
-            <div class="error-message">Please enter a valid phone number</div>
-          </div>
-
-          <!-- Your Budget -->
-          <div class="field-group">
-            <input type="text" name="Your Budget" placeholder="Your Budget (£)" required/>
-            <div class="error-message">Please enter your budget</div>
-          </div>
-
-          <!-- Departure Date -->
-          <div class="field-group">
-            <input type="date" name="Departure Date" required/>
-            <div class="error-message">Please select a departure date</div>
-          </div>
-
-          <!-- Return Date -->
-          <div class="field-group">
-            <input type="date" name="Return Date" required/>
-            <div class="error-message">Please select a return date</div>
-          </div>
-
-          <!-- Departure -->
-          <div class="field-group">
-            <input type="text" name="Departure" placeholder="Departure" required/>
-            <div class="error-message">Please enter departure city</div>
-          </div>
-
-          <!-- Destination -->
-          <div class="field-group">
-            <input type="text" name="Destination" placeholder="Destination" required/>
-            <div class="error-message">Please enter destination</div>
-          </div>
-
-          <!-- Message (spans two columns) -->
-          <div class="field-group" style="grid-column: span 2">
-            <textarea name="Message" placeholder="Message" rows="4" required></textarea>
-            <div class="error-message">Please enter your message</div>
-          </div>
-        </div>
-
-        <!-- Submit -->
-        <button type="submit" class="btn btn-primary btn-apply">Send</button>
-      </form>
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary btn-apply">Send</button>
+        </form>
+      </div>
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- 5) Footer -->
   <div id="include-footer"></div>
 
-  <!-- Partials loader & site-config -->
+  <!-- 6) Load partials + popup + site scripts -->
   <script src="./assets/js/include-partials.js"></script>
   <script>
-    Promise.all([
-      includePartial('include-inner-header','./assets/partials/inner-header.html'),
-      includePartial('include-footer','./assets/partials/footer.html')
-    ]).then(() => {
-      const cfg = document.createElement('script');
-      cfg.src = './assets/js/site-config.js';
-      document.body.appendChild(cfg);
-    });
+    document
+      .getElementById("include-header")
+      .addEventListener("partialLoaded", () => {
+        if (typeof setupMobileNavbar === "function") setupMobileNavbar();
+        if (typeof setupGoTopButton === "function") setupGoTopButton();
+        (function () {
+          const btn = document.getElementById("moreDropdownBtn");
+          const menu = document.getElementById("moreDropdown");
+          if (!btn || !menu) return;
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.toggle("open");
+          });
+          document.addEventListener("click", () =>
+            menu.classList.remove("open")
+          );
+        })();
+        const cfg = document.createElement("script");
+        cfg.src = "./assets/js/site-config.js";
+        document.body.appendChild(cfg);
+        const main = document.createElement("script");
+        main.src = "./assets/js/script.js";
+        main.onload = () => {
+          if (typeof loadPopupPartial === "function") loadPopupPartial();
+        };
+        document.body.appendChild(main);
+      });
   </script>
 
-  <!-- Global scripts -->
-  <script src="./assets/js/script.js"></script>
-
-  <!-- Form logic: disable button, validate, AJAX & dialog -->
+  <!-- 7) Form logic: validation, AJAX & thank-you dialog -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('getvisa-form');
-      const btn = form.querySelector('.btn-apply');
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("getvisa-form");
+      const btn = form.querySelector(".btn-apply");
 
-      form.addEventListener('submit', async e => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
         btn.disabled = true;
-        btn.textContent = 'Sending...';
+        btn.textContent = "Sending...";
 
-        // clear old errors
-        form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-        form.querySelectorAll('.error-message').forEach(m => m.classList.remove('active'));
+        // clear errors
+        form.querySelectorAll(".error").forEach(el => el.classList.remove("error"));
+        form.querySelectorAll(".error-message").forEach(m => m.classList.remove("active"));
 
         // validate
         let valid = true;
-        form.querySelectorAll('input, textarea, select').forEach(f => {
+        form.querySelectorAll("input, textarea, select").forEach(f => {
           if (!f.checkValidity()) {
             valid = false;
-            f.classList.add('error');
-            f.closest('.field-group')
-             .querySelector('.error-message')
-             .classList.add('active');
+            f.classList.add("error");
+            f.closest(".field-group").querySelector(".error-message").classList.add("active");
           }
         });
         if (!valid) {
           btn.disabled = false;
-          btn.textContent = 'Send';
+          btn.textContent = "Send";
           return;
         }
 
-        // AJAX post
+        // AJAX POST
         try {
-          await fetch(form.action, { method: 'POST', body: new FormData(form) });
-          showSubmissionDialog();
+          await fetch(form.action, { method: "POST", body: new FormData(form) });
+          showDialog();
           form.reset();
         } catch {
-          alert('Submission failed, please try again.');
+          alert("Submission failed, please try again.");
           btn.disabled = false;
-          btn.textContent = 'Send';
+          btn.textContent = "Send";
         }
       });
 
-      function showSubmissionDialog() {
-        const d = document.createElement('div');
-        d.className = 'submission-dialog';
+      function showDialog() {
+        const d = document.createElement("div");
+        d.className = "submission-dialog";
         d.innerHTML = `
           <div class="dialog-content">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
@@ -269,10 +308,9 @@
             <button id="dialog-ok">OK</button>
           </div>`;
         document.body.appendChild(d);
-
-        d.querySelector('#dialog-ok').addEventListener('click', () => {
+        d.querySelector("#dialog-ok").addEventListener("click", () => {
           d.remove();
-          window.location.href = 'index.html';
+          window.location.href = "index.html";
         });
       }
     });
