@@ -238,7 +238,7 @@
   async function loadPopupPartial() {
     const container = document.getElementById("popup-container");
     if (!container) return;
-    const res = await fetch("../partials/popup.html");
+    const res = await fetch("./assets/partials/popup.html");
     const html = await res.text();
     container.innerHTML = html;
 
