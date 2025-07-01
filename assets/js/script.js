@@ -35,7 +35,8 @@
   /**
    * NAVBAR TOGGLE
    */
-  const overlay = document.querySelector("[data-overlay]");
+const overlay = document.querySelector("[data-overlay]") || document.querySelector(".overlay");
+
   const navOpenBtn = document.querySelector("[data-nav-open-btn]");
   const navCloseBtn = document.querySelector("[data-nav-close-btn]");
   const navbar = document.querySelector("[data-navbar]");
