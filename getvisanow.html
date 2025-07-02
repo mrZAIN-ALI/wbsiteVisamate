@@ -31,31 +31,44 @@
 
   <!-- Page-specific styles -->
   <style>
-    .inquire-section .container {
+    /* ─── Desktop: two-column layout ───────────────────────────────────────── */
+    .section.inquire-section > .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
     }
-    @media (max-width: 768px) {
-      .inquire-section .container {
-        grid-template-columns: 1fr;
-      }
+    .inquire-card.inquire-form .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 1.5rem;
     }
+    .inquire-card.inquire-form .form-grid .field-group input,
+    .inquire-card.inquire-form .form-grid .field-group select {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ─── Focus & Error Styles ───────────────────────────────────────────── */
     .inquire-form input:focus,
-    .inquire-form select:focus,
-    .inquire-form textarea:focus {
+    .inquire-form select:focus {
       border-color: #3b7ac9;
       box-shadow: 0 0 5px rgba(59,122,201,0.5);
       outline: none;
     }
-    .inquire-form .error { border-color: #e60000 !important; }
+    .inquire-form .error {
+      border-color: #e60000 !important;
+    }
     .error-message {
       font-size: 0.85rem;
       color: #e60000;
       margin-top: 0.25rem;
       display: none;
     }
-    .error-message.active { display: block; }
+    .error-message.active {
+      display: block;
+    }
+
+    /* ─── Custom select arrow ───────────────────────────────────────────── */
     .inquire-form select {
       appearance: none;
       background:
@@ -63,6 +76,8 @@
         no-repeat right 1rem center;
       padding-right: 2.5rem;
     }
+
+    /* ─── Submission dialog ──────────────────────────────────────────────── */
     .submission-dialog {
       position: fixed; top:0; left:0; right:0; bottom:0;
       background: rgba(0,0,0,0.6);
@@ -70,51 +85,53 @@
       z-index: 2000;
     }
     .submission-dialog .dialog-content {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      background: #fff; padding:2rem; border-radius:8px;
+      text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.3);
     }
     .submission-dialog ion-icon {
-      font-size: 3rem;
-      color: #28a745;
-      margin-bottom: 1rem;
+      font-size:3rem; color:#28a745; margin-bottom:1rem;
     }
     .submission-dialog h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: #3b7ac9;
-      margin: 0.5rem 0;
+      font-family:'Montserrat',sans-serif; color:#3b7ac9;
+      margin:.5rem 0;
     }
     .submission-dialog p {
-      font-family: 'Poppins', sans-serif;
-      color: #555;
+      font-family:'Poppins',sans-serif; color:#555;
     }
     .submission-dialog #dialog-ok {
-      margin-top: 1.5rem;
-      padding: 0.5rem 1.5rem;
-      background: #3b7ac9;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      margin-top:1.5rem; padding:.5rem 1.5rem;
+      background:#3b7ac9; color:#fff; border:none;
+      border-radius:4px; cursor:pointer;
     }
+
+    /* ─── MOBILE: one-field-per-row & form above banner ─────────────────── */
     @media (max-width: 768px) {
-      .form-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      /* stack the two cards */
+      .section.inquire-section > .container {
+        grid-template-columns: 1fr !important;
       }
-      .form-grid .field-group {
-        width: 100%;
+      /* show the form card first */
+      .inquire-card.inquire-form {
+        order: -1 !important;
       }
-      .form-grid .field-group[style*="grid-column"] {
-        grid-column: auto !important;
+      /* flex-column the form grid */
+      .inquire-card.inquire-form .form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      /* force each field to full width */
+      .inquire-card.inquire-form .form-grid .field-group,
+      .inquire-card.inquire-form .form-grid .field-group input,
+      .inquire-card.inquire-form .form-grid .field-group select {
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
     }
   </style>
 </head>
 <body id="top">
+
   <!-- Manual Header -->
   <header class="header" data-header>
     <div class="overlay" data-overlay></div>
@@ -177,6 +194,17 @@
   <!-- Popup Container -->
   <div id="popup-container"></div>
 
+  <!-- WhatsApp & Phone Dock -->
+  <div class="floating-contact">
+    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
+    <a id="phone-link" class="phone-dock" aria-label="Call us">
+      <ion-icon name="call-outline"></ion-icon>
+      <span id="phone-number"></span>
+    </a>
+  </div>
+
   <!-- Hero Banner -->
   <div class="heroinner"
        style="background: url('./assets/images/visa-banner.jpg') center/cover no-repeat;
@@ -198,72 +226,82 @@
         <form id="getvisa-form"
               action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
               method="POST" novalidate>
+          <!-- hidden inputs -->
           <input type="hidden" name="_subject" value="Get Visa Now Request"/>
           <input type="hidden" name="_template" value="table"/>
           <input type="hidden" name="_captcha" value="false"/>
           <input type="text" name="_honey" style="display:none"/>
 
           <div class="form-grid">
-            <!-- Full Name -->
             <div class="field-group">
               <input type="text" name="Full Name" placeholder="Full Name" required/>
               <div class="error-message">Please enter your full name</div>
             </div>
-            <!-- Email -->
+            <div class="field-group">
+              <input
+                type="tel"
+                name="Phone Number"
+                placeholder="Phone Number"
+                pattern="^\+?[0-9]{7,15}$"
+                title="Include an optional + then 7–15 digits"
+                required
+              />
+              <div class="error-message">Please enter a valid phone number</div>
+            </div>
             <div class="field-group">
               <input type="email" name="Email" placeholder="Email" required/>
               <div class="error-message">Please enter a valid email</div>
             </div>
-            <!-- Phone Number -->
             <div class="field-group">
-<input
-  type="tel"
-  name="Phone Number"
-  placeholder="Phone Number"
-  pattern="^\+?[0-9]{7,15}$"
-  title="Include an optional leading “+”, then 7–15 digits"
-  required
-/>
-
-              <div class="error-message">Please enter a valid phone number</div>
+              <input type="text" name="Nationality" placeholder="Nationality" required/>
+              <div class="error-message">Please enter your nationality</div>
             </div>
-            <!-- Your Budget -->
             <div class="field-group">
-              <input type="text" name="Your Budget"
-                     placeholder="Your Budget (£)" required/>
-              <div class="error-message">Please enter your budget</div>
+              <input type="text" name="City" placeholder="City" required/>
+              <div class="error-message">Please enter your city</div>
             </div>
-            <!-- Departure Date -->
             <div class="field-group">
-              <input type="date" name="Departure Date" required/>
-              <div class="error-message">Please select a departure date</div>
+              <input type="text" name="Purpose of journey" placeholder="Purpose of journey" required/>
+              <div class="error-message">Please enter your travel purpose</div>
             </div>
-            <!-- Return Date -->
             <div class="field-group">
-              <input type="date" name="Return Date" required/>
-              <div class="error-message">Please select a return date</div>
+              <select name="Status in UK" required>
+                <option value="" disabled selected>Status in UK</option>
+                <option>Citizen</option>
+                <option>Permanent Resident</option>
+                <option>Student</option>
+                <option>Visitor</option>
+                <option>Work Permit</option>
+              </select>
+              <div class="error-message">Please select your status</div>
             </div>
-            <!-- Departure -->
             <div class="field-group">
-              <input type="text" name="Departure"
-                     placeholder="Departure" required/>
-              <div class="error-message">Please enter departure city</div>
+              <select name="Schengen visas past 3 years" required>
+                <option value="" disabled selected>Schengen visas past 3 years</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2+">2+</option>
+              </select>
+              <div class="error-message">
+                Please select the number of Schengen visas in the past 3 years
+              </div>
             </div>
-            <!-- Destination -->
             <div class="field-group">
-              <input type="text" name="Destination"
-                     placeholder="Destination" required/>
-              <div class="error-message">Please enter destination</div>
+              <select name="Response by" required>
+                <option value="" disabled selected>Response by</option>
+                <option>Email</option>
+                <option>Phone</option>
+              </select>
+              <div class="error-message">Please choose a response method</div>
             </div>
-            <!-- Message -->
+            <div class="field-group">
+              <input type="text" name="Best time to call" placeholder="Best time to call" required/>
+              <div class="error-message">Please let us know when to call</div>
+            </div>
             <div class="field-group" style="grid-column: span 2;">
-              <textarea name="Message" placeholder="Message"
-                        rows="4" required></textarea>
-              <div class="error-message">Please enter your message</div>
+              <button type="submit" class="btn btn-primary btn-apply" style="width:100%;">APPLY NOW</button>
             </div>
           </div>
-
-          <button type="submit" class="btn btn-primary btn-apply">Send</button>
         </form>
       </div>
     </div>
@@ -347,7 +385,7 @@
 
         // Validation
         let valid = true;
-        form.querySelectorAll("input, textarea, select").forEach(f => {
+        form.querySelectorAll("input, select").forEach(f => {
           if (!f.checkValidity()) {
             valid = false;
             f.classList.add("error");
@@ -356,7 +394,7 @@
         });
         if (!valid) {
           btn.disabled = false;
-          btn.textContent = "Send";
+          btn.textContent = "APPLY NOW";
           return;
         }
 
@@ -368,7 +406,7 @@
         } catch {
           alert("Submission failed, please try again.");
           btn.disabled = false;
-          btn.textContent = "Send";
+          btn.textContent = "APPLY NOW";
         }
       });
 

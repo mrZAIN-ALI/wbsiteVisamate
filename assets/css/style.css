@@ -1839,7 +1839,7 @@ address {
 .section-title {
   text-align: center;
   margin: 2rem 0;
-  color: #3b7ac9;
+  color: var(--bright-navy-blue);
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
@@ -2774,8 +2774,8 @@ address {
 }
 #values .value-card__icon {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: min(100px, 18vw);
+
   z-index: 1;
 }
 
@@ -3075,4 +3075,46 @@ padding-top: 125px;
   border-radius: 100px;              /* identical corners */
   /* background already set to var(--bright-navy-blue) */
   transition: left 0.3s ease, width 0.3s ease;
+}
+
+
+/* smooth‐sticky + show/hide the favicon
+ */
+ /* ─── 1) Animate the lower header sliding into place ───────── */
+/* ─── Smooth sticky header without the white line ───────────── */
+.header-bottom {
+  /* remove the white divider */
+  border-bottom: none;
+
+  /* softer, slower animation */
+  transition:
+    margin-top 0.5s ease-in-out,
+    background 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
+
+/* initial (not-stuck) offset */
+.header:not(.active) .header-bottom {
+  margin-top: 60px;
+}
+
+/* sticky state — slides into place smoothly */
+.header.active .header-bottom {
+  margin-top: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--white);
+  box-shadow: 0 2px 5px hsla(0,0%,0%,0.08);
+}
+
+
+/* ─── 2) Show the favicon only when sticky ───────────────── */
+.social-list .favicon-icon {
+  display: none;        /* hide by default */
+}
+
+.header.active .social-list .favicon-icon {
+  display: flex;        /* slide in with the bar */
+  align-items: center;
+  margin-right: 8px;    /* give a bit of breathing room */
 }
