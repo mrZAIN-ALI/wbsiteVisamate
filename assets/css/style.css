@@ -3118,3 +3118,18 @@ padding-top: 125px;
   align-items: center;
   margin-right: 8px;    /* give a bit of breathing room */
 }
+
+
+/* making vismate lgogo bigger in mobile mode */
+/* ─── Enlarge VisaMate logo on mobile ───────────────────────── */
+/* ─── Force-grow VisaMate logo on mobile ───────────────────── */
+@media (max-width: 768px) {
+  .header-top .logo img,
+  .navbar-top .logo img {
+    /* kill the old max-width */
+    max-width: none !important;
+    /* set your desired width */
+    width: 250px !important;
+    height: auto !important;
+  }
+}
