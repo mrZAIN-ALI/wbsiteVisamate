@@ -46,15 +46,46 @@ function setupGoTopButton() {
 }
 
 function setupTabSwitching() {
-  document.querySelectorAll('.inquire-tabs .inquire-tab-btn').forEach(btn => {
+  const tabsContainer = document.querySelector('.inquire-tabs');
+  if (!tabsContainer) return;
+
+  // 1) Create the indicator element
+  const indicator = document.createElement('div');
+  indicator.className = 'tab-indicator';
+  tabsContainer.appendChild(indicator);
+
+  // 2) Grab all the buttons
+  const buttons = tabsContainer.querySelectorAll('.inquire-tab-btn');
+
+  // 3) Function to reposition the indicator under a given button
+  function updateIndicator(btn) {
+    const btnRect    = btn.getBoundingClientRect();
+    const parentRect = tabsContainer.getBoundingClientRect();
+    const left       = btnRect.left - parentRect.left;
+    indicator.style.width = `${btnRect.width}px`;
+    indicator.style.left  = `${left}px`;
+  }
+
+  // 4) Wire up clicks
+  buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.inquire-tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.inquire-form-tab').forEach(tab => tab.classList.remove('active'));
+      // toggle active classes (your existing logic)
+      buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
+      document.querySelectorAll('.inquire-form-tab').forEach(tab => tab.classList.remove('active'));
       document.getElementById(btn.dataset.tab + '-form').classList.add('active');
+
+      // slide the indicator
+      updateIndicator(btn);
     });
   });
+
+  // 5) Position the indicator under whichever is active on load
+  const initial = tabsContainer.querySelector('.inquire-tab-btn.active') || buttons[0];
+  updateIndicator(initial);
 }
+
 
 function setupMoreDropdown() {
   const moreBtn = document.getElementById('moreDropdownBtn');
@@ -262,3 +293,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNewsletterForm();
   loadPopupPartial();
 });
+

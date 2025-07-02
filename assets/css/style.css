@@ -2455,13 +2455,90 @@ address {
   color: var(--white);
 }
 
-/* Form Tabs */
+/* ─── Slide transition for the two forms ───────────────────── */
+.inquire-section .inquire-forms {
+  display: grid;           /* turn it into a grid container */
+  /* you no longer need position:relative here */
+}
+
+/* 1) Turn .inquire-forms into a 1-column, 2-row grid */
+.inquire-section .inquire-forms {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* first row = tabs, second row = forms */
+  grid-template-rows: auto 1fr;
+}
+
+/* 2) Force the tabs into row 1, col 1 */
+.inquire-section .inquire-tabs {
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 2; /* keep them on top when overlapping */
+}
+
+/* 3) Force each form into row 2, col 1 */
 .inquire-section .inquire-form-tab {
-  display: none;
+  grid-row: 2;
+  grid-column: 1;
+
+  /* your slide/fade setup */
+  transform: translateX(20px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform  0.4s ease,
+    opacity    0.4s ease,
+    visibility 0s linear 0.4s;
 }
+
+/* 4) And your “active” state stays the same */
 .inquire-section .inquire-form-tab.active {
-  display: block;
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    transform  0.4s ease,
+    opacity    0.4s ease,
+    visibility 0s linear 0s;
 }
+
+
+.inquire-section .inquire-form-tab.active {
+  transform: translateX(0);            /* slide back in */
+  opacity: 1;                          /* fade in */
+  visibility: visible;                 /* make it interactive */
+  pointer-events: auto;
+  transition:
+    transform 0.4s ease,
+    opacity   0.4s ease,
+    visibility 0s linear 0s;           /* make visibility immediate when activating */
+}
+/* ─── Sliding background indicator ────────────────────────── */
+.inquire-section .inquire-tabs {
+  position: relative;    /* create positioning context */
+}
+
+/* The “slider” behind the active pill */
+.inquire-section .inquire-tabs .tab-indicator {
+  position: absolute;
+  top: 2px;              /* adjust to sit neatly inside the border */
+  bottom: 2px;
+  left: 0;
+  width: 0;              /* will be set by JS */
+  background: var(--bright-navy-blue);
+  border-radius: var(--radius-25);
+  transition: left 0.3s ease, width 0.3s ease;
+  z-index: 1;            /* behind the buttons */
+}
+
+/* ensure our buttons sit above the indicator */
+.inquire-section .inquire-tab-btn {
+  position: relative;
+  z-index: 2;
+}
+
 
 /* Grid Layout */
 .inquire-section .inquire-form-grid {
@@ -2982,4 +3059,20 @@ padding-top: 125px;
   color: var(--bright-navy-blue);
   font-size: 1rem;
   line-height: 1;
+}
+
+
+
+/* 1) Make the toggle buttons themselves full-pill shape */
+.inquire-section .inquire-tab-btn {
+  border-radius: 100px;              /* same as .btn-primary */
+}
+
+/* 2) Make the sliding indicator match that pill shape & height */
+.inquire-section .inquire-tabs .tab-indicator {
+  top: 0;                            /* cover entire tab-container height */
+  bottom: 0;
+  border-radius: 100px;              /* identical corners */
+  /* background already set to var(--bright-navy-blue) */
+  transition: left 0.3s ease, width 0.3s ease;
 }
