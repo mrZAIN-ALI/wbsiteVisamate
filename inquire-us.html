@@ -1,426 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inquire – Visamate</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inquire – Visamate</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
 
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Inline form UX & validation styles -->
-  <style>
-    .inquire-form input:focus,
-    .inquire-form select:focus {
-      border-color: #3b7ac9;
-      outline: none;
-      box-shadow: 0 0 5px rgba(59,122,201,0.5);
-    }
-    .inquire-form .error { border-color: #e60000; }
-    .error-message {
-      color: #e60000;
-      font-size: 0.85rem;
-      margin-top: 0.25rem;
-      display: none;
-    }
-    .error-message.active { display: block; }
-    .inquire-form select {
-      appearance: none;
-      background:
-        url("data:image/svg+xml;charset=US-ASCII,%3Csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")
-        no-repeat right 1rem center;
-      padding-right: 2rem;
-    }
-    .submission-dialog {
-      position: fixed; top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.6);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 2000;
-    }
-    .submission-dialog .dialog-content {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center;
-      background: #fff; padding: 2rem; border-radius: 8px;
-      max-width: 90%; box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    }
-    .submission-dialog ion-icon {
-      font-size: 3rem; color: #28a745; margin-bottom: 1rem;
-    }
-    .submission-dialog h2 {
-      margin: 0.5rem 0;
-      font-family: 'Montserrat', sans-serif;
-      color: #3b7ac9;
-    }
-    .submission-dialog p {
-      font-family: 'Poppins', sans-serif; color: #555;
-    }
-    .submission-dialog #dialog-ok {
-      margin-top: 1.5rem; padding: 0.5rem 1.5rem;
-      background: #3b7ac9; color: #fff; border: none;
-      border-radius: 4px; cursor: pointer; font-size: 1rem;
-    }
-    .inquire-section .container {
-  display: grid;
-  grid-template-columns: 1fr;   /* default: single column */
-  gap: 2rem;
-}
+    <!-- Inline form UX & validation styles -->
+    <style>
+      .inquire-form input:focus,
+      .inquire-form select:focus {
+        border-color: #3b7ac9;
+        outline: none;
+        box-shadow: 0 0 5px rgba(59, 122, 201, 0.5);
+      }
+      .inquire-form .error {
+        border-color: #e60000;
+      }
+      .error-message {
+        color: #e60000;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        display: none;
+      }
+      .error-message.active {
+        display: block;
+      }
+      .inquire-form select {
+        appearance: none;
+        background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")
+          no-repeat right 1rem center;
+        padding-right: 2rem;
+      }
+      .submission-dialog {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+      .submission-dialog .dialog-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 90%;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+      .submission-dialog ion-icon {
+        font-size: 3rem;
+        color: #28a745;
+        margin-bottom: 1rem;
+      }
+      .submission-dialog h2 {
+        margin: 0.5rem 0;
+        font-family: "Montserrat", sans-serif;
+        color: #3b7ac9;
+      }
+      .submission-dialog p {
+        font-family: "Poppins", sans-serif;
+        color: #555;
+      }
+      .submission-dialog #dialog-ok {
+        margin-top: 1.5rem;
+        padding: 0.5rem 1.5rem;
+        background: #3b7ac9;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .inquire-section .container {
+        display: grid;
+        grid-template-columns: 1fr; /* default: single column */
+        gap: 2rem;
+      }
 
-@media (min-width: 768px) {
-  .inquire-section .container {
-    grid-template-columns: 1fr 1fr;  /* two columns on desktop */
-  }
-}
+      @media (min-width: 768px) {
+        .inquire-section .container {
+          grid-template-columns: 1fr 1fr; /* two columns on desktop */
+        }
+      }
+    </style>
 
-  </style>
-
-  <!-- Ionicons -->
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
-</head>
-<body id="top">
-
-  <!-- 1) Universal Header -->
-  <header class="header" data-header>
-    <div class="overlay" data-overlay></div>
-    <div class="header-top">
-      <div class="container">
-        <a href="tel:+01123456790" class="helpline-box">
-          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
-          <div class="wrapper">
-            <p class="helpline-title">For Further Inquiries :</p>
-            <p class="helpline-number" id="helpline-number"></p>
-          </div>
-        </a>
-        <a href="index.html" class="logo">
-          <img src="./assets/images/logo.svg" alt="Visamate logo" />
-        </a>
-        <div class="header-btn-group">
-          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-            <ion-icon name="menu-outline"></ion-icon>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="header-bottom">
-      <div class="container">
-<ul class="social-list">
-  <!-- 1) Favicon: hidden by default, shown when header is stuck -->
-  <li class="social-item favicon-icon">
-    <a href="index.html" class="social-link" aria-label="Home">
-      <img src="./favicon.svg" alt="Visamate logo" style="height:24px; width:auto;" />
-    </a>
-  </li>
-
-  <!-- 2) Instagram -->
-  <li class="social-item">
-    <a id="social-instagram" class="social-link" target="_blank" aria-label="Instagram">
-      <ion-icon name="logo-instagram"></ion-icon>
-    </a>
-  </li>
-
-  <!-- 3) Facebook -->
-  <li class="social-item">
-    <a id="social-facebook" class="social-link" target="_blank" aria-label="Facebook">
-      <ion-icon name="logo-facebook"></ion-icon>
-    </a>
-  </li>
-</ul>
-        <nav class="navbar" data-navbar>
-          <div class="navbar-top">
-            <a href="index.html" class="logo">
-              <img src="./assets/images/logo.svg" alt="Visamate logo" />
-            </a>
-            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </div>
-          <ul class="navbar-list">
-            <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
-            <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
-            <li><a href="index.html" class="navbar-link" data-nav-link>packages</a></li>
-            <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
-            <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
-              <button id="moreDropdownBtn" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                MORE <ion-icon name="chevron-down-outline"></ion-icon>
-              </button>
-              <ul class="dropdown-menu" id="moreDropdownMenu">
-                <li><a href="refund-policy.html">REFUND POLICY</a></li>
-                <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
-                <li><a href="contact-us.html">CONTACT US</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- 2) Popup Container -->
-  <div id="popup-container"></div>
-
-  <!-- 3) Banner -->
-  <div
-    class="heroinner"
-    style="
-      background-image: url('./assets/images/visa-banner.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-color: hsla(0, 0%, 0%, 0.7);
-      background-blend-mode: overlay;
-      display: grid;
-      place-items: center;
-      min-height: 250px;
-      text-align: center;
-      padding-top: 125px;
-    "
-  ></div>
-
-  <!-- 4) Inquire Section -->
-  <main class="section inquire-section">
-    <div class="container">
-      <div class="inquire-card inquire-info">
-        <img id="country-flag" src="" alt="Country Flag" class="inquire-flag" />
-        <h2 id="country-name" class="inquire-title"></h2>
-        <p id="country-desc" class="inquire-desc"></p>
-      </div>
-      <div class="inquire-card inquire-form">
-        <h2 class="inquire-title">Inquire Us</h2>
-        <form id="inquiry-form"
-              action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
-              method="POST" novalidate>
-          <input type="hidden" name="_subject" value="New Visa Inquiry"/>
-          <input type="hidden" name="_template" value="table"/>
-          <input type="hidden" name="_captcha" value="false"/>
-          <input type="text" name="_honey" style="display:none"/>
-
-          <div class="form-grid">
-            <div class="field-group">
-              <input type="text" name="Full Name" placeholder="Full name" required/>
-              <div class="error-message">Please enter your full name</div>
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body id="top">
+    <!-- 1) Universal Header -->
+    <header class="header" data-header>
+      <div class="overlay" data-overlay></div>
+      <div class="header-top">
+        <div class="container">
+          <a href="tel:+01123456790" class="helpline-box">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
             </div>
-            <div class="field-group">
-              <input
-                type="tel"
-                name="Phone Number"
-                placeholder="Phone number"
-                pattern="^\+[0-9]{7,15}$|^[0-9]{7,15}$"
-                title="Include an optional leading '+' then 7–15 digits"
-                required
-              />
-              <div class="error-message">Please enter a valid phone number</div>
+            <div class="wrapper">
+              <p class="helpline-title">For Further Inquiries :</p>
+              <p class="helpline-number" id="helpline-number"></p>
             </div>
-            <div class="field-group">
-              <input type="email" name="Email Address" placeholder="Email" required/>
-              <div class="error-message">Please enter a valid email</div>
-            </div>
-            <div class="field-group">
-              <input type="text" name="Nationality" placeholder="Nationality" required/>
-              <div class="error-message">Please enter your nationality</div>
-            </div>
-            <div class="field-group">
-              <input type="text" name="Current City" placeholder="City" required/>
-              <div class="error-message">Please enter your city</div>
-            </div>
-            <div class="field-group">
-              <input
-                type="text"
-                name="Purpose of Journey"
-                placeholder="Purpose of journey"
-                required
-              />
-              <div class="error-message">Please state purpose of journey</div>
-            </div>
-            <div class="field-group">
-              <select name="Status in UK" required>
-                <option value="" disabled selected>Status in UK</option>
-                <option>Visitor</option>
-                <option>Student</option>
-                <option>Worker</option>
-                <option>Other</option>
-              </select>
-              <div class="error-message">Please select your status</div>
-            </div>
-            <div class="field-group">
-              <select name="Schengen Visas (last 3 years)" required>
-                <option value="" disabled selected>Schengen visas past 3 years</option>
-                <option>0</option>
-                <option>1</option>
-                <option>2+</option>
-              </select>
-              <div class="error-message">Please select an option</div>
-            </div>
-            <div class="field-group">
-              <select name="Response Preferred By" required>
-                <option value="" disabled selected>Response by</option>
-                <option>Email</option>
-                <option>Phone</option>
-              </select>
-              <div class="error-message">Please choose response method</div>
-            </div>
-            <div class="field-group">
-              <input
-                type="text"
-                name="Best Time to Call"
-                placeholder="Best time to call"
-                required
-              />
-              <div class="error-message">Please specify best time to call</div>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-apply">Apply Now</button>
-        </form>
-      </div>
-    </div>
-  </main>
-
-  <!-- 5) Footer -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="footer-brand">
+          </a>
           <a href="index.html" class="logo">
             <img src="./assets/images/logo.svg" alt="Visamate logo" />
           </a>
-          <p class="footer-text">
-            Visamate is your trusted partner for visa assistance. We simplify the process and guide you every step of the way.
-          </p>
+          <div class="header-btn-group">
+            <button
+              class="nav-open-btn"
+              aria-label="Open Menu"
+              data-nav-open-btn
+            >
+              <ion-icon name="menu-outline"></ion-icon>
+            </button>
+          </div>
         </div>
-        <div class="footer-contact">
-          <h4 class="contact-title">Contact Us</h4>
-          <p class="contact-text">Feel free to reach us!</p>
-          <ul>
-            <li class="contact-item"><ion-icon name="call-outline"></ion-icon>
-              <a href="tel:+447411201309" class="contact-link">+44 7411 201309</a>
+      </div>
+      <div class="header-bottom">
+        <div class="container">
+          <ul class="social-list">
+            <!-- 1) Favicon: hidden by default, shown when header is stuck -->
+            <li class="social-item favicon-icon">
+              <a href="index.html" class="social-link" aria-label="Home">
+                <img
+                  src="./favicon.svg"
+                  alt="Visamate logo"
+                  style="height: 24px; width: auto"
+                />
+              </a>
             </li>
-            <li class="contact-item"><ion-icon name="mail-outline"></ion-icon>
-              <a href="mailto:info@visamate.co.uk" class="contact-link">info@visamate.co.uk</a>
+
+            <!-- 2) Instagram -->
+            <li class="social-item">
+              <a
+                id="social-instagram"
+                class="social-link"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
             </li>
-            <li class="contact-item"><ion-icon name="location-outline"></ion-icon>
-              <address class="contact-link">863 High Road, Ilford, IG3 8TG</address>
+
+            <!-- 3) Facebook -->
+            <li class="social-item">
+              <a
+                id="social-facebook"
+                class="social-link"
+                target="_blank"
+                aria-label="Facebook"
+              >
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
             </li>
           </ul>
-        </div>
-        <div class="footer-form">
-          <p class="form-text">Subscribe for updates & news!</p>
-          <form id="newsletter-form" class="form-wrapper" novalidate
-                action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
-                method="POST">
-            <input type="hidden" name="_subject" value="New Newsletter Signup"/>
-            <input type="hidden" name="_template" value="table"/>
-            <input type="hidden" name="_captcha" value="false"/>
-            <input type="text" name="_honey" style="display:none"/>
-            <div class="newsletter-fields">
-              <input type="email" id="newsletter-email" name="email"
-                     placeholder="Enter your email" required/>
-              <button type="submit" id="newsletter-submit">Subscribe</button>
+          <nav class="navbar" data-navbar>
+            <div class="navbar-top">
+              <a href="index.html" class="logo">
+                <img src="./assets/images/logo.svg" alt="Visamate logo" />
+              </a>
+              <button
+                class="nav-close-btn"
+                aria-label="Close Menu"
+                data-nav-close-btn
+              >
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
             </div>
-            <span class="error-message" id="newsletter-error"></span>
+            <ul class="navbar-list">
+              <li>
+                <a href="index.html" class="navbar-link" data-nav-link>home</a>
+              </li>
+              <li>
+                <a href="about-us.html" class="navbar-link" data-nav-link
+                  >about us</a
+                >
+              </li>
+              <li>
+                <a href="index.html" class="navbar-link" data-nav-link
+                  >packages</a
+                >
+              </li>
+              <li>
+                <a href="visa-services.html" class="navbar-link" data-nav-link
+                  >visa services</a
+                >
+              </li>
+              <li
+                class="navbar-link dropdown"
+                id="moreDropdown"
+                style="position: relative"
+              >
+                <button
+                  id="moreDropdownBtn"
+                  class="dropdown-toggle"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  MORE <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+                <ul class="dropdown-menu" id="moreDropdownMenu">
+                  <li><a href="refund-policy.html">REFUND POLICY</a></li>
+                  <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+                  <li><a href="contact-us.html">CONTACT US</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2) Popup Container -->
+    <div id="popup-container"></div>
+
+    <!-- 3) Banner -->
+    <div
+      class="heroinner"
+      style="
+        background-image: url('./assets/images/visa-banner.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: hsla(0, 0%, 0%, 0.7);
+        background-blend-mode: overlay;
+        display: grid;
+        place-items: center;
+        min-height: 250px;
+        text-align: center;
+        padding-top: 125px;
+      "
+    ></div>
+
+    <!-- 4) Inquire Section -->
+    <main class="section inquire-section">
+      <div class="container">
+        <div class="inquire-card inquire-info">
+          <img
+            id="country-flag"
+            src=""
+            alt="Country Flag"
+            class="inquire-flag"
+          />
+          <h2 id="country-name" class="inquire-title"></h2>
+          <p id="country-desc" class="inquire-desc"></p>
+        </div>
+        <div class="inquire-card inquire-form">
+          <h2 class="inquire-title">Inquire Us</h2>
+          <form
+            id="inquiry-form"
+            action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
+            method="POST"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="New Visa Inquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display: none" />
+
+            <div class="form-grid">
+              <div class="field-group">
+                <input
+                  type="text"
+                  name="Full Name"
+                  placeholder="Full name"
+                  required
+                />
+                <div class="error-message">Please enter your full name</div>
+              </div>
+              <div class="field-group">
+                <input
+                  type="tel"
+                  name="Phone Number"
+                  placeholder="Phone number"
+                  pattern="^\+[0-9]{7,15}$|^[0-9]{7,15}$"
+                  title="Include an optional leading '+' then 7–15 digits"
+                  required
+                />
+                <div class="error-message">
+                  Please enter a valid phone number
+                </div>
+              </div>
+              <div class="field-group">
+                <input
+                  type="email"
+                  name="Email Address"
+                  placeholder="Email"
+                  required
+                />
+                <div class="error-message">Please enter a valid email</div>
+              </div>
+              <div class="field-group">
+                <input
+                  type="text"
+                  name="Nationality"
+                  placeholder="Nationality"
+                  required
+                />
+                <div class="error-message">Please enter your nationality</div>
+              </div>
+              <div class="field-group">
+                <input
+                  type="text"
+                  name="Current City"
+                  placeholder="City"
+                  required
+                />
+                <div class="error-message">Please enter your city</div>
+              </div>
+              <div class="field-group">
+                <input
+                  type="text"
+                  name="Purpose of Journey"
+                  placeholder="Purpose of journey"
+                  required
+                />
+                <div class="error-message">Please state purpose of journey</div>
+              </div>
+              <div class="field-group">
+                <select name="Status in UK" required>
+                  <option value="" disabled selected>Status in UK</option>
+                  <option>Visitor</option>
+                  <option>Student</option>
+                  <option>Worker</option>
+                  <option>Other</option>
+                </select>
+                <div class="error-message">Please select your status</div>
+              </div>
+              <div class="field-group">
+                <select name="Got Schengen visa before?" required>
+                  <option value="" disabled selected>
+                    Got Schengen visa before?
+                  </option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+                <div class="error-message">
+                  Please specify if you have got a Schengen visa before
+                </div>
+              </div>
+
+              <div class="field-group">
+                <select name="Response Preferred By" required>
+                  <option value="" disabled selected>Response by</option>
+                  <option>Email</option>
+                  <option>Phone</option>
+                </select>
+                <div class="error-message">Please choose response method</div>
+              </div>
+              <div class="field-group">
+                <input
+                  type="text"
+                  name="Best Time to Call"
+                  placeholder="Best time to call"
+                  required
+                />
+                <div class="error-message">
+                  Please specify best time to call
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-apply">
+              Apply Now
+            </button>
           </form>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p class="copyright">&copy; 2025 Visamate. All rights reserved.</p>
+    </main>
+
+    <!-- 5) Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/logo.svg" alt="Visamate logo" />
+            </a>
+        <p class="footer-text">
+            Visamate is your trusted partner for visa assistance. We simplify the process and guide you every step of the way. Start your journey with confidence.
+        </p>
+          </div>
+          <div class="footer-contact">
+            <h4 class="contact-title">Contact Us</h4>
+            <p class="contact-text">Feel free to reach us!</p>
+            <ul>
+              <li class="contact-item">
+                <ion-icon name="call-outline"></ion-icon>
+                <a href="tel:+447411201309" class="contact-link"
+                  >+44 7411 201309</a
+                >
+              </li>
+              <li class="contact-item">
+                <ion-icon name="mail-outline"></ion-icon>
+                <a href="mailto:info@visamate.co.uk" class="contact-link"
+                  >info@visamate.co.uk</a
+                >
+              </li>
+              <li class="contact-item">
+                <ion-icon name="location-outline"></ion-icon>
+                <address class="contact-link">
+                  863 High Road, Ilford, IG3 8TG
+                </address>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-form">
+            <p class="form-text">Subscribe for updates & news!</p>
+            <form
+              id="newsletter-form"
+              class="form-wrapper"
+              novalidate
+              action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Newsletter Signup"
+              />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" style="display: none" />
+              <div class="newsletter-fields">
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button type="submit" id="newsletter-submit">Subscribe</button>
+              </div>
+              <span class="error-message" id="newsletter-error"></span>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">&copy; 2025 Visamate. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
 
-  <!-- Go Top Button -->
-  <a href="#top" class="go-top" data-go-top><ion-icon name="chevron-up-outline"></ion-icon></a>
+    <!-- Go Top Button -->
+    <a href="#top" class="go-top" data-go-top
+      ><ion-icon name="chevron-up-outline"></ion-icon
+    ></a>
 
-  <!-- Site Scripts -->
-  <script src="./assets/js/site-config.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <!-- Site Scripts -->
+    <script src="./assets/js/site-config.js"></script>
+    <script src="./assets/js/script.js"></script>
 
-  <!-- Page logic: country info, form submission -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const p = new URLSearchParams(location.search);
-      const country = p.get("country") || "Unknown";
-      const code = p.get("code") || "us";
+    <!-- Page logic: country info, form submission -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const p = new URLSearchParams(location.search);
+        const country = p.get("country") || "Unknown";
+        const code = p.get("code") || "us";
 
-      document.getElementById("country-flag").src =
-        `./assets/images/flags/${code}.svg`;
-      document.getElementById("country-name").textContent = country;
-      document.getElementById("country-desc").textContent =
-        `VisaMate makes applying for a ${country} visa fast and easy. Fill out the form and our experts will be in touch shortly.`;
+        document.getElementById(
+          "country-flag"
+        ).src = `./assets/images/flags/${code}.svg`;
+        document.getElementById("country-name").textContent = country;
+        document.getElementById(
+          "country-desc"
+        ).textContent = `VisaMate makes applying for a ${country} visa fast and easy. Fill out the form and our experts will be in touch shortly.`;
 
-      const form = document.getElementById("inquiry-form");
-      const submitBtn = form.querySelector(".btn-apply");
+        const form = document.getElementById("inquiry-form");
+        const submitBtn = form.querySelector(".btn-apply");
 
-      form.addEventListener("submit", async e => {
-        e.preventDefault();
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Submitting…";
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Submitting…";
 
-        form.querySelectorAll(".error").forEach(el => el.classList.remove("error"));
-        form.querySelectorAll(".error-message").forEach(m => m.classList.remove("active"));
+          form
+            .querySelectorAll(".error")
+            .forEach((el) => el.classList.remove("error"));
+          form
+            .querySelectorAll(".error-message")
+            .forEach((m) => m.classList.remove("active"));
 
-        let ok = true;
-        form.querySelectorAll("input, select").forEach(f => {
-          if (!f.checkValidity()) {
-            ok = false;
-            f.classList.add("error");
-            f.closest(".field-group")
-             .querySelector(".error-message")
-             .classList.add("active");
+          let ok = true;
+          form.querySelectorAll("input, select").forEach((f) => {
+            if (!f.checkValidity()) {
+              ok = false;
+              f.classList.add("error");
+              f.closest(".field-group")
+                .querySelector(".error-message")
+                .classList.add("active");
+            }
+          });
+          if (!ok) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Apply Now";
+            return;
+          }
+
+          try {
+            await fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+            });
+            showSubmissionDialog();
+            form.reset();
+          } catch {
+            alert("Submission failed, please try again.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Apply Now";
           }
         });
-        if (!ok) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Apply Now";
-          return;
-        }
 
-        try {
-          await fetch(form.action, { method: "POST", body: new FormData(form) });
-          showSubmissionDialog();
-          form.reset();
-        } catch {
-          alert("Submission failed, please try again.");
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Apply Now";
-        }
-      });
-
-      function showSubmissionDialog() {
-        const d = document.createElement("div");
-        d.className = "submission-dialog";
-        d.innerHTML = `
+        function showSubmissionDialog() {
+          const d = document.createElement("div");
+          d.className = "submission-dialog";
+          d.innerHTML = `
           <div class="dialog-content">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
             <h2>Thank You!</h2>
             <p>Your inquiry has been submitted.<br/>We will contact you shortly.</p>
             <button id="dialog-ok">OK</button>
           </div>`;
-        document.body.appendChild(d);
-        d.querySelector("#dialog-ok").addEventListener("click", () => {
-          d.remove();
-          window.location.href = "index.html";
-        });
-      }
-    });
-  </script>
-</body>
+          document.body.appendChild(d);
+          d.querySelector("#dialog-ok").addEventListener("click", () => {
+            d.remove();
+            window.location.href = "index.html";
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
