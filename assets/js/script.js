@@ -282,7 +282,29 @@ function loadPopupPartial() {
         }
       }, 1000);
     });
+    
 }
+function setupSectionReveal() {
+  const reveals = document.querySelectorAll('.reveal-section');
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: just show all if not supported
+    reveals.forEach(sec => sec.classList.add('visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Animate only once
+      }
+    });
+  }, {
+    threshold: 0.13   // about 13% visible triggers
+  });
+
+  reveals.forEach(sec => observer.observe(sec));
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   setupGoTopButton();
@@ -292,5 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFormSubmissions();
   setupNewsletterForm();
   loadPopupPartial();
+  setupSectionReveal();
 });
 

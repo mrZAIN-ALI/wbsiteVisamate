@@ -3190,3 +3190,32 @@ padding-top: 125px;
     box-shadow: 0 2px 5px hsla(0,0%,0%,0.08);
   }
 }
+
+/* animation */
+/* ----- Section Reveal Animations ----- */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(60px) scale(0.96);
+  transition: 
+    opacity 0.65s cubic-bezier(.33,1.08,.53,.96),
+    transform 0.7s cubic-bezier(.33,1.08,.53,.96);
+  will-change: opacity, transform;
+}
+
+/* Fade & slide in */
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* OPTIONAL: Add different animations for hero, packages, values, cta, etc */
+.reveal-section[data-anim="left"]    { transform: translateX(-60px) scale(0.96); }
+.reveal-section[data-anim="right"]   { transform: translateX(60px) scale(0.96); }
+.reveal-section[data-anim="up"]      { transform: translateY(60px) scale(0.96); }
+.reveal-section[data-anim="down"]    { transform: translateY(-60px) scale(0.96); }
+.reveal-section[data-anim="scale"]   { transform: scale(0.85); }
+
+.reveal-section.visible[data-anim] {
+  transform: translateX(0) translateY(0) scale(1);
+  opacity: 1;
+}
