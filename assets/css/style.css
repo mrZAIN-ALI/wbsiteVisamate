@@ -3129,7 +3129,64 @@ padding-top: 125px;
     /* kill the old max-width */
     max-width: none !important;
     /* set your desired width */
-    width: 250px !important;
+    width: 280px !important;
     height: auto !important;
+  }
+}
+
+
+/* ----- 1. Mobile menu/side bar overlay from right ----- */
+@media (max-width: 991px) {
+  .header .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100vw !important;
+    left: auto !important;
+    width: 80vw !important;      /* 100vw for full screen */
+    max-width: 350px !important;
+    height: 100vh !important;
+    background: var(--white, #fff);
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+    z-index: 2000 !important;
+    transition: right 0.38s cubic-bezier(.44,.13,.48,.87);
+    display: block !important;
+    will-change: right;
+  }
+  .header .navbar.active {
+    right: 0 !important;
+  }
+  .overlay, .overlay.active {
+    z-index: 1900 !important;
+  }
+  .nav-open-btn, .nav-close-btn {
+    z-index: 2100 !important;
+  }
+  /* HEADER-BOTTOM: Remove forced white background in mobile! */
+  .header-bottom, .header.active .header-bottom {
+    position: static !important;
+    top: unset !important;
+    left: unset !important;
+    right: unset !important;
+    box-shadow: none !important;
+    margin-top: 0 !important;
+    z-index: 1 !important;
+    /* DO NOT SET background here! */
+  }
+}
+
+/* ----- 2. Desktop sticky header ----- */
+@media (min-width: 992px) {
+  .header-bottom {
+    position: relative;
+    z-index: 1400;
+    background: transparent;
+    margin-top: 0;
+  }
+  .header.active .header-bottom {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1499;
+    background: var(--white);
+    box-shadow: 0 2px 5px hsla(0,0%,0%,0.08);
   }
 }
