@@ -120,10 +120,28 @@
     </div>
     <div class="header-bottom">
       <div class="container">
-        <ul class="social-list">
-          <li><a id="social-instagram" class="social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-          <li><a id="social-facebook" class="social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
-        </ul>
+<ul class="social-list">
+  <!-- 1) Favicon: hidden by default, shown when header is stuck -->
+  <li class="social-item favicon-icon">
+    <a href="index.html" class="social-link" aria-label="Home">
+      <img src="./favicon.svg" alt="Visamate logo" style="height:24px; width:auto;" />
+    </a>
+  </li>
+
+  <!-- 2) Instagram -->
+  <li class="social-item">
+    <a id="social-instagram" class="social-link" target="_blank" aria-label="Instagram">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </a>
+  </li>
+
+  <!-- 3) Facebook -->
+  <li class="social-item">
+    <a id="social-facebook" class="social-link" target="_blank" aria-label="Facebook">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </a>
+  </li>
+</ul>
         <nav class="navbar" data-navbar>
           <div class="navbar-top">
             <a href="index.html" class="logo">

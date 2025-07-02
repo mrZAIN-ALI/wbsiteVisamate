@@ -1,250 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Visa Services – Visamate</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visa Services – Visamate</title>
 
-  <!-- Favicon for browser tab -->
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
 
-  <!-- Reset default margins -->
-  <style>
-    html, body { margin: 0 !important; padding: 0 !important; }
-  </style>
+    <!-- Reset default margins -->
+    <style>
+      html,
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    </style>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Ionicons -->
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
-</head>
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
 
-<body id="top">
-  <!-- WhatsApp & Phone Dock -->
-  <div class="floating-contact">
-    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
-      <ion-icon name="logo-whatsapp"></ion-icon>
-    </a>
-    <a id="phone-link" class="phone-dock" aria-label="Call us">
-      <ion-icon name="call-outline"></ion-icon>
-      <span id="phone-number"></span>
-    </a>
-  </div>
-
-  <!-- 1) Universal Header -->
-  <header class="header" data-header>
-    <div class="overlay" data-overlay></div>
-    <div class="header-top">
-      <div class="container">
-        <a href="tel:+01123456790" class="helpline-box">
-          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
-          <div class="wrapper">
-            <p class="helpline-title">For Further Inquiries :</p>
-            <p class="helpline-number" id="helpline-number"></p>
-          </div>
-        </a>
-        <a href="index.html" class="logo">
-          <img src="./assets/images/logo.svg" alt="Visamate logo" />
-        </a>
-        <div class="header-btn-group">
-          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-            <ion-icon name="menu-outline"></ion-icon>
-          </button>
-        </div>
-      </div>
+  <body id="top">
+    <!-- WhatsApp & Phone Dock -->
+    <div class="floating-contact">
+      <a
+        id="whatsapp-link"
+        class="whatsapp-dock"
+        target="_blank"
+        aria-label="Chat on WhatsApp"
+      >
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </a>
+      <a id="phone-link" class="phone-dock" aria-label="Call us">
+        <ion-icon name="call-outline"></ion-icon>
+        <span id="phone-number"></span>
+      </a>
     </div>
-    <div class="header-bottom">
-      <div class="container">
-        <ul class="social-list">
-          <li><a id="social-instagram" class="social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-          <li><a id="social-facebook" class="social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
-        </ul>
-        <nav class="navbar" data-navbar>
-          <div class="navbar-top">
-            <a href="index.html" class="logo">
-              <img src="./assets/images/logo.svg" alt="Visamate logo" />
-            </a>
-            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </div>
-          <ul class="navbar-list">
-            <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
-            <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
-            <li><a href="#package" class="navbar-link" data-nav-link>packages</a></li>
-            <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
-            <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
-              <button id="moreDropdownBtn" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                MORE <ion-icon name="chevron-down-outline"></ion-icon>
-              </button>
-              <ul class="dropdown-menu" id="moreDropdownMenu">
-                <li><a href="refund-policy.html">REFUND POLICY</a></li>
-                <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
-                <li><a href="contact-us.html">CONTACT US</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
-      </div>
-    </div>
-  </header>
 
-  <!-- 2) Popup Container -->
-  <div id="popup-container"></div>
-
-  <!-- 3) Inner hero/banner -->
-  <div class="heroinner"></div>
-  <div class="banner-slogan"></div>
-
-  <!-- 4) Country grid -->
-  <main class="section">
-    <h2 class="section-title">Select Your Visa Destination</h2>
-    <div class="country-grid" id="country-container"></div>
-  </main>
-
-  <!-- 5) Footer -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="footer-brand">
+    <!-- 1) Universal Header -->
+    <header class="header" data-header>
+      <div class="overlay" data-overlay></div>
+      <div class="header-top">
+        <div class="container">
+          <a href="tel:+01123456790" class="helpline-box">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+            <div class="wrapper">
+              <p class="helpline-title">For Further Inquiries :</p>
+              <p class="helpline-number" id="helpline-number"></p>
+            </div>
+          </a>
           <a href="index.html" class="logo">
             <img src="./assets/images/logo.svg" alt="Visamate logo" />
           </a>
-          <p class="footer-text">
-            Visamate is your trusted partner for visa assistance. We simplify the process and guide you every step of the way. Whether you're applying for a tourist, student, or work visa, start your journey with confidence.
-          </p>
+          <div class="header-btn-group">
+            <button
+              class="nav-open-btn"
+              aria-label="Open Menu"
+              data-nav-open-btn
+            >
+              <ion-icon name="menu-outline"></ion-icon>
+            </button>
+          </div>
         </div>
-        <div class="footer-contact">
-          <h4 class="contact-title">Contact Us</h4>
-          <p class="contact-text">Feel free to reach us!</p>
-          <ul>
-            <li class="contact-item">
-              <ion-icon name="call-outline"></ion-icon>
-              <a href="tel:+447411201309" class="contact-link">+44 7411 201309</a>
+      </div>
+      <div class="header-bottom">
+        <div class="container">
+          <ul class="social-list">
+            <!-- 1) Favicon: hidden by default, shown when header is stuck -->
+            <li class="social-item favicon-icon">
+              <a href="index.html" class="social-link" aria-label="Home">
+                <img
+                  src="./favicon.svg"
+                  alt="Visamate logo"
+                  style="height: 24px; width: auto"
+                />
+              </a>
             </li>
-            <li class="contact-item">
-              <ion-icon name="mail-outline"></ion-icon>
-              <a href="mailto:info@visamate.co.uk" class="contact-link">info@visamate.co.uk</a>
+
+            <!-- 2) Instagram -->
+            <li class="social-item">
+              <a
+                id="social-instagram"
+                class="social-link"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
             </li>
-            <li class="contact-item">
-              <ion-icon name="location-outline"></ion-icon>
-              <address class="contact-link">863 High Road, Ilford, IG3 8TG</address>
+
+            <!-- 3) Facebook -->
+            <li class="social-item">
+              <a
+                id="social-facebook"
+                class="social-link"
+                target="_blank"
+                aria-label="Facebook"
+              >
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
             </li>
           </ul>
-        </div>
-        <div class="footer-form">
-          <p class="form-text">Subscribe for updates & news!</p>
-          <form
-            id="newsletter-form"
-            class="form-wrapper"
-            novalidate
-            action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
-            method="POST"
-          >
-            <input type="hidden" name="_subject" value="New Newsletter Signup" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" style="display:none" />
-            <div class="newsletter-fields">
-              <input
-                type="email"
-                id="newsletter-email"
-                name="email"
-                placeholder="Enter your email"
-                required
-              />
-              <button type="submit" id="newsletter-submit">Subscribe</button>
+          <nav class="navbar" data-navbar>
+            <div class="navbar-top">
+              <a href="index.html" class="logo">
+                <img src="./assets/images/logo.svg" alt="Visamate logo" />
+              </a>
+              <button
+                class="nav-close-btn"
+                aria-label="Close Menu"
+                data-nav-close-btn
+              >
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
             </div>
-            <span class="error-message" id="newsletter-error"></span>
-          </form>
+            <ul class="navbar-list">
+              <li>
+                <a href="index.html" class="navbar-link" data-nav-link>home</a>
+              </li>
+              <li>
+                <a href="about-us.html" class="navbar-link" data-nav-link
+                  >about us</a
+                >
+              </li>
+              <li>
+                <a href="#package" class="navbar-link" data-nav-link
+                  >packages</a
+                >
+              </li>
+              <li>
+                <a href="visa-services.html" class="navbar-link" data-nav-link
+                  >visa services</a
+                >
+              </li>
+              <li
+                class="navbar-link dropdown"
+                id="moreDropdown"
+                style="position: relative"
+              >
+                <button
+                  id="moreDropdownBtn"
+                  class="dropdown-toggle"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  MORE <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+                <ul class="dropdown-menu" id="moreDropdownMenu">
+                  <li><a href="refund-policy.html">REFUND POLICY</a></li>
+                  <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+                  <li><a href="contact-us.html">CONTACT US</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p class="copyright">&copy; 2025 Visamate. All rights reserved.</p>
+    </header>
+
+    <!-- 2) Popup Container -->
+    <div id="popup-container"></div>
+
+    <!-- 3) Inner hero/banner -->
+    <div class="heroinner"></div>
+    <div class="banner-slogan"></div>
+
+    <!-- 4) Country grid -->
+    <main class="section">
+      <h2 class="section-title">Select Your Visa Destination</h2>
+      <div class="country-grid" id="country-container"></div>
+    </main>
+
+    <!-- 5) Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/logo.svg" alt="Visamate logo" />
+            </a>
+            <p class="footer-text">
+              Visamate is your trusted partner for visa assistance. We simplify
+              the process and guide you every step of the way. Whether you're
+              applying for a tourist, student, or work visa, start your journey
+              with confidence.
+            </p>
+          </div>
+          <div class="footer-contact">
+            <h4 class="contact-title">Contact Us</h4>
+            <p class="contact-text">Feel free to reach us!</p>
+            <ul>
+              <li class="contact-item">
+                <ion-icon name="call-outline"></ion-icon>
+                <a href="tel:+447411201309" class="contact-link"
+                  >+44 7411 201309</a
+                >
+              </li>
+              <li class="contact-item">
+                <ion-icon name="mail-outline"></ion-icon>
+                <a href="mailto:info@visamate.co.uk" class="contact-link"
+                  >info@visamate.co.uk</a
+                >
+              </li>
+              <li class="contact-item">
+                <ion-icon name="location-outline"></ion-icon>
+                <address class="contact-link">
+                  863 High Road, Ilford, IG3 8TG
+                </address>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-form">
+            <p class="form-text">Subscribe for updates & news!</p>
+            <form
+              id="newsletter-form"
+              class="form-wrapper"
+              novalidate
+              action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Newsletter Signup"
+              />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" style="display: none" />
+              <div class="newsletter-fields">
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button type="submit" id="newsletter-submit">Subscribe</button>
+              </div>
+              <span class="error-message" id="newsletter-error"></span>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">&copy; 2025 Visamate. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
 
-  <!-- Go-Top Button -->
-  <a href="#top" class="go-top" data-go-top><ion-icon name="chevron-up-outline"></ion-icon></a>
+    <!-- Go-Top Button -->
+    <a href="#top" class="go-top" data-go-top
+      ><ion-icon name="chevron-up-outline"></ion-icon
+    ></a>
 
-  <!-- Site Scripts -->
-  <script src="./assets/js/site-config.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <!-- Site Scripts -->
+    <script src="./assets/js/site-config.js"></script>
+    <script src="./assets/js/script.js"></script>
 
-  <!-- Country-grid logic -->
-  <script>
-    function goToInquiry(name, code) {
-      window.location.href = `inquire-us.html?country=${encodeURIComponent(name)}&code=${code}`;
-    }
+    <!-- Country-grid logic -->
+    <script>
+      function goToInquiry(name, code) {
+        window.location.href = `inquire-us.html?country=${encodeURIComponent(
+          name
+        )}&code=${code}`;
+      }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const countries = [
-        { name: "France", code: "fr" },
-        { name: "Spain", code: "es" },
-        { name: "United States", code: "us" },
-        { name: "China", code: "cn" },
-        { name: "Italy", code: "it" },
-        { name: "Turkey", code: "tr" },
-        { name: "Mexico", code: "mx" },
-        { name: "Germany", code: "de" },
-        { name: "Thailand", code: "th" },
-        { name: "United Kingdom", code: "gb" },
-        { name: "Japan", code: "jp" },
-        { name: "Austria", code: "at" },
-        { name: "Greece", code: "gr" },
-        { name: "Russia", code: "ru" },
-        { name: "Canada", code: "ca" },
-        { name: "Hong Kong", code: "hk" },
-        { name: "Malaysia", code: "my" },
-        { name: "Saudi Arabia", code: "sa" },
-        { name: "Netherlands", code: "nl" },
-        { name: "South Korea", code: "kr" },
-        { name: "Vietnam", code: "vn" },
-        { name: "United Arab Emirates", code: "ae" },
-        { name: "Portugal", code: "pt" },
-        { name: "Switzerland", code: "ch" },
-        { name: "Croatia", code: "hr" },
-        { name: "Poland", code: "pl" },
-        { name: "Czech Republic", code: "cz" },
-        { name: "Hungary", code: "hu" },
-        { name: "Sweden", code: "se" },
-        { name: "Belgium", code: "be" },
-      ];
+      document.addEventListener("DOMContentLoaded", () => {
+        const countries = [
+          { name: "France", code: "fr" },
+          { name: "Spain", code: "es" },
+          { name: "United States", code: "us" },
+          { name: "China", code: "cn" },
+          { name: "Italy", code: "it" },
+          { name: "Turkey", code: "tr" },
+          { name: "Mexico", code: "mx" },
+          { name: "Germany", code: "de" },
+          { name: "Thailand", code: "th" },
+          { name: "United Kingdom", code: "gb" },
+          { name: "Japan", code: "jp" },
+          { name: "Austria", code: "at" },
+          { name: "Greece", code: "gr" },
+          { name: "Russia", code: "ru" },
+          { name: "Canada", code: "ca" },
+          { name: "Hong Kong", code: "hk" },
+          { name: "Malaysia", code: "my" },
+          { name: "Saudi Arabia", code: "sa" },
+          { name: "Netherlands", code: "nl" },
+          { name: "South Korea", code: "kr" },
+          { name: "Vietnam", code: "vn" },
+          { name: "United Arab Emirates", code: "ae" },
+          { name: "Portugal", code: "pt" },
+          { name: "Switzerland", code: "ch" },
+          { name: "Croatia", code: "hr" },
+          { name: "Poland", code: "pl" },
+          { name: "Czech Republic", code: "cz" },
+          { name: "Hungary", code: "hu" },
+          { name: "Sweden", code: "se" },
+          { name: "Belgium", code: "be" },
+        ];
 
-      const container = document.getElementById("country-container");
-      countries.forEach(c => {
-        const card = document.createElement("div");
-        card.className = "country-card";
-        card.innerHTML = `
+        const container = document.getElementById("country-container");
+        countries.forEach((c) => {
+          const card = document.createElement("div");
+          card.className = "country-card";
+          card.innerHTML = `
           <div class="flag-wrapper">
             <img src="./assets/images/flags/${c.code}.svg" alt="${c.name} Flag" class="flag-img"/>
           </div>
           <h3 class="country-name">${c.name}</h3>
           <button class="btn btn-primary" onclick="goToInquiry('${c.name}','${c.code}')">Apply</button>
         `;
-        container.appendChild(card);
+          container.appendChild(card);
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
