@@ -3129,7 +3129,7 @@ padding-top: 125px;
     /* kill the old max-width */
     max-width: none !important;
     /* set your desired width */
-    width: 280px !important;
+    width: 250px !important;
     height: auto !important;
   }
 }
