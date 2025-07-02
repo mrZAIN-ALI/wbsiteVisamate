@@ -840,7 +840,7 @@ body { background: var(--white); }
 \*-----------------------------------*/
 
 .cta {
-  background: var(--black-coral);
+  background: #4caced;
   padding-block: var(--section-padding);
 }
 
