@@ -4,130 +4,175 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us – VisaMate</title>
-  <!-- Favicon for browser tab -->
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-  <!-- Reset default margins -->
-  <style>
-    html, body { margin: 0 !important; padding: 0 !important; }
-  </style>
-
-  <!-- Fonts & Styles -->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Ionicons -->
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
-<!-- WhatsApp & Phone Dock -->
+<body id="top">
+
+<!-- Floating Contact -->
 <div class="floating-contact">
-<!-- Replace -->
-<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
-  <ion-icon name="logo-whatsapp"></ion-icon>
-</a>
-<a id="phone-link" class="phone-dock" aria-label="Call us">
-  <ion-icon name="call-outline"></ion-icon>
-  <span id="phone-number"></span>
-</a>
-
+  <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+    <ion-icon name="logo-whatsapp"></ion-icon>
+  </a>
+  <a id="phone-link" class="phone-dock" aria-label="Call us">
+    <ion-icon name="call-outline"></ion-icon>
+    <span id="phone-number"></span>
+  </a>
 </div>
-<body>
-  <!-- 1) Universal Header with its own go-top link -->
-  <div id="include-header"></div>
 
-  <!-- 2) Popup Container -->
-  <div id="popup-container"></div>
+<!-- Header -->
+<header class="header" data-header>
+  <div class="overlay" data-overlay></div>
+  <div class="header-top">
+    <div class="container">
+      <a href="tel:+01123456790" class="helpline-box">
+        <div class="icon-box">
+          <ion-icon name="call-outline"></ion-icon>
+        </div>
+        <div class="wrapper">
+          <p class="helpline-title">For Further Inquiries :</p>
+          <p class="helpline-number" id="helpline-number"></p>
+        </div>
+      </a>
+      <a href="index.html" class="logo">
+        <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+      </a>
+      <div class="header-btn-group">
+        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 
-  <!-- 3) About Banner -->
- <div class="heroinner"></div>
-
-  <!-- 4) About Us Section -->
-  <main class="section about-section">
-    <h2 class="section-title">About Us</h2>
-    <div class="container about-content">
-      <p>
-        VisaMate was founded with one goal in mind: to make international travel
-        simpler and more accessible. Over the years, we’ve helped thousands of
-        travelers secure visas—from tourist and student visas to work permits—
-        with speed, transparency, and care.
-      </p>
-
-      <h3>Our Mission</h3>
-      <p>
-        To streamline every step of the visa application journey through expert
-        guidance, personalized support, and up-to-date consulate knowledge.
-      </p>
-
-      <h3>Our Vision</h3>
-      <p>
-        A world where border bureaucracy never stands between people and their
-        dreams—whether it’s studying abroad, exploring new cultures, or advancing
-        your career internationally.
-      </p>
-
-      <h3>Our Values</h3>
-      <ul>
-        <li><strong>Integrity:</strong> We handle your documents and personal data
-            with the highest confidentiality.</li>
-        <li><strong>Excellence:</strong> Our team trains continuously to stay ahead
-            of changing visa rules and digital best practices.</li>
-        <li><strong>Empathy:</strong> We know visa applications can be stressful,
-            so we’re always here to answer questions and provide reassurance.</li>
+  <div class="header-bottom">
+    <div class="container">
+      <ul class="social-list">
+        <li><a id="social-instagram" class="social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a id="social-facebook" class="social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
       </ul>
 
-      <p>
-        Ready to get started? Click “Get Visa Now” in the navbar, or
-        <a href="visa-services.html">browse our Visa Services</a> to find your
-        perfect destination.
-      </p>
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="index.html" class="logo">
+            <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+          </a>
+          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+        <ul class="navbar-list">
+          <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
+          <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
+          <li><a href="index.html#package" class="navbar-link" data-nav-link>packages</a></li>
+          <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
+          <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
+            <button id="moreDropdownBtn" class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+              MORE <ion-icon name="chevron-down-outline"></ion-icon>
+            </button>
+            <ul class="dropdown-menu" id="moreDropdownMenu" aria-labelledby="moreDropdownBtn">
+              <li><a href="refund-policy.html">REFUND POLICY</a></li>
+              <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+              <li><a href="contact-us.html">CONTACT US</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
     </div>
-  </main>
+  </div>
+</header>
 
-  <!-- 5) Footer -->
-  <div id="include-footer"></div>
+<!-- Popup Container -->
+<div id="popup-container"></div>
 
-  <!-- 6) Load header, footer, then initialize -->
-  <script src="./assets/js/include-partials.js"></script>
-  <script>
-    document.getElementById('include-header').addEventListener('partialLoaded', () => {
-      // Mobile nav
-      if (typeof setupMobileNavbar === 'function') setupMobileNavbar();
-      // Sticky header & go-top (header contains its own go-top link)
-      if (typeof setupGoTopButton === 'function') setupGoTopButton();
-      // More dropdown
-      (function() {
-        const btn = document.getElementById('moreDropdownBtn');
-        const menu = document.getElementById('moreDropdown');
-        if (!btn || !menu) return;
-        btn.addEventListener('click', e => {
-          e.stopPropagation();
-          menu.classList.toggle('open');
-        });
-        document.addEventListener('click', () => menu.classList.remove('open'));
-      })();
-      // Load site-config.js
-      const cfg = document.createElement('script');
-      cfg.src = './assets/js/site-config.js';
-      document.body.appendChild(cfg);
-      // Load main script and trigger popup
-      const main = document.createElement('script');
-      main.src = './assets/js/script.js';
-      main.onload = () => {
-        if (typeof loadPopupPartial === 'function') loadPopupPartial();
-      };
-      document.body.appendChild(main);
-    });
-  </script>
+<!-- Hero -->
+<div class="heroinner"></div>
+
+<!-- About Content -->
+<main class="section about-section">
+  <h2 class="section-title">About Us</h2>
+  <div class="container about-content">
+    <p>VisaMate was founded with one goal in mind: to make international travel simpler and more accessible. Over the years, we’ve helped thousands of travelers secure visas—from tourist and student visas to work permits—with speed, transparency, and care.</p>
+
+    <h3>Our Mission</h3>
+    <p>To streamline every step of the visa application journey through expert guidance, personalized support, and up-to-date consulate knowledge.</p>
+
+    <h3>Our Vision</h3>
+    <p>A world where border bureaucracy never stands between people and their dreams—whether it’s studying abroad, exploring new cultures, or advancing your career internationally.</p>
+
+    <h3>Our Values</h3>
+    <ul>
+      <li><strong>Integrity:</strong> We handle your documents and personal data with the highest confidentiality.</li>
+      <li><strong>Excellence:</strong> Our team trains continuously to stay ahead of changing visa rules and digital best practices.</li>
+      <li><strong>Empathy:</strong> We know visa applications can be stressful, so we’re always here to answer questions and provide reassurance.</li>
+    </ul>
+
+    <p>Ready to get started? Click “Get Visa Now” in the navbar, or <a href="visa-services.html">browse our Visa Services</a> to find your perfect destination.</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-brand">
+        <a href="#" class="logo"><img src="./assets/images/logo.svg" alt="VisaMate logo" /></a>
+        <p class="footer-text">
+          VisaMate is your trusted partner for visa assistance. We simplify the process and guide you every step of the way. 
+          Whether you're applying for a tourist, student, or work visa. Start your journey with confidence.
+        </p>
+      </div>
+
+      <div class="footer-contact">
+        <h4 class="contact-title">Contact Us</h4>
+        <p class="contact-text">Feel free to contact and reach us !!</p>
+        <ul>
+          <li class="contact-item"><ion-icon name="call-outline"></ion-icon><a id="footer-phone" class="contact-link"></a></li>
+          <li class="contact-item"><ion-icon name="mail-outline"></ion-icon><a id="footer-email" class="contact-link"></a></li>
+          <li class="contact-item"><ion-icon name="location-outline"></ion-icon><address id="footer-address">Loading address...</address></li>
+        </ul>
+      </div>
+
+      <div class="footer-form">
+        <p class="form-text">Subscribe to our newsletter for more updates & news!</p>
+        <form id="newsletter-form" class="form-wrapper" novalidate action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842" method="POST">
+          <input type="hidden" name="_subject" value="New Newsletter Signup" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" style="display:none" />
+          <div class="newsletter-fields">
+            <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required />
+            <button type="submit" id="newsletter-submit">Subscribe</button>
+          </div>
+          <span class="error-message" id="newsletter-error"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="copyright">&copy; 2025 <a href="">VisaMate</a>. All rights reserved</p>
+      <ul class="footer-bottom-list">
+        <li><a href="terms-and-conditions.html" class="footer-bottom-link">Term & Condition</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Go Top Button -->
+<a href="#top" class="go-top" data-go-top><ion-icon name="chevron-up-outline"></ion-icon></a>
+
+<!-- Scripts -->
+<script src="./assets/js/site-config.js"></script>
+<script src="./assets/js/script.js"></script>
+
 </body>
 </html>

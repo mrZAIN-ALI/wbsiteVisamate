@@ -34,26 +34,129 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
   </head>
-<!-- WhatsApp & Phone Dock -->
-<div class="floating-contact">
-<!-- Replace -->
-<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
-  <ion-icon name="logo-whatsapp"></ion-icon>
-</a>
-<a id="phone-link" class="phone-dock" aria-label="Call us">
-  <ion-icon name="call-outline"></ion-icon>
-  <span id="phone-number"></span>
-</a>
 
-</div>
-  <body>
+  <!-- WhatsApp & Phone Dock -->
+  <div class="floating-contact">
+    <a
+      id="whatsapp-link"
+      class="whatsapp-dock"
+      target="_blank"
+      aria-label="Chat on WhatsApp"
+    >
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
+    <a id="phone-link" class="phone-dock" aria-label="Call us">
+      <ion-icon name="call-outline"></ion-icon>
+      <span id="phone-number"></span>
+    </a>
+  </div>
+
+  <body id="top">
     <!-- 1) Universal Header -->
-    <div id="include-header"></div>
+    <header class="header" data-header>
+      <div class="overlay" data-overlay></div>
+      <div class="header-top">
+        <div class="container">
+          <a href="tel:+01123456790" class="helpline-box">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <div class="wrapper">
+              <p class="helpline-title">For Further Inquiries :</p>
+              <p class="helpline-number" id="helpline-number"></p>
+            </div>
+          </a>
+          <a href="index.html" class="logo">
+            <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+          </a>
+          <div class="header-btn-group">
+            <button
+              class="nav-open-btn"
+              aria-label="Open Menu"
+              data-nav-open-btn
+            >
+              <ion-icon name="menu-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="container">
+          <ul class="social-list">
+            <li>
+              <a id="social-instagram" class="social-link" target="_blank"
+                ><ion-icon name="logo-instagram"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a id="social-facebook" class="social-link" target="_blank"
+                ><ion-icon name="logo-facebook"></ion-icon
+              ></a>
+            </li>
+          </ul>
+          <nav class="navbar" data-navbar>
+            <div class="navbar-top">
+              <a href="index.html" class="logo">
+                <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+              </a>
+              <button
+                class="nav-close-btn"
+                aria-label="Close Menu"
+                data-nav-close-btn
+              >
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
+            <ul class="navbar-list">
+              <li>
+                <a href="index.html" class="navbar-link" data-nav-link>home</a>
+              </li>
+              <li>
+                <a href="about-us.html" class="navbar-link" data-nav-link
+                  >about us</a
+                >
+              </li>
+              <li>
+                <a href="#package" class="navbar-link" data-nav-link>packages</a>
+              </li>
+              <li>
+                <a href="visa-services.html" class="navbar-link" data-nav-link
+                  >visa services</a
+                >
+              </li>
+              <li
+                class="navbar-link dropdown"
+                id="moreDropdown"
+                style="position: relative;"
+              >
+                <button
+                  id="moreDropdownBtn"
+                  class="dropdown-toggle"
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  MORE <ion-icon name="chevron-down-outline"></ion-icon>
+                </button>
+                <ul
+                  class="dropdown-menu"
+                  id="moreDropdownMenu"
+                  aria-labelledby="moreDropdownBtn"
+                >
+                  <li><a href="refund-policy.html">REFUND POLICY</a></li>
+                  <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+                  <li><a href="contact-us.html">CONTACT US</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+        </div>
+      </div>
+    </header>
 
     <!-- 2) Popup Container -->
     <div id="popup-container"></div>
 
-    <!-- 3) Banner (reuse your about/refund banner) -->
+    <!-- 3) Banner -->
     <div
       class="heroinner"
       style="
@@ -81,7 +184,10 @@
           services. It also informs you of your privacy rights and how we
           safeguard your data under applicable laws.
         </p>
-        <p>By using our services, you agree to the collection and use of information described here.</p>
+        <p>
+          By using our services, you agree to the collection and use of
+          information described here.
+        </p>
 
         <h3>1. Interpretation and Definitions</h3>
 
@@ -94,17 +200,44 @@
 
         <h4>Definitions</h4>
         <ul>
-          <li><strong>Account:</strong> A user profile created to access our services.</li>
+          <li>
+            <strong>Account:</strong> A user profile created to access our
+            services.
+          </li>
           <li><strong>Company:</strong> Refers to VisaMate.</li>
-          <li><strong>Cookies:</strong> Small files placed on your device that store browsing information.</li>
-          <li><strong>Country:</strong> Refers to the United Kingdom (our operating region).</li>
-          <li><strong>Device:</strong> Any internet-enabled device like a phone, tablet, or computer.</li>
-          <li><strong>Personal Data:</strong> Any information that identifies or can be used to identify an individual.</li>
-          <li><strong>Service:</strong> The visa assistance services offered through our website.</li>
-          <li><strong>Service Provider:</strong> Third-party businesses that process data on our behalf.</li>
-          <li><strong>Usage Data:</strong> Automatically collected data about how you use our services.</li>
-          <li><strong>Website:</strong> Refers to https://visamate.co.uk</li>
-          <li><strong>You:</strong> The individual using our service or any entity you represent.</li>
+          <li>
+            <strong>Cookies:</strong> Small files placed on your device that
+            store browsing information.
+          </li>
+          <li>
+            <strong>Country:</strong> Refers to the United Kingdom (our
+            operating region).
+          </li>
+          <li>
+            <strong>Device:</strong> Any internet-enabled device like a
+            phone, tablet, or computer.
+          </li>
+          <li>
+            <strong>Personal Data:</strong> Any information that identifies
+            or can be used to identify an individual.
+          </li>
+          <li>
+            <strong>Service:</strong> The visa assistance services offered
+            through our website.
+          </li>
+          <li>
+            <strong>Service Provider:</strong> Third-party businesses that
+            process data on our behalf.
+          </li>
+          <li>
+            <strong>Usage Data:</strong> Automatically collected data about
+            how you use our services.
+          </li>
+          <li>
+            <strong>Website:</strong> Refers to https://visamate.co.uk
+          </li>
+          <li><strong>You:</strong> The individual using our service or any
+            entity you represent.</li>
         </ul>
 
         <h3>2. What Personal Data We Collect</h3>
@@ -125,18 +258,34 @@
           include your device’s IP address, browser type/version, pages you
           visit, time spent, unique device IDs, and other diagnostic data.
           When you access via mobile, we may also collect device model,
-          operating system, mobile browser type, and unique device identifiers.
+          operating system, mobile browser type, and unique device
+          identifiers.
         </p>
 
         <h3>3. Tracking Technologies & Cookies</h3>
-        <p>We use cookies and similar tracking tools to enhance your experience and analyze usage.</p>
+        <p>
+          We use cookies and similar tracking tools to enhance your
+          experience and analyze usage.
+        </p>
 
         <h4>Types of Cookies Used</h4>
         <ul>
-          <li><strong>Essential Cookies:</strong> Enable core features and secure logins.</li>
-          <li><strong>Preference Cookies:</strong> Remember your settings and preferences.</li>
-          <li><strong>Analytics Cookies:</strong> Help us understand site usage and improve performance.</li>
-          <li><strong>Marketing Cookies:</strong> (if used) Track engagement for advertising purposes.</li>
+          <li>
+            <strong>Essential Cookies:</strong> Enable core features and
+            secure logins.
+          </li>
+          <li>
+            <strong>Preference Cookies:</strong> Remember your settings and
+            preferences.
+          </li>
+          <li>
+            <strong>Analytics Cookies:</strong> Help us understand site
+            usage and improve performance.
+          </li>
+          <li>
+            <strong>Marketing Cookies:</strong> (if used) Track engagement
+            for advertising purposes.
+          </li>
         </ul>
         <p>
           You can disable cookies in your browser settings, but some parts of
@@ -170,31 +319,29 @@
           by law or to protect our rights, property, or user safety.
         </p>
 
-        <h3>Security of Your Personal Data</h3>
+        <h3>6. Security of Your Personal Data</h3>
         <p>
           We use commercially acceptable means to protect your data, but no
           internet transmission or electronic storage is 100% secure.
         </p>
 
-        <h3>10. Children’s Privacy</h3>
+        <h3>7. Children’s Privacy</h3>
         <p>
           Our services are not intended for children under 13. We do not
           knowingly collect data from minors. If discovered, we will delete
           it immediately.
         </p>
 
-        <h3>12. Changes to This Policy</h3>
+        <h3>8. Changes to This Policy</h3>
         <p>
-          We may update this Privacy Policy periodically. All changes will be
-          posted here with an “Effective Date.” Please review regularly.
+          We may update this Privacy Policy periodically. All changes will
+          be posted here with an “Effective Date.” Please review regularly.
         </p>
 
-        <h3>13. Contact Us</h3>
+        <h3>9. Contact Us</h3>
         <p style="display: flex; align-items: center;">
           <ion-icon name="mail-outline" style="margin-right: 6px;"></ion-icon>
-          <a
-            href="mailto:info@visamate.co.uk"
-            style="color: inherit; text-decoration: none;"
+          <a href="mailto:info@visamate.co.uk" style="color: inherit; text-decoration: none;"
             >info@visamate.co.uk</a
           >
         </p>
@@ -202,38 +349,86 @@
     </main>
 
     <!-- 5) Footer -->
-    <div id="include-footer"></div>
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+            </a>
+            <p class="footer-text">
+              VisaMate is your trusted partner for visa assistance. We
+              simplify the process and guide you every step of the way.
+              Whether you're applying for a tourist, student, or work visa,
+              start your journey with confidence.
+            </p>
+          </div>
+          <div class="footer-contact">
+            <h4 class="contact-title">Contact Us</h4>
+            <p class="contact-text">Feel free to reach us!</p>
+            <ul>
+              <li class="contact-item">
+                <ion-icon name="call-outline"></ion-icon>
+                <a href="tel:+447411201309" class="contact-link"
+                  >+44 7411 201309</a
+                >
+              </li>
+              <li class="contact-item">
+                <ion-icon name="mail-outline"></ion-icon>
+                <a href="mailto:info@visamate.co.uk" class="contact-link"
+                  >info@visamate.co.uk</a
+                >
+              </li>
+              <li class="contact-item">
+                <ion-icon name="location-outline"></ion-icon>
+                <address class="contact-link">863 High Road, Ilford, IG3 8TG</address>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-form">
+            <p class="form-text">Subscribe for updates & news!</p>
+            <form
+              id="newsletter-form"
+              class="form-wrapper"
+              novalidate
+              action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="New Newsletter Signup" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" style="display:none" />
+              <div class="newsletter-fields">
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button type="submit" id="newsletter-submit">Subscribe</button>
+              </div>
+              <span class="error-message" id="newsletter-error"></span>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025 VisaMate. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
 
-    <!-- 6) Load partials, init + popup -->
-    <script src="./assets/js/include-partials.js"></script>
-    <script>
-      document
-        .getElementById("include-header")
-        .addEventListener("partialLoaded", () => {
-          if (typeof setupMobileNavbar === "function") setupMobileNavbar();
-          if (typeof setupGoTopButton === "function") setupGoTopButton();
-          (function () {
-            const btn = document.getElementById("moreDropdownBtn");
-            const menu = document.getElementById("moreDropdown");
-            if (!btn || !menu) return;
-            btn.addEventListener("click", (e) => {
-              e.stopPropagation();
-              menu.classList.toggle("open");
-            });
-            document.addEventListener("click", () =>
-              menu.classList.remove("open")
-            );
-          })();
-          const cfg = document.createElement("script");
-          cfg.src = "./assets/js/site-config.js";
-          document.body.appendChild(cfg);
-          const main = document.createElement("script");
-          main.src = "./assets/js/script.js";
-          main.onload = () => {
-            if (typeof loadPopupPartial === "function") loadPopupPartial();
-          };
-          document.body.appendChild(main);
-        });
-    </script>
+    <!-- Go Top Button -->
+    <a href="#top" class="go-top" data-go-top
+      ><ion-icon name="chevron-up-outline"></ion-icon
+    ></a>
+
+    <!-- Scripts -->
+    <script src="./assets/js/site-config.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

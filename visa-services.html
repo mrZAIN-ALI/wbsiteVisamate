@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visa Services – VisaMate</title>
+
   <!-- Favicon for browser tab -->
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+
   <!-- Reset default margins -->
   <style>
     html, body { margin: 0 !important; padding: 0 !important; }
@@ -32,33 +34,11 @@
     src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
   ></script>
 </head>
-<!-- WhatsApp & Phone Dock -->
-<div class="floating-contact">
-<!-- Replace -->
-<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
-  <ion-icon name="logo-whatsapp"></ion-icon>
-</a>
-<a id="phone-link" class="phone-dock" aria-label="Call us">
-  <ion-icon name="call-outline"></ion-icon>
-  <span id="phone-number"></span>
-</a>
 
-</div>
-<body>
-  <!-- 1) Universal Header -->
-  <div id="include-header"></div>
-
-  <!-- 2) Popup Container -->
-  <div id="popup-container"></div>
-
-  <!-- 3) Floating WhatsApp & Phone dock -->
+<body id="top">
+  <!-- WhatsApp & Phone Dock -->
   <div class="floating-contact">
-    <a
-      id="whatsapp-link"
-      class="whatsapp-dock"
-      target="_blank"
-      aria-label="Chat on WhatsApp"
-    >
+    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
       <ion-icon name="logo-whatsapp"></ion-icon>
     </a>
     <a id="phone-link" class="phone-dock" aria-label="Call us">
@@ -67,60 +47,154 @@
     </a>
   </div>
 
-  <!-- 4) Inner hero/banner -->
+  <!-- 1) Universal Header -->
+  <header class="header" data-header>
+    <div class="overlay" data-overlay></div>
+    <div class="header-top">
+      <div class="container">
+        <a href="tel:+01123456790" class="helpline-box">
+          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+          <div class="wrapper">
+            <p class="helpline-title">For Further Inquiries :</p>
+            <p class="helpline-number" id="helpline-number"></p>
+          </div>
+        </a>
+        <a href="index.html" class="logo">
+          <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+        </a>
+        <div class="header-btn-group">
+          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="container">
+        <ul class="social-list">
+          <li><a id="social-instagram" class="social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a id="social-facebook" class="social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        </ul>
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+            </a>
+            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <ul class="navbar-list">
+            <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
+            <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
+            <li><a href="#package" class="navbar-link" data-nav-link>packages</a></li>
+            <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
+            <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
+              <button id="moreDropdownBtn" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                MORE <ion-icon name="chevron-down-outline"></ion-icon>
+              </button>
+              <ul class="dropdown-menu" id="moreDropdownMenu">
+                <li><a href="refund-policy.html">REFUND POLICY</a></li>
+                <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+                <li><a href="contact-us.html">CONTACT US</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2) Popup Container -->
+  <div id="popup-container"></div>
+
+  <!-- 3) Inner hero/banner -->
   <div class="heroinner"></div>
   <div class="banner-slogan"></div>
 
-  <!-- 5) Country grid -->
+  <!-- 4) Country grid -->
   <main class="section">
     <h2 class="section-title">Select Your Visa Destination</h2>
     <div class="country-grid" id="country-container"></div>
   </main>
 
-  <!-- 6) Footer -->
-  <div id="include-footer"></div>
+  <!-- 5) Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+          </a>
+          <p class="footer-text">
+            VisaMate is your trusted partner for visa assistance. We simplify the process and guide you every step of the way. Whether you're applying for a tourist, student, or work visa, start your journey with confidence.
+          </p>
+        </div>
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <p class="contact-text">Feel free to reach us!</p>
+          <ul>
+            <li class="contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:+447411201309" class="contact-link">+44 7411 201309</a>
+            </li>
+            <li class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <a href="mailto:info@visamate.co.uk" class="contact-link">info@visamate.co.uk</a>
+            </li>
+            <li class="contact-item">
+              <ion-icon name="location-outline"></ion-icon>
+              <address class="contact-link">863 High Road, Ilford, IG3 8TG</address>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-form">
+          <p class="form-text">Subscribe for updates & news!</p>
+          <form
+            id="newsletter-form"
+            class="form-wrapper"
+            novalidate
+            action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New Newsletter Signup" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
+            <div class="newsletter-fields">
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+              <button type="submit" id="newsletter-submit">Subscribe</button>
+            </div>
+            <span class="error-message" id="newsletter-error"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">&copy; 2025 VisaMate. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-  <!-- 7) Load partials + init + popup -->
-  <script src="./assets/js/include-partials.js"></script>
-  <script>
-    document.getElementById('include-header').addEventListener('partialLoaded', () => {
-      // Initialize mobile nav
-      if (typeof setupMobileNavbar === 'function') setupMobileNavbar();
-      // Initialize sticky header & go-top
-      if (typeof setupGoTopButton === 'function') setupGoTopButton();
-      // Initialize More dropdown
-      (function() {
-        const btn = document.getElementById('moreDropdownBtn');
-        const menu = document.getElementById('moreDropdown');
-        if (!btn || !menu) return;
-        btn.addEventListener('click', e => {
-          e.stopPropagation();
-          menu.classList.toggle('open');
-        });
-        document.addEventListener('click', () => menu.classList.remove('open'));
-      })();
+  <!-- Go-Top Button -->
+  <a href="#top" class="go-top" data-go-top><ion-icon name="chevron-up-outline"></ion-icon></a>
 
-      // Load site-config.js
-      const cfg = document.createElement('script');
-      cfg.src = './assets/js/site-config.js';
-      document.body.appendChild(cfg);
+  <!-- Site Scripts -->
+  <script src="./assets/js/site-config.js"></script>
+  <script src="./assets/js/script.js"></script>
 
-      // Load main script and then show popup
-      const main = document.createElement('script');
-      main.src = './assets/js/script.js';
-      main.onload = () => {
-        if (typeof loadPopupPartial === 'function') loadPopupPartial();
-      };
-      document.body.appendChild(main);
-    });
-  </script>
-
-  <!-- 8) Country-grid logic -->
+  <!-- Country-grid logic -->
   <script>
     function goToInquiry(name, code) {
-      window.location.href = `inquire-us.html?country=${encodeURIComponent(
-        name
-      )}&code=${code}`;
+      window.location.href = `inquire-us.html?country=${encodeURIComponent(name)}&code=${code}`;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -158,22 +232,15 @@
       ];
 
       const container = document.getElementById("country-container");
-      countries.forEach((c) => {
+      countries.forEach(c => {
         const card = document.createElement("div");
         card.className = "country-card";
         card.innerHTML = `
           <div class="flag-wrapper">
-            <img
-              src="./assets/images/flags/${c.code}.svg"
-              alt="${c.name} Flag"
-              class="flag-img"
-            />
+            <img src="./assets/images/flags/${c.code}.svg" alt="${c.name} Flag" class="flag-img"/>
           </div>
           <h3 class="country-name">${c.name}</h3>
-          <button class="btn btn-primary"
-                  onclick="goToInquiry('${c.name}','${c.code}')">
-            Apply
-          </button>
+          <button class="btn btn-primary" onclick="goToInquiry('${c.name}','${c.code}')">Apply</button>
         `;
         container.appendChild(card);
       });
