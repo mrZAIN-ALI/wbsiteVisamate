@@ -264,8 +264,15 @@ function closePopup() {
 }
 
 function loadPopupPartial() {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Skip popup on specific pages
+  const excludedPages = ["getvisanow.html", "inquire-us.html"];
+  if (excludedPages.includes(currentPage)) return;
+
   const container = document.getElementById("popup-container");
   if (!container) return;
+
   fetch("./assets/partials/popup.html")
     .then(res => res.text())
     .then(html => {
@@ -282,8 +289,8 @@ function loadPopupPartial() {
         }
       }, 1000);
     });
-    
 }
+
 function setupSectionReveal() {
   const reveals = document.querySelectorAll('.reveal-section');
   if (!('IntersectionObserver' in window)) {
