@@ -313,21 +313,15 @@ function setupSectionReveal() {
 }
 
 // HOLIDAY SERVICES SCROLLER
-function setupHolidaySlider() {
-  const holidayScrollContainer = document.getElementById("holidayCards");
-  const prevBtn = document.querySelector(".holiday-prev");
-  const nextBtn = document.querySelector(".holiday-next");
-
-  if (!holidayScrollContainer || !prevBtn || !nextBtn) return;
-
-  prevBtn.addEventListener("click", () => {
-    holidayScrollContainer.scrollBy({ left: -350, behavior: "smooth" });
-  });
-
-  nextBtn.addEventListener("click", () => {
-    holidayScrollContainer.scrollBy({ left: 350, behavior: "smooth" });
+function scrollHolidaySlider(direction) {
+  const slider = document.getElementById("holiday-slider");
+  const scrollAmount = slider.offsetWidth / 2;
+  slider.scrollBy({
+    left: direction * scrollAmount,
+    behavior: "smooth"
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   setupGoTopButton();

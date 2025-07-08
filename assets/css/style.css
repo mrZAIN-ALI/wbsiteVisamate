@@ -3231,9 +3231,8 @@ html, body {
 
 
 /* Style for holday package section */
-/* Holiday Packages Section */
 .holiday-packages {
-  padding: 80px 20px;
+  padding: 80px 0;
   text-align: center;
 }
 
@@ -3254,7 +3253,8 @@ html, body {
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
 }
 
 .holiday-slider::-webkit-scrollbar {
@@ -3262,18 +3262,24 @@ html, body {
 }
 
 .holiday-card {
-  flex: 0 0 31%;
+  flex: 0 0 32%;
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: left;
-  animation: slideInRight 0.8s ease forwards;
-  opacity: 0;
+  scroll-snap-align: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.holiday-card.visible {
-  opacity: 1;
+.holiday-card:nth-child(2) {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.holiday-card:not(:nth-child(2)) {
+  opacity: 0.6;
+  transform: scale(0.94);
 }
 
 .holiday-image {
@@ -3282,18 +3288,18 @@ html, body {
 
 .holiday-image img {
   width: 100%;
-  height: 200px;
+  height: 240px;
   object-fit: cover;
 }
 
-.holiday-image .tag {
+.holiday-tag {
   position: absolute;
   top: 10px;
   left: 10px;
   background: var(--bright-navy-blue);
   color: white;
-  font-size: 12px;
-  padding: 4px 10px;
+  font-size: 13px;
+  padding: 5px 12px;
   border-radius: 50px;
 }
 
@@ -3302,15 +3308,16 @@ html, body {
 }
 
 .holiday-info h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--oxford-blue);
-  margin: 10px 0 5px;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .holiday-info p {
   font-size: 0.9rem;
   color: var(--black-coral);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .holiday-info .reviews {
@@ -3326,7 +3333,7 @@ html, body {
 }
 
 .holiday-info .price {
-  margin: 8px 0;
+  margin-bottom: 10px;
 }
 
 .holiday-info .price del {
@@ -3341,60 +3348,62 @@ html, body {
   margin-left: 10px;
 }
 
-.holiday-buttons {
+.holiday-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 12px;
 }
 
-.holiday-buttons .discount {
-  background: #ff4d4d;
+.discount-badge {
+  background: var(--gunmetal);
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 6px;
 }
 
-.holiday-buttons .btn {
+.holiday-bottom .btn {
   background: var(--bright-navy-blue);
   color: white;
   font-size: 0.85rem;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 6px;
   text-decoration: none;
 }
 
-.holiday-prev,
-.holiday-next {
+.holiday-nav {
   position: absolute;
-  top: 40%;
+  top: 42%;
   transform: translateY(-50%);
   font-size: 2rem;
   background: white;
   color: var(--oxford-blue);
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 40px;
-  height: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   z-index: 5;
 }
 
-.holiday-prev { left: 0; }
-.holiday-next { right: 0; }
-
-@keyframes slideInRight {
-  from { transform: translateX(100px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+.holiday-prev {
+  left: -25px;
 }
 
-/* Responsive */
+.holiday-next {
+  right: -25px;
+}
+
 @media (max-width: 1024px) {
-  .holiday-card { flex: 0 0 45%; }
+  .holiday-card {
+    flex: 0 0 45%;
+  }
 }
 
 @media (max-width: 768px) {
-  .holiday-card { flex: 0 0 80%; }
+  .holiday-card {
+    flex: 0 0 85%;
+  }
 }

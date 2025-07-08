@@ -21,8 +21,6 @@
     <!-- 
     - google font link
   -->
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -273,166 +271,163 @@
   </div>
 </section>
 
-<section class="holiday-packages reveal-section" id="holiday-packages">
-  <h2 class="section-title">Holiday Packages</h2>
-  <div class="holiday-slider-wrapper">
-    <button class="holiday-prev">&#10094;</button>
-    <div class="holiday-slider" id="holidayCards">
-      
-      <!-- CARD 1 -->
-      <div class="holiday-card">
-        <div class="holiday-image">
-          <span class="tag">Seaside Budget Hotel</span>
-          <img src="./assets/images/Greece.jpg" alt="Santorini, Greece" />
+<section class="holiday-packages reveal-section">
+  <div class="container">
+    <h2 class="section-title">Holiday Packages</h2>
+
+    <div class="holiday-slider-wrapper">
+      <button class="holiday-nav holiday-prev" onclick="scrollHolidaySlider(-1)">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+
+      <div class="holiday-slider" id="holiday-slider">
+        <!-- Card 1 -->
+        <div class="holiday-card">
+          <div class="holiday-image">
+            <img src="./assets/images/Netherlands.png" alt="Santorini, Greece" />
+            <span class="holiday-tag">Seaside Budget Hotel</span>
+          </div>
+          <div class="holiday-info">
+            <h3>Santorini, Greece</h3>
+            <p>Oia, Greek Islands</p>
+            <div class="reviews">
+              <img src="./assets/images/tripadvisor.png" alt="reviews" />
+              <span>2,317 reviews</span>
+            </div>
+            <div class="price">
+              <del>£410</del> <strong>£349 pp</strong>
+            </div>
+            <div class="holiday-bottom">
+              <span class="discount-badge">Save 15%</span>
+              <a href="getvisanow.html" class="btn">See Availability</a>
+            </div>
+          </div>
         </div>
-        <div class="holiday-info">
-          <div class="stars">★★★★☆</div>
-          <h3>Santorini, Greece</h3>
-          <p>Oia, Santorini, Greek Islands</p>
-          <div class="reviews">
-            <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-            <span>2,317 reviews</span>
+
+        <!-- Card 2 -->
+        <div class="holiday-card">
+          <div class="holiday-image">
+            <img src="./assets/images/Netherlands.png" alt="Paris, France" />
+            <span class="holiday-tag">Boutique City Hotel</span>
           </div>
-          <div class="price">
-            <del>£410</del>
-            <strong>£349 pp</strong>
-          </div>
-          <div class="holiday-buttons">
-            <span class="discount">Save 15%</span>
-            <a href="getvisanow.html" class="btn">See Availability</a>
+          <div class="holiday-info">
+            <h3>Paris, France</h3>
+            <p>Montmartre, Paris</p>
+            <div class="reviews">
+              <img src="./assets/images/tripadvisor.png" alt="reviews" />
+              <span>3,842 reviews</span>
+            </div>
+            <div class="price">
+              <del>£395</del> <strong>£325 pp</strong>
+            </div>
+            <div class="holiday-bottom">
+              <span class="discount-badge">Save 18%</span>
+              <a href="getvisanow.html" class="btn">See Availability</a>
+            </div>
           </div>
         </div>
+
+        <!-- Card 3 -->
+        <div class="holiday-card">
+          <div class="holiday-image">
+            <img src="./assets/images/Netherlands.png" alt="Venice, Italy" />
+            <span class="holiday-tag">Historic Canal-Side Guesthouse</span>
+          </div>
+          <div class="holiday-info">
+            <h3>Venice, Italy</h3>
+            <p>Cannaregio, Venice</p>
+            <div class="reviews">
+              <img src="./assets/images/tripadvisor.png" alt="reviews" />
+              <span>2,607 reviews</span>
+            </div>
+            <div class="price">
+              <del>£370</del> <strong>£295 pp</strong>
+            </div>
+            <div class="holiday-bottom">
+              <span class="discount-badge">Save 20%</span>
+              <a href="getvisanow.html" class="btn">See Availability</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="holiday-card">
+          <div class="holiday-image">
+            <img src="./assets/images/Netherlands.png" alt="Barcelona, Spain" />
+            <span class="holiday-tag">Stylish Urban Hotel</span>
+          </div>
+          <div class="holiday-info">
+            <h3>Barcelona, Spain</h3>
+            <p>Gothic Quarter, Barcelona</p>
+            <div class="reviews">
+              <img src="./assets/images/tripadvisor.png" alt="reviews" />
+              <span>3,456 reviews</span>
+            </div>
+            <div class="price">
+              <del>£390</del> <strong>£329 pp</strong>
+            </div>
+            <div class="holiday-bottom">
+              <span class="discount-badge">Save 16%</span>
+              <a href="getvisanow.html" class="btn">See Availability</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="holiday-card">
+          <div class="holiday-image">
+            <img src="./assets/images/Netherlands.png" alt="Amsterdam, Netherlands" />
+            <span class="holiday-tag">Charming Canal House</span>
+          </div>
+          <div class="holiday-info">
+            <h3>Amsterdam, Netherlands</h3>
+            <p>Jordaan, Amsterdam</p>
+            <div class="reviews">
+              <img src="./assets/images/tripadvisor.png" alt="reviews" />
+              <span>2,754 reviews</span>
+            </div>
+            <div class="price">
+              <del>£360</del> <strong>£285 pp</strong>
+            </div>
+            <div class="holiday-bottom">
+              <span class="discount-badge">Save 21%</span>
+              <a href="getvisanow.html" class="btn">See Availability</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="holiday-card">
+          <div class="holiday-image">
+            <img src="./assets/images/Netherlands.png" alt="Geneva, Switzerland" />
+            <span class="holiday-tag">Lakeview Comfort Lodge</span>
+          </div>
+          <div class="holiday-info">
+            <h3>Geneva, Switzerland</h3>
+            <p>City Centre, Geneva</p>
+            <div class="reviews">
+              <img src="./assets/images/tripadvisor.png" alt="reviews" />
+              <span>1,964 reviews</span>
+            </div>
+            <div class="price">
+              <del>£440</del> <strong>£375 pp</strong>
+            </div>
+            <div class="holiday-bottom">
+              <span class="discount-badge">Save 14%</span>
+              <a href="getvisanow.html" class="btn">See Availability</a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- CARD 2 -->
-      <div class="holiday-card">
-        <div class="holiday-image">
-          <span class="tag">Boutique City Hotel</span>
-          <img src="./assets/images/France.jpg" alt="Paris, France" />
-        </div>
-        <div class="holiday-info">
-          <div class="stars">★★★★☆</div>
-          <h3>Paris, France</h3>
-          <p>Montmartre, Paris</p>
-          <div class="reviews">
-            <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-            <span>3,842 reviews</span>
-          </div>
-          <div class="price">
-            <del>£395</del>
-            <strong>£325 pp</strong>
-          </div>
-          <div class="holiday-buttons">
-            <span class="discount">Save 18%</span>
-            <a href="getvisanow.html" class="btn">See Availability</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="holiday-card">
-        <div class="holiday-image">
-          <span class="tag">Historic Canal-Side Guesthouse</span>
-          <img src="./assets/images/Italy.jpg" alt="Venice, Italy" />
-        </div>
-        <div class="holiday-info">
-          <div class="stars">★★★★☆</div>
-          <h3>Venice, Italy</h3>
-          <p>Cannaregio, Venice</p>
-          <div class="reviews">
-            <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-            <span>2,607 reviews</span>
-          </div>
-          <div class="price">
-            <del>£370</del>
-            <strong>£295 pp</strong>
-          </div>
-          <div class="holiday-buttons">
-            <span class="discount">Save 20%</span>
-            <a href="getvisanow.html" class="btn">See Availability</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 4 -->
-      <div class="holiday-card">
-        <div class="holiday-image">
-          <span class="tag">Stylish Urban Hotel</span>
-          <img src="./assets/images/Barcelona.jpg" alt="Barcelona, Spain" />
-        </div>
-        <div class="holiday-info">
-          <div class="stars">★★★★☆</div>
-          <h3>Barcelona, Spain</h3>
-          <p>Gothic Quarter, Barcelona</p>
-          <div class="reviews">
-            <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-            <span>3,456 reviews</span>
-          </div>
-          <div class="price">
-            <del>£390</del>
-            <strong>£329 pp</strong>
-          </div>
-          <div class="holiday-buttons">
-            <span class="discount">Save 16%</span>
-            <a href="getvisanow.html" class="btn">See Availability</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 5 -->
-      <div class="holiday-card">
-        <div class="holiday-image">
-          <span class="tag">Charming Canal House</span>
-          <img src="./assets/images/Netherlands.png" alt="Amsterdam, Netherlands" />
-        </div>
-        <div class="holiday-info">
-          <div class="stars">★★★★☆</div>
-          <h3>Amsterdam, Netherlands</h3>
-          <p>Jordaan, Amsterdam</p>
-          <div class="reviews">
-            <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-            <span>2,754 reviews</span>
-          </div>
-          <div class="price">
-            <del>£360</del>
-            <strong>£285 pp</strong>
-          </div>
-          <div class="holiday-buttons">
-            <span class="discount">Save 21%</span>
-            <a href="getvisanow.html" class="btn">See Availability</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 6 -->
-      <div class="holiday-card">
-        <div class="holiday-image">
-          <span class="tag">Cozy City Hotel</span>
-          <img src="./assets/images/Switzerland.png" alt="Geneva, Switzerland" />
-        </div>
-        <div class="holiday-info">
-          <div class="stars">★★★★☆</div>
-          <h3>Geneva, Switzerland</h3>
-          <p>Near Lake Geneva</p>
-          <div class="reviews">
-            <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-            <span>2,198 reviews</span>
-          </div>
-          <div class="price">
-            <del>£415</del>
-            <strong>£349 pp</strong>
-          </div>
-          <div class="holiday-buttons">
-            <span class="discount">Save 16%</span>
-            <a href="getvisanow.html" class="btn">See Availability</a>
-          </div>
-        </div>
-      </div>
-
+      <button class="holiday-nav holiday-next" onclick="scrollHolidaySlider(1)">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
     </div>
-    <button class="holiday-next">&#10095;</button>
   </div>
 </section>
+
 
 <!-- 
   - #VISA PACKAGES
