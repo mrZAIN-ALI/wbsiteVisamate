@@ -3227,3 +3227,174 @@ html, body {
 .deal-subtitle {
   margin-bottom: 1.2em; /* or use px, e.g., 24px */
 }
+
+
+
+/* Style for holday package section */
+/* Holiday Packages Section */
+.holiday-packages {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.holiday-packages .section-title {
+  color: var(--bright-navy-blue);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.holiday-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.holiday-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.holiday-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.holiday-card {
+  flex: 0 0 31%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: left;
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
+}
+
+.holiday-card.visible {
+  opacity: 1;
+}
+
+.holiday-image {
+  position: relative;
+}
+
+.holiday-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.holiday-image .tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--bright-navy-blue);
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+.holiday-info {
+  padding: 20px;
+}
+
+.holiday-info h3 {
+  font-size: 1.2rem;
+  color: var(--oxford-blue);
+  margin: 10px 0 5px;
+}
+
+.holiday-info p {
+  font-size: 0.9rem;
+  color: var(--black-coral);
+  margin-bottom: 10px;
+}
+
+.holiday-info .reviews {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.holiday-info .reviews img {
+  width: 18px;
+  height: 18px;
+}
+
+.holiday-info .price {
+  margin: 8px 0;
+}
+
+.holiday-info .price del {
+  color: var(--spanish-gray);
+  font-size: 0.9rem;
+}
+
+.holiday-info .price strong {
+  color: var(--bright-navy-blue);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.holiday-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.holiday-buttons .discount {
+  background: #ff4d4d;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.holiday-buttons .btn {
+  background: var(--bright-navy-blue);
+  color: white;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.holiday-prev,
+.holiday-next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: white;
+  color: var(--oxford-blue);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.holiday-prev { left: 0; }
+.holiday-next { right: 0; }
+
+@keyframes slideInRight {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .holiday-card { flex: 0 0 45%; }
+}
+
+@media (max-width: 768px) {
+  .holiday-card { flex: 0 0 80%; }
+}

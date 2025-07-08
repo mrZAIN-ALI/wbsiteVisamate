@@ -312,6 +312,22 @@ function setupSectionReveal() {
   reveals.forEach(sec => observer.observe(sec));
 }
 
+// HOLIDAY SERVICES SCROLLER
+function setupHolidaySlider() {
+  const holidayScrollContainer = document.getElementById("holidayCards");
+  const prevBtn = document.querySelector(".holiday-prev");
+  const nextBtn = document.querySelector(".holiday-next");
+
+  if (!holidayScrollContainer || !prevBtn || !nextBtn) return;
+
+  prevBtn.addEventListener("click", () => {
+    holidayScrollContainer.scrollBy({ left: -350, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    holidayScrollContainer.scrollBy({ left: 350, behavior: "smooth" });
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   setupGoTopButton();
@@ -322,5 +338,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNewsletterForm();
   loadPopupPartial();
   setupSectionReveal();
+  setupHolidaySlider();
 });
 
