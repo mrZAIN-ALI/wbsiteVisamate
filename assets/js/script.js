@@ -267,7 +267,7 @@ function loadPopupPartial() {
   const currentPage = window.location.pathname.split("/").pop();
 
   // Skip popup on specific pages
-  const excludedPages = ["getvisanow.html", "inquire-us.html"];
+  const excludedPages = ["getvisanow.html", "inquire-us.html", "seeavailability.html"];
   if (excludedPages.includes(currentPage)) return;
 
   const container = document.getElementById("popup-container");

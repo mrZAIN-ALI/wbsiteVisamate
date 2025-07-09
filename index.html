@@ -1,723 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visamate - Travel Agency</title>
 
-    <!-- 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visamate - Travel Agency</title>
+
+  <!-- 
     - favicon
   -->
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
 
-    <!-- 
+  <!-- 
     - custom css link
   -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
 
-<!-- Then only the page‐specific file: -->
-<!-- on home.html -->
-    <!-- 
+  <!-- Then only the page‐specific file: -->
+  <!-- on home.html -->
+  <!-- 
     - google font link
   -->
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
-<!-- your custom style.css (with the CSS snippet below appended) -->
+  <!-- your custom style.css (with the CSS snippet below appended) -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+</head>
 
 
-  <body id="top">
-    <!-- WhatsApp & Phone Dock -->
-<div class="floating-contact">
-<!-- Replace -->
-<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
-  <ion-icon name="logo-whatsapp"></ion-icon>
-</a>
-<a id="phone-link" class="phone-dock" aria-label="Call us">
-  <ion-icon name="call-outline"></ion-icon>
-  <span id="phone-number"></span>
-</a>
+<body id="top">
+  <!-- WhatsApp & Phone Dock -->
+  <div class="floating-contact">
+    <!-- Replace -->
+    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
+    <a id="phone-link" class="phone-dock" aria-label="Call us">
+      <ion-icon name="call-outline"></ion-icon>
+      <span id="phone-number"></span>
+    </a>
 
-</div>
-     <!-- assets/partials/header.html -->
-<header class="header" data-header>
-  <!-- Overlay for mobile menu -->
-  <div class="overlay" data-overlay></div>
-  
-  <div class="header-top">
-    <div class="container">
-      <a href="tel:02046280133" class="helpline-box">
-        <div class="icon-box">
-          <ion-icon name="call-outline"></ion-icon>
-        </div>
-        <div class="wrapper">
-          <p class="helpline-title">For Further Inquiries :</p>
-          <p class="helpline-number" id="helpline-number"></p>
-        </div>
-      </a>
-      <a href="index.html" class="logo">
-        <img src="./assets/images/logo.svg" alt="Visamate logo" />
-      </a>
-      <div class="header-btn-group">
-        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-          <ion-icon name="menu-outline"></ion-icon>
-        </button>
-      </div>
-    </div>
   </div>
-  <div class="header-bottom">
-    <div class="container">
-<ul class="social-list">
-  <!-- 1) Favicon: hidden by default, shown when header is stuck -->
-  <li class="social-item favicon-icon">
-    <a href="index.html" class="social-link" aria-label="Home">
-      <img src="./favicon.svg" alt="Visamate logo" style="height:24px; width:auto;" />
-    </a>
-  </li>
+  <!-- assets/partials/header.html -->
+  <header class="header" data-header>
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" data-overlay></div>
 
-  <!-- 2) Instagram -->
-  <li class="social-item">
-    <a id="social-instagram" class="social-link" target="_blank" aria-label="Instagram">
-      <ion-icon name="logo-instagram"></ion-icon>
-    </a>
-  </li>
-
-  <!-- 3) Facebook -->
-  <li class="social-item">
-    <a id="social-facebook" class="social-link" target="_blank" aria-label="Facebook">
-      <ion-icon name="logo-facebook"></ion-icon>
-    </a>
-  </li>
-</ul>
-
-      <nav class="navbar" data-navbar>
-        <div class="navbar-top">
-          <a href="index.html" class="logo">
-            <img src="./assets/images/logo.svg" alt="Visamate logo" />
-          </a>
-          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
-            <ion-icon name="close-outline"></ion-icon>
+    <div class="header-top">
+      <div class="container">
+        <a href="tel:02046280133" class="helpline-box">
+          <div class="icon-box">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
+          <div class="wrapper">
+            <p class="helpline-title">For Further Inquiries :</p>
+            <p class="helpline-number" id="helpline-number"></p>
+          </div>
+        </a>
+        <a href="index.html" class="logo">
+          <img src="./assets/images/logo.svg" alt="Visamate logo" />
+        </a>
+        <div class="header-btn-group">
+          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+            <ion-icon name="menu-outline"></ion-icon>
           </button>
         </div>
-        <ul class="navbar-list">
-          <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
-          <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
-          <li><a href="#package" class="navbar-link" data-nav-link>Holiday Packages</a></li>
-          <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
-          <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
-            <button id="moreDropdownBtn" class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-              MORE <ion-icon name="chevron-down-outline"></ion-icon>
-            </button>
-            <ul class="dropdown-menu" id="moreDropdownMenu" aria-labelledby="moreDropdownBtn">
-              <li><a href="refund-policy.html">REFUND POLICY</a></li>
-              <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
-              <li><a href="contact-us.html">CONTACT US</a></li>
-            </ul>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="container">
+        <ul class="social-list">
+          <!-- 1) Favicon: hidden by default, shown when header is stuck -->
+          <li class="social-item favicon-icon">
+            <a href="index.html" class="social-link" aria-label="Home">
+              <img src="./favicon.svg" alt="Visamate logo" style="height:24px; width:auto;" />
+            </a>
+          </li>
+
+          <!-- 2) Instagram -->
+          <li class="social-item">
+            <a id="social-instagram" class="social-link" target="_blank" aria-label="Instagram">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <!-- 3) Facebook -->
+          <li class="social-item">
+            <a id="social-facebook" class="social-link" target="_blank" aria-label="Facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
           </li>
         </ul>
-      </nav>
-      <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/logo.svg" alt="Visamate logo" />
+            </a>
+            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <ul class="navbar-list">
+            <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
+            <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
+            <li><a href="#holiday-packages" class="navbar-link" data-nav-link>Holiday Packages</a></li>
+            <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
+            <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
+              <button id="moreDropdownBtn" class="dropdown-toggle" type="button" aria-haspopup="true"
+                aria-expanded="false">
+                MORE <ion-icon name="chevron-down-outline"></ion-icon>
+              </button>
+              <ul class="dropdown-menu" id="moreDropdownMenu" aria-labelledby="moreDropdownBtn">
+                <li><a href="refund-policy.html">REFUND POLICY</a></li>
+                <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+                <li><a href="contact-us.html">CONTACT US</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
 
 
-    <main>
-      <article>
-        <!-- 
+  <main>
+    <article>
+      <!-- 
         - #HERO
       -->
 
-        <section class="hero reveal-section" id="home">
-          <div class="container">
-            <h2 class="h1 hero-title">From here to anywhere</h2>
+      <section class="hero reveal-section" id="home">
+        <div class="container">
+          <h2 class="h1 hero-title">From here to anywhere</h2>
 
-    <p class="hero-text">Your gateway to Europe starts here. Visamate makes Schengen visas easy, so you can travel without worries. Trusted by travellers for fast and reliable visa services worldwide</p>
+          <p class="hero-text">Your gateway to Europe starts here. Visamate makes Schengen visas easy, so you can travel
+            without worries. Trusted by travellers for fast and reliable visa services worldwide</p>
 
 
-            <div class="btn-group">
-              <button class="btn btn-primary" onclick="window.location.href='visa-services.html'">Learn more</button>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="window.location.href='visa-services.html'">Learn more</button>
 
-              <button class="btn btn-secondary" onclick="window.location.href='getvisanow.html'">Apply now</button>
-            </div>
+            <button class="btn btn-secondary" onclick="window.location.href='getvisanow.html'">Apply now</button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 
+      <!-- 
         - #TOUR SEARCH
       -->
 
 
 
-<section class="inquire-section">
-  <div class="inquire-card inquire-forms">
+      <section class="inquire-section">
+        <div class="inquire-card inquire-forms">
 
-    <!-- Tabs -->
-    <div class="inquire-tabs">
-      <button class="inquire-tab-btn active" data-tab="visa">Visa Services</button>
-      <button class="inquire-tab-btn" data-tab="flights">Flights</button>
-    </div>
+          <!-- Tabs -->
+          <div class="inquire-tabs">
+            <button class="inquire-tab-btn active" data-tab="visa">Visa Services</button>
+            <button class="inquire-tab-btn" data-tab="flights">Flights</button>
+          </div>
 
-    <!-- Visa Form -->
-    <form id="visa-form" class="inquire-form-tab active"
-          action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
-          method="POST" novalidate>
-      <!-- FormSubmit hidden fields -->
-      <input type="hidden" name="_subject"   value="Visamate Visa Service Inquiry"/>
-      <input type="hidden" name="_template"  value="table"/>
-      <input type="hidden" name="_captcha"   value="false"/>
+          <!-- Visa Form -->
+          <form id="visa-form" class="inquire-form-tab active"
+            action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf" method="POST" novalidate>
+            <!-- FormSubmit hidden fields -->
+            <input type="hidden" name="_subject" value="Visamate Visa Service Inquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
 
-      <div class="inquire-form-grid">
-        <!-- 6 fields, 2 rows × 3 cols -->
-        <div class="inquire-field-group">
-          <label for="inqu-nat">Nationality *</label>
-          <input id="inqu-nat" name="Nationality" type="text" required placeholder="Enter Your Nationality">
-          <div class="error-message">Please enter your nationality</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="inqu-time">Best Time to Contact You *</label>
-          <input id="inqu-time" name="Best Time to Contact You" type="text" required placeholder="Time">
-          <div class="error-message">Please specify best time</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="inqu-name">Name *</label>
-          <input id="inqu-name" name="Name" type="text" required placeholder="Enter Your Full Name">
-          <div class="error-message">Please enter your name</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="inqu-phone">Contact Number *</label>
-          <input id="inqu-phone" name="Phone" type="tel" required placeholder="Enter Your Contact Number">
-          <div class="error-message">Please enter a valid number</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="inqu-email">Email *</label>
-          <input id="inqu-email" name="Email" type="email" required placeholder="Enter Your Email">
-          <div class="error-message">Please enter a valid email</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="inqu-plan">Got Schengen visa before? *</label>
-          <input id="inqu-plan" name="Travel Plan" type="text" required placeholder="Yes/No">
-          <div class="error-message">Please describe your travel plan</div>
-        </div>
-      </div>
-
-      <button type="submit" class="inqu-btn-primary">Send Inquiry</button>
-    </form>
-
-    <!-- Flights Form -->
-    <form id="flights-form" class="inquire-form-tab"
-          action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
-          method="POST" novalidate>
-      <input type="hidden" name="_subject"   value="Visamate Flight Inquiry"/>
-      <input type="hidden" name="_template"  value="table"/>
-      <input type="hidden" name="_captcha"   value="false"/>
-
-      <div class="inquire-form-grid flights-grid">
-        <!-- 9 fields, 3 rows × up to 4 cols -->
-        <div class="inquire-field-group">
-          <label for="fl-dep">Departure *</label>
-          <input id="fl-dep" name="Departure" type="text" required placeholder="City or Airport">
-          <div class="error-message">Enter departure</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-dest">Destination *</label>
-          <input id="fl-dest" name="Destination" type="text" required placeholder="Country or City">
-          <div class="error-message">Enter destination</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-dd">Departure Date *</label>
-          <input id="fl-dd" name="Departure Date" type="date" required>
-          <div class="error-message">Select departure date</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-rr">Return Date</label>
-          <input id="fl-rr" name="Return Date" type="date">
-        </div>
-
-        <div class="inquire-field-group">
-          <label for="fl-name">Full Name *</label>
-          <input id="fl-name" name="Full Name" type="text" required placeholder="Your Name">
-          <div class="error-message">Please enter your name</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-email">Email *</label>
-          <input id="fl-email" name="Email" type="email" required placeholder="you@email.com">
-          <div class="error-message">Please enter a valid email</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-phone">Phone Number *</label>
-          <input id="fl-phone" name="Phone Number" type="tel" required placeholder="+44 7xxx xxx xxx">
-          <div class="error-message">Please enter a valid phone</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-adults">Adults *</label>
-          <input id="fl-adults" name="Adults" type="number" min="1" value="1" required>
-          <div class="error-message">Enter number of adults</div>
-        </div>
-        <div class="inquire-field-group">
-          <label for="fl-children">Children/Infants</label>
-          <input id="fl-children" name="Children" type="number" min="0" value="0">
-        </div>
-      </div>
-
-      <button type="submit" class="inqu-btn-primary">Inquire Now</button>
-    </form>
-
-  </div>
-</section>
-
-<!-- ─── Holiday Packages Section ──────────────────────────────────── -->
-<section id="holiday-packages" class="holiday-packages reveal-section" data-anim="up">
-  <div class="container">
-    <h2 class="h2 section-title">Holiday Packages</h2>
-
-    <!-- Swiper -->
-    <div class="holiday-swiper swiper-container">
-      <div class="swiper-wrapper">
-
-        <!-- Slide 1: Santorini -->
-        <div class="swiper-slide">
-          <div class="holiday-card">
-            <div class="holiday-card__image">
-              <img src="./assets/images/Greece.JPG" alt="Santorini, Greece" />
-              <div class="holiday-card__tag">Seaside Budget Hotel</div>
-            </div>
-            <div class="holiday-card__body">
-              <div class="holiday-card__rating">★★★★☆</div>
-              <h3 class="holiday-card__title">Santorini, Greece</h3>
-              <p class="holiday-card__location">Oia, Santorini, Greek Islands</p>
-              <div class="holiday-card__reviews">
-                <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-                <span>2,317 reviews</span>
+            <div class="inquire-form-grid">
+              <!-- 6 fields, 2 rows × 3 cols -->
+              <div class="inquire-field-group">
+                <label for="inqu-nat">Nationality *</label>
+                <input id="inqu-nat" name="Nationality" type="text" required placeholder="Enter Your Nationality">
+                <div class="error-message">Please enter your nationality</div>
               </div>
-              <div class="holiday-card__pricing">
-                <span class="original-price">£410</span>
-                <span class="discounted-price">£349 pp</span>
+              <div class="inquire-field-group">
+                <label for="inqu-time">Best Time to Contact You *</label>
+                <input id="inqu-time" name="Best Time to Contact You" type="text" required placeholder="Time">
+                <div class="error-message">Please specify best time</div>
               </div>
-              <div class="holiday-card__actions">
-                <span class="holiday-card__save">Save 15%</span>
-                <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+              <div class="inquire-field-group">
+                <label for="inqu-name">Name *</label>
+                <input id="inqu-name" name="Name" type="text" required placeholder="Enter Your Full Name">
+                <div class="error-message">Please enter your name</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="inqu-phone">Contact Number *</label>
+                <input id="inqu-phone" name="Phone" type="tel" required placeholder="Enter Your Contact Number">
+                <div class="error-message">Please enter a valid number</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="inqu-email">Email *</label>
+                <input id="inqu-email" name="Email" type="email" required placeholder="Enter Your Email">
+                <div class="error-message">Please enter a valid email</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="inqu-plan">Got Schengen visa before? *</label>
+                <input id="inqu-plan" name="Travel Plan" type="text" required placeholder="Yes/No">
+                <div class="error-message">Please describe your travel plan</div>
               </div>
             </div>
+
+            <button type="submit" class="inqu-btn-primary">Send Inquiry</button>
+          </form>
+
+          <!-- Flights Form -->
+          <form id="flights-form" class="inquire-form-tab"
+            action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Visamate Flight Inquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+
+            <div class="inquire-form-grid flights-grid">
+              <!-- 9 fields, 3 rows × up to 4 cols -->
+              <div class="inquire-field-group">
+                <label for="fl-dep">Departure *</label>
+                <input id="fl-dep" name="Departure" type="text" required placeholder="City or Airport">
+                <div class="error-message">Enter departure</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-dest">Destination *</label>
+                <input id="fl-dest" name="Destination" type="text" required placeholder="Country or City">
+                <div class="error-message">Enter destination</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-dd">Departure Date *</label>
+                <input id="fl-dd" name="Departure Date" type="date" required>
+                <div class="error-message">Select departure date</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-rr">Return Date</label>
+                <input id="fl-rr" name="Return Date" type="date">
+              </div>
+
+              <div class="inquire-field-group">
+                <label for="fl-name">Full Name *</label>
+                <input id="fl-name" name="Full Name" type="text" required placeholder="Your Name">
+                <div class="error-message">Please enter your name</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-email">Email *</label>
+                <input id="fl-email" name="Email" type="email" required placeholder="you@email.com">
+                <div class="error-message">Please enter a valid email</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-phone">Phone Number *</label>
+                <input id="fl-phone" name="Phone Number" type="tel" required placeholder="+44 7xxx xxx xxx">
+                <div class="error-message">Please enter a valid phone</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-adults">Adults *</label>
+                <input id="fl-adults" name="Adults" type="number" min="1" value="1" required>
+                <div class="error-message">Enter number of adults</div>
+              </div>
+              <div class="inquire-field-group">
+                <label for="fl-children">Children/Infants</label>
+                <input id="fl-children" name="Children" type="number" min="0" value="0">
+              </div>
+            </div>
+
+            <button type="submit" class="inqu-btn-primary">Inquire Now</button>
+          </form>
+
+        </div>
+      </section>
+
+      <!-- ─── Holiday Packages Section ──────────────────────────────────── -->
+      <section id="holiday-packages" class="holiday-packages reveal-section" data-anim="up">
+        <div class="container">
+          <h2 class="h2 section-title">Holiday Packages</h2>
+
+          <!-- Swiper -->
+          <div class="holiday-swiper swiper-container">
+            <div class="swiper-wrapper">
+
+              <!-- Slide 1: Santorini -->
+              <div class="swiper-slide">
+                <div class="holiday-card">
+                  <div class="holiday-card__image">
+                    <img src="./assets/images/Greece.JPG" alt="Santorini, Greece" />
+                    <div class="holiday-card__tag">Seaside Budget Hotel</div>
+                  </div>
+                  <div class="holiday-card__body">
+                    <div class="holiday-card__rating">★★★★☆</div>
+                    <h3 class="holiday-card__title">Santorini, Greece</h3>
+                    <p class="holiday-card__location">Oia, Santorini, Greek Islands</p>
+                    <div class="holiday-card__reviews">
+                      <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
+                      <span>2,317 reviews</span>
+                    </div>
+                    <div class="holiday-card__pricing">
+                      <span class="original-price">£410</span>
+                      <span class="discounted-price">£349 pp</span>
+                    </div>
+                    <div class="holiday-card__actions">
+                      <span class="holiday-card__save">Save 15%</span>
+                      <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: Paris -->
+              <div class="swiper-slide">
+                <div class="holiday-card">
+                  <div class="holiday-card__image">
+                    <img src="./assets/images/france.jpg" alt="Paris, France" />
+                    <div class="holiday-card__tag">Boutique City Hotel</div>
+                  </div>
+                  <div class="holiday-card__body">
+                    <div class="holiday-card__rating">★★★★☆</div>
+                    <h3 class="holiday-card__title">Paris, France</h3>
+                    <p class="holiday-card__location">Montmartre, Paris</p>
+                    <div class="holiday-card__reviews">
+                      <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
+                      <span>3,842 reviews</span>
+                    </div>
+                    <div class="holiday-card__pricing">
+                      <span class="original-price">£395</span>
+                      <span class="discounted-price">£325 pp</span>
+                    </div>
+                    <div class="holiday-card__actions">
+                      <span class="holiday-card__save">Save 18%</span>
+                      <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Venice -->
+              <div class="swiper-slide">
+                <div class="holiday-card">
+                  <div class="holiday-card__image">
+                    <img src="./assets/images/Italy.JPG" alt="Venice, Italy" />
+                    <div class="holiday-card__tag">Historic Canal-Side Guesthouse</div>
+                  </div>
+                  <div class="holiday-card__body">
+                    <div class="holiday-card__rating">★★★★☆</div>
+                    <h3 class="holiday-card__title">Venice, Italy</h3>
+                    <p class="holiday-card__location">Cannaregio, Venice</p>
+                    <div class="holiday-card__reviews">
+                      <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
+                      <span>2,607 reviews</span>
+                    </div>
+                    <div class="holiday-card__pricing">
+                      <span class="original-price">£370</span>
+                      <span class="discounted-price">£295 pp</span>
+                    </div>
+                    <div class="holiday-card__actions">
+                      <span class="holiday-card__save">Save 20%</span>
+                      <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Barcelona -->
+              <div class="swiper-slide">
+                <div class="holiday-card">
+                  <div class="holiday-card__image">
+                    <img src="./assets/images/barcelona.jpg" alt="Barcelona, Spain" />
+                    <div class="holiday-card__tag">Stylish Urban Hotel</div>
+                  </div>
+                  <div class="holiday-card__body">
+                    <div class="holiday-card__rating">★★★★☆</div>
+                    <h3 class="holiday-card__title">Barcelona, Spain</h3>
+                    <p class="holiday-card__location">Gothic Quarter, Barcelona</p>
+                    <div class="holiday-card__reviews">
+                      <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
+                      <span>3,456 reviews</span>
+                    </div>
+                    <div class="holiday-card__pricing">
+                      <span class="original-price">£390</span>
+                      <span class="discounted-price">£329 pp</span>
+                    </div>
+                    <div class="holiday-card__actions">
+                      <span class="holiday-card__save">Save 16%</span>
+                      <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5: Amsterdam -->
+              <div class="swiper-slide">
+                <div class="holiday-card">
+                  <div class="holiday-card__image">
+                    <img src="./assets/images/Netherlands.png" alt="Amsterdam, Netherlands" />
+                    <div class="holiday-card__tag">Charming Canal House</div>
+                  </div>
+                  <div class="holiday-card__body">
+                    <div class="holiday-card__rating">★★★★☆</div>
+                    <h3 class="holiday-card__title">Amsterdam, Netherlands</h3>
+                    <p class="holiday-card__location">Jordaan, Amsterdam</p>
+                    <div class="holiday-card__reviews">
+                      <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
+                      <span>2,754 reviews</span>
+                    </div>
+                    <div class="holiday-card__pricing">
+                      <span class="original-price">£360</span>
+                      <span class="discounted-price">£285 pp</span>
+                    </div>
+                    <div class="holiday-card__actions">
+                      <span class="holiday-card__save">Save 21%</span>
+                      <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6: Geneva -->
+              <div class="swiper-slide">
+                <div class="holiday-card">
+                  <div class="holiday-card__image">
+                    <img src="./assets/images/Switzwerland.png" alt="Geneva, Switzerland" />
+                    <div class="holiday-card__tag">Lakeview Comfort Lodge</div>
+                  </div>
+                  <div class="holiday-card__body">
+                    <div class="holiday-card__rating">★★★★☆</div>
+                    <h3 class="holiday-card__title">Geneva, Switzerland</h3>
+                    <p class="holiday-card__location">Lake Geneva Shore</p>
+                    <div class="holiday-card__reviews">
+                      <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
+                      <span>2,198 reviews</span>
+                    </div>
+                    <div class="holiday-card__pricing">
+                      <span class="original-price">£415</span>
+                      <span class="discounted-price">£349 pp</span>
+                    </div>
+                    <div class="holiday-card__actions">
+                      <span class="holiday-card__save">Save 16%</span>
+                      <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- navigation -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
         </div>
+      </section>
 
-        <!-- Slide 2: Paris -->
-        <div class="swiper-slide">
-          <div class="holiday-card">
-            <div class="holiday-card__image">
-              <img src="./assets/images/france.jpg" alt="Paris, France" />
-              <div class="holiday-card__tag">Boutique City Hotel</div>
-            </div>
-            <div class="holiday-card__body">
-              <div class="holiday-card__rating">★★★★☆</div>
-              <h3 class="holiday-card__title">Paris, France</h3>
-              <p class="holiday-card__location">Montmartre, Paris</p>
-              <div class="holiday-card__reviews">
-                <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-                <span>3,842 reviews</span>
-              </div>
-              <div class="holiday-card__pricing">
-                <span class="original-price">£395</span>
-                <span class="discounted-price">£325 pp</span>
-              </div>
-              <div class="holiday-card__actions">
-                <span class="holiday-card__save">Save 18%</span>
-                <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3: Venice -->
-        <div class="swiper-slide">
-          <div class="holiday-card">
-            <div class="holiday-card__image">
-              <img src="./assets/images/Italy.JPG" alt="Venice, Italy" />
-              <div class="holiday-card__tag">Historic Canal-Side Guesthouse</div>
-            </div>
-            <div class="holiday-card__body">
-              <div class="holiday-card__rating">★★★★☆</div>
-              <h3 class="holiday-card__title">Venice, Italy</h3>
-              <p class="holiday-card__location">Cannaregio, Venice</p>
-              <div class="holiday-card__reviews">
-                <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-                <span>2,607 reviews</span>
-              </div>
-              <div class="holiday-card__pricing">
-                <span class="original-price">£370</span>
-                <span class="discounted-price">£295 pp</span>
-              </div>
-              <div class="holiday-card__actions">
-                <span class="holiday-card__save">Save 20%</span>
-                <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 4: Barcelona -->
-        <div class="swiper-slide">
-          <div class="holiday-card">
-            <div class="holiday-card__image">
-              <img src="./assets/images/barcelona.jpg" alt="Barcelona, Spain" />
-              <div class="holiday-card__tag">Stylish Urban Hotel</div>
-            </div>
-            <div class="holiday-card__body">
-              <div class="holiday-card__rating">★★★★☆</div>
-              <h3 class="holiday-card__title">Barcelona, Spain</h3>
-              <p class="holiday-card__location">Gothic Quarter, Barcelona</p>
-              <div class="holiday-card__reviews">
-                <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-                <span>3,456 reviews</span>
-              </div>
-              <div class="holiday-card__pricing">
-                <span class="original-price">£390</span>
-                <span class="discounted-price">£329 pp</span>
-              </div>
-              <div class="holiday-card__actions">
-                <span class="holiday-card__save">Save 16%</span>
-                <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 5: Amsterdam -->
-        <div class="swiper-slide">
-          <div class="holiday-card">
-            <div class="holiday-card__image">
-              <img src="./assets/images/Netherlands.png" alt="Amsterdam, Netherlands" />
-              <div class="holiday-card__tag">Charming Canal House</div>
-            </div>
-            <div class="holiday-card__body">
-              <div class="holiday-card__rating">★★★★☆</div>
-              <h3 class="holiday-card__title">Amsterdam, Netherlands</h3>
-              <p class="holiday-card__location">Jordaan, Amsterdam</p>
-              <div class="holiday-card__reviews">
-                <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-                <span>2,754 reviews</span>
-              </div>
-              <div class="holiday-card__pricing">
-                <span class="original-price">£360</span>
-                <span class="discounted-price">£285 pp</span>
-              </div>
-              <div class="holiday-card__actions">
-                <span class="holiday-card__save">Save 21%</span>
-                <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 6: Geneva -->
-        <div class="swiper-slide">
-          <div class="holiday-card">
-            <div class="holiday-card__image">
-              <img src="./assets/images/Switzwerland.png" alt="Geneva, Switzerland" />
-              <div class="holiday-card__tag">Lakeview Comfort Lodge</div>
-            </div>
-            <div class="holiday-card__body">
-              <div class="holiday-card__rating">★★★★☆</div>
-              <h3 class="holiday-card__title">Geneva, Switzerland</h3>
-              <p class="holiday-card__location">Lake Geneva Shore</p>
-              <div class="holiday-card__reviews">
-                <img src="./assets/images/tripadvisor.png" alt="Tripadvisor" />
-                <span>2,198 reviews</span>
-              </div>
-              <div class="holiday-card__pricing">
-                <span class="original-price">£415</span>
-                <span class="discounted-price">£349 pp</span>
-              </div>
-              <div class="holiday-card__actions">
-                <span class="holiday-card__save">Save 16%</span>
-                <a href="seeavailability.html" class="holiday-card__btn">See Availability</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- navigation -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 
+      <!-- 
   - #VISA PACKAGES
 -->
-<section id="package" class="package reveal-section" data-anim="right">
-  <div class="container">
-    <p class="section-subtitle">Visa Services</p>
-    <h2 class="h2 section-title">Choose Your Visa Service</h2>
-    <p class="section-text">
-      From first consultation to final approval, our flexible visa packages are crafted to suit your plans, pace, and priorities — so you can focus on where you're going, not the paperwork.
-    </p>
+      <section id="package" class="package reveal-section" data-anim="right">
+        <div class="container">
+          <p class="section-subtitle">Visa Services</p>
+          <h2 class="h2 section-title">Choose Your Visa Service</h2>
+          <p class="section-text">
+            From first consultation to final approval, our flexible visa packages are crafted to suit your plans, pace,
+            and priorities — so you can focus on where you're going, not the paperwork.
+          </p>
 
-    <div class="package-cards">
-      <!-- Standard Service Card -->
-      <div class="package-card">
-        <img
-          src="./assets/images/packege-1.jpg"
-          alt="Standard Service"
-          class="package-card__img"
-        />
-        <div class="package-card__body">
-          <h3 class="package-card__title">Standard Service</h3>
-          <p class="package-card__text">
-            Smart, steady, and stress-free – your visa, done right and on time.
-          </p>
-          <a href="getvisanow.html" class="package-card__btn">Apply Now</a>
-        </div>
-      </div>
+          <div class="package-cards">
+            <!-- Standard Service Card -->
+            <div class="package-card">
+              <img src="./assets/images/packege-1.jpg" alt="Standard Service" class="package-card__img" />
+              <div class="package-card__body">
+                <h3 class="package-card__title">Standard Service</h3>
+                <p class="package-card__text">
+                  Smart, steady, and stress-free – your visa, done right and on time.
+                </p>
+                <a href="getvisanow.html" class="package-card__btn">Apply Now</a>
+              </div>
+            </div>
 
-      <!-- Premium Service Card -->
-      <div class="package-card package-card premium">
-        <img
-          src="./assets/images/packege-3.jpg"
-          alt="Premium Service"
-          class="package-card__img"
-        />
-        <div class="package-card__body">
-          <h3 class="package-card__title">Premium Service</h3>
-          <p class="package-card__text">
-            Fast-track to your dream destination – priority processing with white-glove support.
-          </p>
-          <a href="getvisanow.html" class="package-card__btn">Apply Now</a>
+            <!-- Premium Service Card -->
+            <div class="package-card package-card premium">
+              <img src="./assets/images/packege-3.jpg" alt="Premium Service" class="package-card__img" />
+              <div class="package-card__body">
+                <h3 class="package-card__title">Premium Service</h3>
+                <p class="package-card__text">
+                  Fast-track to your dream destination – priority processing with white-glove support.
+                </p>
+                <a href="getvisanow.html" class="package-card__btn">Apply Now</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- ============================= -->
-<!-- Top Values For You! Section  -->
-<!-- ============================= -->
-<section id="values" class="values-section reveal-section" data-anim="scale">
-  <div class="container">
-    <h2 class="values-title">TOP VALUES FOR YOU!</h2>
-    <p class="values-subtitle">Our best perks, hand-picked for your perfect trip.</p>
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-card__shadow"></div>
-        <div class="value-card__content">
-          <img src="./assets/images/travel.png" alt="" class="value-card__icon">
-          <h3 class="value-card__heading">Cheapest Holidays Packages</h3>
-          <p class="value-card__text">
-            The cheapest holiday packages for unforgettable European adventures!
-          </p>
+      <!-- ============================= -->
+      <!-- Top Values For You! Section  -->
+      <!-- ============================= -->
+      <section id="values" class="values-section reveal-section" data-anim="scale">
+        <div class="container">
+          <h2 class="values-title">TOP VALUES FOR YOU!</h2>
+          <p class="values-subtitle">Our best perks, hand-picked for your perfect trip.</p>
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-card__shadow"></div>
+              <div class="value-card__content">
+                <img src="./assets/images/travel.png" alt="" class="value-card__icon">
+                <h3 class="value-card__heading">Cheapest Holidays Packages</h3>
+                <p class="value-card__text">
+                  The cheapest holiday packages for unforgettable European adventures!
+                </p>
+              </div>
+            </div>
+            <div class="value-card">
+              <div class="value-card__shadow"></div>
+              <div class="value-card__content">
+                <img src="./assets/images/travel-luggage.png" alt="" class="value-card__icon">
+                <h3 class="value-card__heading">Cheapest Air Tickets</h3>
+                <p class="value-card__text">
+                  Discover unbeatable deals on the cheapest air tickets with Visamate,
+                  your trusted partner for seamless European travel!
+                </p>
+              </div>
+            </div>
+            <div class="value-card">
+              <div class="value-card__shadow"></div>
+              <div class="value-card__content">
+                <img src="./assets/images/visa.png" alt="" class="value-card__icon">
+                <h3 class="value-card__heading">Visa Document Consultation</h3>
+                <p class="value-card__text">
+                  Get expert guidance on visa document consultation with Visamate
+                  for hassle-free European travel!
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="value-card">
-        <div class="value-card__shadow"></div>
-        <div class="value-card__content">
-          <img src="./assets/images/travel-luggage.png" alt="" class="value-card__icon">
-          <h3 class="value-card__heading">Cheapest Air Tickets</h3>
-          <p class="value-card__text">
-            Discover unbeatable deals on the cheapest air tickets with Visamate, 
-            your trusted partner for seamless European travel!
-          </p>
-        </div>
-      </div>
-      <div class="value-card">
-        <div class="value-card__shadow"></div>
-        <div class="value-card__content">
-          <img src="./assets/images/visa.png" alt="" class="value-card__icon">
-          <h3 class="value-card__heading">Visa Document Consultation</h3>
-          <p class="value-card__text">
-            Get expert guidance on visa document consultation with Visamate 
-            for hassle-free European travel!
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- 
+      </section>
+      <!-- 
   - #CTA (Visamate)
 -->
-<section class="cta reveal-section" id="contact" data-anim="up">
-  <div class="container">
-    <div class="cta-content">
-      <p class="section-subtitle">Need a Visa?</p>
+      <section class="cta reveal-section" id="contact" data-anim="up">
+        <div class="container">
+          <div class="cta-content">
+            <p class="section-subtitle">Need a Visa?</p>
 
-      <h2 class="h2 section-title">
-        Let Visamate Help You Get There!
-      </h2>
+            <h2 class="h2 section-title">
+              Let Visamate Help You Get There!
+            </h2>
 
-      <p class="section-text">
-      No matter where you're headed, Visamate makes getting your visa simple and stress-free. Let our experts handle the process so you can focus on planning your journey  
-      </p>
-    </div>
+            <p class="section-text">
+              No matter where you're headed, Visamate makes getting your visa simple and stress-free. Let our experts
+              handle the process so you can focus on planning your journey
+            </p>
+          </div>
 
-    <button class="btn btn-secondary" onclick="window.location.href='getvisanow.html'">Get Free Consultation</button>
-  </div>
-</section>
+          <button class="btn btn-secondary" onclick="window.location.href='getvisanow.html'">Get Free
+            Consultation</button>
+        </div>
+      </section>
 
-<div id="popup-container"></div>
+      <div id="popup-container"></div>
 
-<!-- 
+      <!-- 
   - #FOOTER
   -->
-  <footer class="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img src="./assets/images/logo.svg" alt="Visamate logo" />
-            </a>
-        <p class="footer-text">
-            Visamate is your trusted partner for visa assistance. We simplify the process and guide you every step of the way. Start your journey with confidence.
-        </p>
+      <footer class="footer">
+        <div class="footer-top">
+          <div class="container">
+            <div class="footer-brand">
+              <a href="#" class="logo">
+                <img src="./assets/images/logo.svg" alt="Visamate logo" />
+              </a>
+              <p class="footer-text">
+                Visamate is your trusted partner for visa assistance. We simplify the process and guide you every step
+                of the way. Start your journey with confidence.
+              </p>
+
+            </div>
+
+            <div class="footer-contact">
+              <h4 class="contact-title">Contact Us</h4>
+
+              <p class="contact-text">Feel free to contact and reach us !!</p>
+
+              <ul>
+                <li class="contact-item">
+                  <ion-icon name="call-outline"></ion-icon>
+
+                  <a id="footer-phone" class="contact-link"></a>
+                </li>
+
+                <li class="contact-item">
+                  <ion-icon name="mail-outline"></ion-icon>
+
+                  <a id="footer-email" class="contact-link"></a>
+
+                </li>
+                <li class="contact-item">
+                  <ion-icon name="location-outline"></ion-icon>
+                  <address id="footer-address">Loading address...</address>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="footer-form">
+              <p class="form-text">
+                Subscribe to our newsletter for more updates & news!
+              </p>
+
+              <form id="newsletter-form" class="form-wrapper" novalidate
+                action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf" method="POST">
+                <!-- FormSubmit required fields -->
+                <input type="hidden" name="_subject" value="New Newsletter Signup" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="text" name="_honey" style="display:none" />
+
+                <div class="newsletter-fields">
+                  <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required />
+                  <button type="submit" id="newsletter-submit">Subscribe</button>
+                </div>
+
+                <span class="error-message" id="newsletter-error"></span>
+              </form>
+            </div>
 
           </div>
-
-          <div class="footer-contact">
-            <h4 class="contact-title">Contact Us</h4>
-
-            <p class="contact-text">Feel free to contact and reach us !!</p>
-
-            <ul>
-              <li class="contact-item">
-                <ion-icon name="call-outline"></ion-icon>
-
-              <a id="footer-phone" class="contact-link"></a>
-              </li>
-
-              <li class="contact-item">
-                <ion-icon name="mail-outline"></ion-icon>
-
-<a id="footer-email" class="contact-link"></a>
-
-              </li>
-<li class="contact-item">
-  <ion-icon name="location-outline"></ion-icon>
-  <address id="footer-address">Loading address...</address>
-</li>
-
-            </ul>
-          </div>
-
-<div class="footer-form">
-  <p class="form-text">
-    Subscribe to our newsletter for more updates & news!
-  </p>
-
-  <form
-    id="newsletter-form"
-    class="form-wrapper"
-    novalidate
-    action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
-    method="POST"
-  >
-    <!-- FormSubmit required fields -->
-    <input type="hidden" name="_subject"  value="New Newsletter Signup" />
-    <input type="hidden" name="_template" value="table" />
-    <input type="hidden" name="_captcha"  value="false" />
-    <input type="text"   name="_honey"    style="display:none" />
-
-    <div class="newsletter-fields">
-      <input
-        type="email"
-        id="newsletter-email"
-        name="email"
-        placeholder="Enter your email"
-        required
-      />
-      <button type="submit" id="newsletter-submit">Subscribe</button>
-    </div>
-
-    <span class="error-message" id="newsletter-error"></span>
-  </form>
-</div>
-
         </div>
-      </div>
 
-      <div class="footer-bottom">
-        <div class="container">
-<p class="copyright">
-  &copy; 2025 <a href="">Visamate</a>. All rights reserved.<br />
-  
-</p>
+        <div class="footer-bottom">
+          <div class="container">
+            <p class="copyright">
+              &copy; 2025 <a href="">Visamate</a>. All rights reserved.<br />
 
-          <ul class="footer-bottom-list">
-            <!-- <li>
+            </p>
+
+            <ul class="footer-bottom-list">
+              <!-- <li>
               <a href="#" class="footer-bottom-link">Privacy Policy</a>
             </li> -->
 
-            <li>
-              <a href="terms-and-conditions.html" class="footer-bottom-link">Term & Condition</a>
-            </li>
+              <li>
+                <a href="terms-and-conditions.html" class="footer-bottom-link">Term & Condition</a>
+              </li>
 
-            <!-- <li>
+              <!-- <li>
               <a href="#" class="footer-bottom-link">FAQ</a>
             </li> -->
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
-    </footer>
-    <a href="#top" class="go-top" data-go-top>
-      <ion-icon name="chevron-up-outline"></ion-icon>
-    </a>
+      </footer>
+      <a href="#top" class="go-top" data-go-top>
+        <ion-icon name="chevron-up-outline"></ion-icon>
+      </a>
 
-    
-    <!-- 
+
+      <!-- 
     - #GO TO TOP
   -->
 
-    <a href="#top" class="go-top" data-go-top>
-      <ion-icon name="chevron-up-outline"></ion-icon>
-    </a>
+      <a href="#top" class="go-top" data-go-top>
+        <ion-icon name="chevron-up-outline"></ion-icon>
+      </a>
 
 
 
 
-  <!-- Scripts -->
- 
-  <script src="./assets/js/site-config.js"></script>
-  <script src="./assets/js/script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- Bootstrap Bundle JS (includes Popper) -->
+      <!-- Scripts -->
 
-<!-- include Swiper’s CSS & JS once in your <head> / before closing </body> -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script src="./assets/js/site-config.js"></script>
+      <script src="./assets/js/script.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <!-- Bootstrap Bundle JS (includes Popper) -->
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-new Swiper('.holiday-swiper', {
-  loop: true,
-  centeredSlides: true,
-  slidesPerView: 3,     // always 3 on ≥768px
-  spaceBetween: 30,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev'
-  },
-  breakpoints: {
-    0:   { slidesPerView: 1 },
-    768: { slidesPerView: 3 }
-  }
-});
+     
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  });
-</script>
-  </body>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          new Swiper('.holiday-swiper', {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 3,     // always 3 on ≥768px
+            spaceBetween: 30,
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+              0: { slidesPerView: 1 },
+              768: { slidesPerView: 3 }
+            }
+          });
+
+        });
+      </script>
+</body>
+
 </html>
