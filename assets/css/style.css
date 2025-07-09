@@ -3231,179 +3231,237 @@ html, body {
 
 
 /* Style for holday package section */
+/* ─── Holiday Packages Overrides ──────────────────────────────────── */
 .holiday-packages {
-  padding: 80px 0;
-  text-align: center;
+  padding: 80px 0;                 /* vertical spacing */
 }
-
 .holiday-packages .section-title {
-  color: var(--bright-navy-blue);
-  font-size: 2rem;
-  font-weight: 700;
   margin-bottom: 40px;
 }
 
-.holiday-slider-wrapper {
+/* ─── Swiper Container ───────────────────────────────────────────── */
+.holiday-swiper {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  min-height: 600px;               /* fixed height to prevent jumps */
+  padding-bottom: 40px;            /* room under cards */
+}
+.holiday-swiper::before,
+.holiday-swiper::after {
+  content: "";
+  position: absolute;
+  top: 0; height: 100%;
+  width: 30%;
+  pointer-events: none;
+  z-index: 5;
+}
+.holiday-swiper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--white) 0%, transparent 100%);
+}
+.holiday-swiper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--white) 0%, transparent 100%);
 }
 
-.holiday-slider {
+/* ─── Slide & Card Layout ───────────────────────────────────────── */
+.holiday-swiper .swiper-wrapper {
   display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 20px;
-  scroll-snap-type: x mandatory;
+  align-items: stretch;
+}
+.holiday-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
-.holiday-slider::-webkit-scrollbar {
-  display: none;
-}
-
+/* Base card */
 .holiday-card {
-  flex: 0 0 32%;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   overflow: hidden;
-  text-align: left;
-  scroll-snap-align: center;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: max-width 0.4s ease, opacity 0.4s ease;
 }
 
-.holiday-card:nth-child(2) {
-  transform: scale(1.05);
+/* Center pop‐out */
+.holiday-swiper .swiper-slide-active .holiday-card {
+  max-width: 360px;
+  opacity: 1;
   z-index: 2;
 }
-
-.holiday-card:not(:nth-child(2)) {
+/* Neighbors fade/small */
+.holiday-swiper .swiper-slide-prev .holiday-card,
+.holiday-swiper .swiper-slide-next .holiday-card {
+  max-width: 300px;
   opacity: 0.6;
-  transform: scale(0.94);
 }
 
-.holiday-image {
+/* Image + tag */
+.holiday-card__image {
   position: relative;
 }
-
-.holiday-image img {
+.holiday-card__image img {
   width: 100%;
-  height: 240px;
+  height: 200px;
   object-fit: cover;
 }
-
-.holiday-tag {
+.holiday-card__tag {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
   background: var(--bright-navy-blue);
-  color: white;
-  font-size: 13px;
-  padding: 5px 12px;
+  color: var(--white);
+  padding: 4px 10px;
   border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: var(--fw-600);
 }
 
-.holiday-info {
-  padding: 20px;
+/* Body content */
+.holiday-card__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
-
-.holiday-info h3 {
-  font-size: 1.15rem;
-  color: var(--oxford-blue);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.holiday-info p {
-  font-size: 0.9rem;
-  color: var(--black-coral);
+.holiday-card__rating {
+  color: var(--bright-navy-blue);
   margin-bottom: 8px;
 }
-
-.holiday-info .reviews {
+.holiday-card__title {
+  font-size: 1.15rem;
+  color: var(--oxford-blue);
+  margin: 0 0 4px;
+}
+.holiday-card__location {
+  font-size: 0.9rem;
+  color: var(--spanish-gray);
+  margin: 0 0 12px;
+}
+.holiday-card__reviews {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-
-.holiday-info .reviews img {
+.holiday-card__reviews img {
   width: 18px;
   height: 18px;
 }
-
-.holiday-info .price {
-  margin-bottom: 10px;
+.holiday-card__pricing {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
 }
-
-.holiday-info .price del {
+.original-price {
   color: var(--spanish-gray);
-  font-size: 0.9rem;
+  text-decoration: line-through;
+  margin-right: 8px;
 }
-
-.holiday-info .price strong {
+.discounted-price {
   color: var(--bright-navy-blue);
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-left: 10px;
+  font-weight: var(--fw-700);
 }
-
-.holiday-bottom {
+.holiday-card__actions {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
+  gap: 8px;
 }
-
-.discount-badge {
-  background: var(--gunmetal);
-  color: white;
+.holiday-card__save {
+  background: var(--oxford-blue);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
   font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: 6px;
+  font-weight: var(--fw-600);
 }
-
-.holiday-bottom .btn {
+.holiday-card__btn {
   background: var(--bright-navy-blue);
-  color: white;
+  color: var(--white);
+  padding: 8px 14px;
+  border-radius: 8px;
   font-size: 0.85rem;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
+  font-weight: var(--fw-600);
+  transition: background 0.25s;
+}
+.holiday-card__btn:hover {
+  background: var(--yale-blue);
 }
 
-.holiday-nav {
+/* ─── Navigation Arrows ─────────────────────────────────────────── */
+/* ─── Swiper Prev/Next: Classic with Hover & Tap Feedback ───────────────── */
+.swiper-button-prev,
+.swiper-button-next {
   position: absolute;
-  top: 42%;
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
-  background: white;
-  color: var(--oxford-blue);
+  background: none;
   border: none;
+  color: var(--bright-navy-blue);
+  font-size: 2rem;
+  padding: 8px;                     /* touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  z-index: 5;
+  z-index: 10;
+  transition: transform 0.1s ease, color 0.18s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.holiday-prev {
-  left: -25px;
+/* keep them inside the carousel bounds */
+.swiper-button-prev { left: 0; }
+.swiper-button-next { right: 0; }
+
+/* hover = accent color */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--united-nations-blue);
 }
 
-.holiday-next {
-  right: -25px;
+/* active/tap = slight click feedback */
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  transform: translateY(-50%) scale(0.9);
 }
 
-@media (max-width: 1024px) {
-  .holiday-card {
-    flex: 0 0 45%;
+/* glyph size unchanged */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+
+/* ─── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .holiday-swiper .swiper-slide-active .holiday-card {
+    max-width: 340px;
+  }
+  .holiday-swiper .swiper-slide-prev .holiday-card,
+  .holiday-swiper .swiper-slide-next .holiday-card {
+    max-width: 280px;
   }
 }
-
-@media (max-width: 768px) {
-  .holiday-card {
-    flex: 0 0 85%;
+@media (max-width: 767px) {
+  .holiday-swiper {
+    min-height: 600px;            /* keep lock on mobile too */
+    padding-bottom: 20px;
   }
+  .holiday-swiper .swiper-slide-active .holiday-card {
+    max-width: 280px;
+  }
+  .holiday-swiper .swiper-slide-prev .holiday-card,
+  .holiday-swiper .swiper-slide-next .holiday-card {
+    max-width: 240px;
+    opacity: 0.5;
+  }
+  /* arrows remain visible on mobile */
 }

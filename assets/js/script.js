@@ -313,14 +313,6 @@ function setupSectionReveal() {
 }
 
 // HOLIDAY SERVICES SCROLLER
-function scrollHolidaySlider(direction) {
-  const slider = document.getElementById("holiday-slider");
-  const scrollAmount = slider.offsetWidth / 2;
-  slider.scrollBy({
-    left: direction * scrollAmount,
-    behavior: "smooth"
-  });
-}
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -332,6 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNewsletterForm();
   loadPopupPartial();
   setupSectionReveal();
-  setupHolidaySlider();
+
 });
 
