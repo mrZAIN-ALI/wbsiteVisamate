@@ -170,6 +170,7 @@ body { background: var(--white); }
   text-transform: uppercase;
   font-family: var(--ff-montserrat);
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .section-title { margin-bottom: 15px; }
@@ -3476,3 +3477,15 @@ html, body {
   max-height: none;
   overflow: visible;
 }
+#inquire,
+.holiday-packages {
+  outline: 2px dashed red;
+}
+
+/* Fix large vertical gap between holiday and inquire section */
+.holiday-packages {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
