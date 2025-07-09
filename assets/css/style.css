@@ -2466,7 +2466,7 @@ address {
   display: grid;
   grid-template-columns: 1fr;
   /* first row = tabs, second row = forms */
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
 }
 
 /* 2) Force the tabs into row 1, col 1 */
@@ -2683,6 +2683,7 @@ address {
   background: var(--cultured);
   border-color: var(--gainsboro);
 }
+
 
 
 /* top values for you section */
@@ -3464,4 +3465,14 @@ html, body {
     opacity: 0.5;
   }
   /* arrows remain visible on mobile */
+}
+/* ─── Inquiry Form Tabs ─────────────────────────────────────────── */
+.inquire-form-tab {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.inquire-form-tab.active {
+  max-height: none;
+  overflow: visible;
 }
