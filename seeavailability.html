@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Check Availability – VisaMate</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"/>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ionicons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+
+  <!-- Scoped CSS from getvisanow.html -->
+  <style>
+    .section.inquire-section > .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .inquire-card.inquire-form .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 1.5rem;
+    }
+    .inquire-card.inquire-form .form-grid .field-group input,
+    .inquire-card.inquire-form .form-grid .field-group select {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .inquire-form input:focus,
+    .inquire-form select:focus {
+      border-color: #3b7ac9;
+      box-shadow: 0 0 5px rgba(59,122,201,0.5);
+      outline: none;
+    }
+    .inquire-form .error {
+      border-color: #e60000 !important;
+    }
+    .error-message {
+      font-size: 0.85rem;
+      color: #e60000;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .error-message.active {
+      display: block;
+    }
+    .inquire-form select {
+      appearance: none;
+      background:
+        url("data:image/svg+xml;charset=US-ASCII,%3Csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")
+        no-repeat right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .submission-dialog {
+      position: fixed; top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2000;
+    }
+    .submission-dialog .dialog-content {
+      background: #fff; padding:2rem; border-radius:8px;
+      text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.3);
+    }
+    .submission-dialog ion-icon {
+      font-size:3rem; color:#28a745; margin-bottom:1rem;
+    }
+    .submission-dialog h2 {
+      font-family:'Montserrat',sans-serif; color:#3b7ac9;
+      margin:.5rem 0;
+    }
+    .submission-dialog p {
+      font-family:'Poppins',sans-serif; color:#555;
+    }
+    .submission-dialog #dialog-ok {
+      margin-top:1.5rem; padding:.5rem 1.5rem;
+      background:#3b7ac9; color:#fff; border:none;
+      border-radius:4px; cursor:pointer;
+    }
+    @media (max-width: 768px) {
+      .section.inquire-section > .container {
+        grid-template-columns: 1fr !important;
+      }
+      .inquire-card.inquire-form {
+        order: -1 !important;
+      }
+      .inquire-card.inquire-form .form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+      .inquire-card.inquire-form .form-grid .field-group,
+      .inquire-card.inquire-form .form-grid .field-group input,
+      .inquire-card.inquire-form .form-grid .field-group select {
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- Header -->
+  <header class="header" data-header>
+    <div class="overlay" data-overlay></div>
+    <div class="header-top">
+      <div class="container">
+        <a href="tel:02046280133" class="helpline-box">
+          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+          <div class="wrapper">
+            <p class="helpline-title">For Further Inquiries :</p>
+            <p class="helpline-number" id="helpline-number"></p>
+          </div>
+        </a>
+        <a href="index.html" class="logo">
+          <img src="./assets/images/logo.svg" alt="Visamate logo"/>
+        </a>
+        <div class="header-btn-group">
+          <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="container">
+        <ul class="social-list">
+          <li class="social-item favicon-icon">
+            <a href="index.html" class="social-link" aria-label="Home">
+              <img src="./favicon.svg" alt="Visamate logo" style="height:24px; width:auto;"/>
+            </a>
+          </li>
+          <li class="social-item">
+            <a id="social-instagram" class="social-link" target="_blank" aria-label="Instagram">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a id="social-facebook" class="social-link" target="_blank" aria-label="Facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+        </ul>
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="index.html" class="logo">
+              <img src="./assets/images/logo.svg" alt="VisaMate logo"/>
+            </a>
+            <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <ul class="navbar-list">
+            <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
+            <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
+            <li><a href="index.html" class="navbar-link" data-nav-link>packages</a></li>
+            <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
+            <li class="navbar-link dropdown" id="moreDropdown">
+              <button id="moreDropdownBtn" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                MORE <ion-icon name="chevron-down-outline"></ion-icon>
+              </button>
+              <ul class="dropdown-menu" id="moreDropdownMenu">
+                <li><a href="refund-policy.html">REFUND POLICY</a></li>
+                <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+                <li><a href="contact-us.html">CONTACT US</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Popup & WhatsApp/Phone -->
+  <div id="popup-container"></div>
+  <div class="floating-contact">
+    <a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
+    <a id="phone-link" class="phone-dock" aria-label="Call us">
+      <ion-icon name="call-outline"></ion-icon>
+      <span id="phone-number"></span>
+    </a>
+  </div>
+
+  <!-- Hero Banner -->
+  <div class="heroinner"
+       style="background: url('./assets/images/visa-banner.jpg') center/cover no-repeat;
+              background-color: hsla(0,0%,0%,0.7);
+              background-blend-mode: overlay;
+              display: grid; place-items: center;
+              min-height: 250px; text-align: center;
+              padding-top: 125px;">
+  </div>
+
+<!-- Main Inquiry -->
+<main class="section inquire-section">
+  <div class="container">
+
+    <!-- Ad Banner -->
+    <div class="inquire-card inquire-info">
+      <img src="./assets/images/ad-banner.png" alt="Advertisement"
+           style="width:100%; border-radius:8px;"/>
+    </div>
+
+    <!-- Flight Inquiry Form -->
+    <div class="inquire-card inquire-form">
+      <h2 class="inquire-title">Check Availability</h2>
+      <form id="check-availability-form"
+            action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
+            method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Visamate Check Availability Inquiry"/>
+        <input type="hidden" name="_template" value="table"/>
+        <input type="hidden" name="_captcha" value="false"/>
+
+        <div class="form-grid flights-grid">
+          <div class="field-group">
+            <label for="ca-departure">Departure *</label>
+            <input id="ca-departure" name="ca_departure" type="text" required placeholder="City or Airport"/>
+            <div class="error-message">Please enter departure location</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-destination">Destination *</label>
+            <input id="ca-destination" name="ca_destination" type="text" required placeholder="Country or City"/>
+            <div class="error-message">Please enter destination</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-depart-date">Departure Date *</label>
+            <input id="ca-depart-date" name="ca_depart_date" type="date" required/>
+            <div class="error-message">Please select departure date</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-return-date">Return Date</label>
+            <input id="ca-return-date" name="ca_return_date" type="date"/>
+          </div>
+          <div class="field-group">
+            <label for="ca-fullname">Full Name *</label>
+            <input id="ca-fullname" name="ca_fullname" type="text" required placeholder="Your Name"/>
+            <div class="error-message">Please enter your name</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-email">Email *</label>
+            <input id="ca-email" name="ca_email" type="email" required placeholder="you@email.com"/>
+            <div class="error-message">Please enter a valid email</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-phone">Phone Number *</label>
+            <input id="ca-phone" name="ca_phone" type="tel" required placeholder="+44 7xxx xxx xxx"/>
+            <div class="error-message">Please enter a valid phone number</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-adults">Adults *</label>
+            <input id="ca-adults" name="ca_adults" type="number" min="1" value="1" required/>
+            <div class="error-message">Number of adults required</div>
+          </div>
+          <div class="field-group">
+            <label for="ca-children">Children/Infants</label>
+            <input id="ca-children" name="ca_children" type="number" min="0" value="0"/>
+          </div>
+          <div class="field-group" style="grid-column: span 2;">
+            <button type="submit" class="btn btn-primary btn-apply" style="width:100%;">
+              INQUIRE NOW
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="./assets/images/logo.svg" alt="VisaMate logo"/>
+          </a>
+          <p class="footer-text">
+            Visamate is your trusted partner for visa assistance.
+            We simplify the process and guide you every step of the way.
+          </p>
+        </div>
+        <div class="footer-contact">
+          <h4 class="contact-title">Contact Us</h4>
+          <p class="contact-text">Feel free to reach us!</p>
+          <ul>
+            <li class="contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+              <a href="tel:02046280133" class="contact-link">020 4628 0133</a>
+            </li>
+            <li class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <a href="mailto:info@visamate.co.uk" class="contact-link">
+                info@visamate.co.uk
+              </a>
+            </li>
+            <li class="contact-item">
+              <ion-icon name="location-outline"></ion-icon>
+              <address class="contact-link">863 High Road, Ilford, IG3 8TG</address>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-form">
+          <p class="form-text">Subscribe to our newsletter for updates & news!</p>
+          <form id="newsletter-form" class="form-wrapper" novalidate
+                action="https://formsubmit.co/5722cb870e42c690c664f4249339c4cf"
+                method="POST">
+            <input type="hidden" name="_subject"
+                   value="New Newsletter Signup"/>
+            <input type="hidden" name="_template" value="table"/>
+            <input type="hidden" name="_captcha" value="false"/>
+            <input type="text" name="_honey" style="display:none"/>
+            <div class="newsletter-fields">
+              <input type="email" id="newsletter-email" name="email"
+                     placeholder="Enter your email" required/>
+              <button type="submit" id="newsletter-submit">Subscribe</button>
+            </div>
+            <span class="error-message" id="newsletter-error"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2025 <a href="">Visamate</a>. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Go-to-Top -->
+  <a href="#top" class="go-top" data-go-top>
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </a>
+
+  <!-- Scripts -->
+  <script src="./assets/js/site-config.js"></script>
+  <script src="./assets/js/script.js"></script>
+
+  <!-- Validation & Submission JS -->
+<!-- Validation & Submission JS -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("check-availability-form");
+  const submitBtn = form.querySelector(".btn-apply");
+  const requiredFields = [
+    "ca-departure",
+    "ca-destination",
+    "ca-depart-date",
+    "ca-fullname",
+    "ca-email",
+    "ca-phone",
+    "ca-adults"
+  ].map(id => document.getElementById(id));
+
+  requiredFields.forEach(field => {
+    ["blur","input","change"].forEach(event => {
+      field.addEventListener(event, () => validateField(field));
+    });
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    let formValid = true;
+
+    requiredFields.forEach(field => {
+      if (!validateField(field)) formValid = false;
+    });
+
+    if (!formValid) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    try {
+      await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+      });
+      showSuccessDialog();
+      form.reset();
+    } catch (error) {
+      alert("Submission failed, please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "INQUIRE NOW";
+    }
+  });
+
+  function validateField(field) {
+    const errorMessage = field.closest(".field-group").querySelector(".error-message");
+    if (!field.checkValidity()) {
+      field.classList.add("error");
+      errorMessage.classList.add("active");
+      return false;
+    } else {
+      field.classList.remove("error");
+      errorMessage.classList.remove("active");
+      return true;
+    }
+  }
+
+  function showSuccessDialog() {
+    const dialog = document.createElement("div");
+    dialog.className = "submission-dialog";
+    dialog.innerHTML = `
+      <div class="dialog-content">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        <h2>Thank You!</h2>
+        <p>Your inquiry has been successfully sent.<br/>We'll contact you shortly.</p>
+        <button id="dialog-ok">OK</button>
+      </div>
+    `;
+    document.body.appendChild(dialog);
+    dialog.querySelector("#dialog-ok").onclick = () => {
+      dialog.remove();
+      window.location.href = "index.html";
+    };
+  }
+});
+</script>
+</body>
+</html>
