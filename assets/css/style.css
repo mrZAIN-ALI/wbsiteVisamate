@@ -3477,10 +3477,7 @@ html, body {
   max-height: none;
   overflow: visible;
 }
-#inquire,
-.holiday-packages {
-  outline: 2px dashed red;
-}
+
 
 /* Fix large vertical gap between holiday and inquire section */
 .holiday-packages {
